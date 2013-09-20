@@ -1,0 +1,306 @@
+﻿/* 
+    Document   : baseCSS
+    Created on : 01 Sep 2013, 4:10:23 AM
+    Author     : S'the
+    Description:
+        Purpose of the stylesheet follows.
+*/
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('../fonts/CENTURY.ttf') format('truetype');
+}
+
+#html, body {
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 1360px; /*1980px*/
+    height: 100%;
+    margin: auto;
+    margin-bottom: 35%;
+    /*margin-left: 0%;
+              margin-right: 1000px;*/
+    padding: 0;
+    position: relative;
+    background-image: url("../images/Back.png");
+    font-family: 'Century Gothic';
+    /*background-image: url("images/Home.jpg");*/
+    /*background-color: black;*/
+}
+
+img {
+    border: none;
+    text-decoration: none;
+}
+
+.imBanner {
+    width: 100%;
+    /*background-image: url("../images/bottomBanner.png");*/
+    height: 12%;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+}
+
+.container {
+    width: 85%;
+    height: 87%;
+    min-height: 80%;
+    /*color: white;*/
+}
+
+.Header {
+    height: 150px;
+    width: 1366px;
+    background-color: black;
+    background-image: url("../images/headerImg2.jpg");
+    margin-top: 1.5%;
+    margin-left: 0%;
+    margin-right: 0%;
+    padding: 0;
+}
+
+.nav ul.Bar1 {
+    color: white;
+    float: right;
+    width: 75px;
+    height: 28px;
+    text-align: center;
+    line-height: 1.8;
+    font-size: 8pt;
+    letter-spacing: normal;
+}
+
+.centerBlock {
+    height: 350px;
+    width: 95%;
+    background-color: transparent;
+    margin: 20px;
+    margin-left: 21px;
+    margin-right: -800px;
+    margin-top: 85px;
+    padding: 0.5%;
+}
+
+a {
+    color: #888;
+    text-decoration: none;
+}
+
+    a:hover,
+    a:active {
+        color: #333;
+    }
+
+.Navblock {
+    float: right;
+    /*background-color: #333;*/
+    width: 30%;
+    height: 180%;
+    background-image: url("../images/divider.png");
+}
+
+.Navblock1 {
+    list-style-type: none;
+    text-decoration: none;
+    background-color: #1f92cb;
+    padding: 5px;
+    display: inline-block;
+    float: right;
+    width: 80%;
+    text-decoration: none;
+    color: #fff;
+    background: black;
+}
+
+.Navblock2 {
+    list-style-type: none;
+    text-decoration: none;
+    background-color: transparent;
+    padding: 10px;
+    display: inline-block;
+    float: right;
+    width: 54%;
+    height: 51.7%;
+    background-image: url("../images/AdBack.png");
+    margin-right: 24%;
+}
+
+/*Home page--------------------------------------------------------------*/
+
+.infoblock1 {
+    float: left;
+    background-color: transparent;
+    width: 69%;
+    height: 55%;
+}
+
+.infoblock1A {
+    background-color: #1e9094;
+    width: 32.5%;
+    height: 100%;
+    padding: 0%;
+    /*background-image: url("../images/info1A_wordGraphic.png");*/
+}
+
+
+.infoblock1B {
+    background-color: #1f92cb;
+    width: 32.5%;
+    height: 100%;
+    margin-top: -21.6%;
+    margin-left: 33.8%;
+    /*background-image: url("../images/info1B_wordGraphic.png");*/
+}
+
+.infoblock1C {
+    float: right;
+    background-color: #1e9094;
+    width: 32.5%;
+    height: 100%;
+    margin-top: -21.6%;
+    margin-left: 60%;
+    /*background-image: url("../images/info1C_wordGraphic.png");*/
+}
+
+.infoblock2 {
+    float: left;
+    background-color: #004f51;
+    width: 69%;
+    height: 27.5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    background-image: url("../images/info2_wordGraphic.png");
+}
+
+.infoblock3 {
+    float: left;
+    background-color: #457a7c;
+    width: 69%;
+    height: 10%;
+    background-image: url("../images/info3_wordGraphic.png");
+}
+
+.infoQuote {
+    background-color: transparent;
+    width: 895px;
+    height: 120px;
+    background-image: url("../images/infoQuote.png");
+    top: 870%;
+    left: 2.15%;
+    position: absolute;
+}
+
+/*About page--------------------------------------------------------------*/
+
+.infoblock1About {
+    float: left;
+    background-image: url("../images/infoBack.png");
+    width: 69%;
+    height: 600%;
+}
+
+
+
+
+
+.Signblock {
+    height: 50px;
+    width: 200px;
+    margin-top: -13%;
+    margin-right: 100%;
+    margin-left: 100%;
+}
+
+
+.block1 {
+    list-style-type: none;
+    text-decoration: none;
+    color: #fff;
+    background: black;
+    padding: 5px;
+    display: inline-block;
+    float: right;
+}
+
+
+/*Initialize*/
+ul#menu, ul#menu ul.sub-menu {
+    padding-left: 35%;
+    padding-top: 8.5%;
+}
+
+    ul#menu li, ul#menu ul.sub-menu li {
+        margin-left: 5%;
+        list-style-type: none;
+        display: inline-block;
+    }
+        /*Link Appearance*/
+        ul#menu li a, ul#menu li ul.sub-menu li a {
+            text-decoration: none;
+            color: #fff;
+            background: black;
+            padding: 5px;
+            display: inline-block;
+        }
+    /*Make the parent of sub-menu relative*/
+    ul#menu li {
+        position: relative;
+    }
+        /*sub menu*/
+        ul#menu li ul.sub-menu {
+            display: none;
+            position: absolute;
+            top: 30px;
+            right: 0;
+            left: 0;
+            padding-left: 1%;
+            width: 100px;
+        }
+
+        ul#menu li:hover ul.sub-menu {
+            display: block;
+        }
+
+/* JOHANs CSS = POTENTIAL DISASTER */
+
+.postHeading {
+    float: none;
+    color: white;
+    margin-left: 14.5%;
+    background-color: transparent;
+    height: 25px;
+    width: 80%;
+}
+
+.postContentContainer {
+    border-color: black;
+    border-width: 20px;
+    border: solid;
+    padding: -1px;
+    color: black;
+    margin-left: 14.5%;
+    background-color: whitesmoke;
+    height: 100px;
+    width: 80%;
+}
+
+.postContent {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.postButtonsContainer {
+    padding: 3px;
+    color: black;
+    margin-left: 14.5%;
+    background-image: url('../images/sign_Back.png');
+    height: auto;
+    width: 80%;
+}
+
+.postButton {
+    margin-right: 3px;
+}
