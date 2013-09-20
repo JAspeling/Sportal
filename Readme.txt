@@ -14,4 +14,7 @@ This is nice because once you commit a change, it creates a new 'version' of the
 
 As I'm also new to this, I might have some facts wrong or something, feel free to correct me where possible please. Anyways this is what I understand Git does and i think its pretty cool, and makes life a LOT easier for all of us.
 
+Oh yeah I forgot, We can actually create documentation as we go on GitHub itself. Play around with the features a bit and get familiar with the whole process :)
+
 Happy coding :D
+
