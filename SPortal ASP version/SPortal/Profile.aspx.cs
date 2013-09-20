@@ -11,7 +11,7 @@ namespace SPortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadPost(1, "This is my First Post");
+            LoadPost(1, "This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, ");
             LoadPost(2, "...");
             LoadPost(3, "...");
             LoadPost(4, "This was my Last Post");
@@ -20,7 +20,6 @@ namespace SPortal
         /// <summary>
         /// Dynamically add a Post to the Page.
         /// (All posts can be seen from the active users Timeline)
-        /// TODO: Accept a Post ID to load a specific Post
         /// </summary>
         private void LoadPost(int postId, string postText)
         {
@@ -37,7 +36,7 @@ namespace SPortal
 
             // Post Content Container
             Panel postContentContainer = new Panel();
-            TextBox postContent = new TextBox();
+            Label postContent = new Label();
 
             // Post Buttons Container
             Panel postButtonsContainer = new Panel();
@@ -59,7 +58,6 @@ namespace SPortal
             postHeadings[1].Text = "2 Hours";
 
             postContentContainer.Attributes.Add("class", "postContentContainer");
-            postContent.TextMode = TextBoxMode.MultiLine;
             postContent.Text = postText;
             postContent.Attributes.Add("class", "postContent");
 
