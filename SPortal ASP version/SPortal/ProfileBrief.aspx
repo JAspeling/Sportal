@@ -67,7 +67,7 @@
                                         </ul>
                                     </li>
                                     
-                                    <li><a href="Wiki.aspx">Wiki</a></li>
+                                    <li><a href="Wiki.aspx">WIKI</a></li>
                                     
                                 </ul>
                                 
