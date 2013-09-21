@@ -187,7 +187,6 @@ a {
     width: 895px;
     height: 120px;
     background-image: url("../images/infoQuote.png");
-    top: 870%;
     left: 2.15%;
     position: absolute;
 }
@@ -299,6 +298,7 @@ ul#menu, ul#menu ul.sub-menu {
     background-image: url('../images/sign_Back.png');
     height: auto;
     width: 80%;
+    margin-bottom: 15px;
 }
 
 .postButton {

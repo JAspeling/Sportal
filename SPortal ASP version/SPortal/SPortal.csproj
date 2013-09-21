@@ -61,7 +61,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
+    <Content Include="%28old%29About.aspx" />
     <Content Include="css\baseCSS.css" />
     <Content Include="css\component.css" />
     <Content Include="css\default.css" />
@@ -127,7 +127,7 @@
     <Content Include="img-demo\Tab_Back.png" />
     <Content Include="img-demo\user_icon.jpg" />
     <Content Include="img-demo\Wiki.jpg" />
-    <Content Include="Index.aspx" />
+    <Content Include="%28old%29Index.aspx" />
     <Content Include="js\jquery-1.6.js" />
     <Content Include="js\jquery.easing.1.3.js" />
     <Content Include="js\jquery.js" />
@@ -138,20 +138,30 @@
     <Content Include="js\script.js" />
     <Content Include="js\swfobject.js" />
     <Content Include="js\toucheffects.js" />
-    <Content Include="Profile.aspx" />
+    <Content Include="%28old%29Profile.aspx" />
     <Content Include="ProfileBrief.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Sign.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Index.aspx" />
+    <Content Include="About.aspx" />
+    <Content Include="Profile.aspx" />
     <Content Include="Wiki.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="%28old%29About.aspx.cs">
+      <DependentUpon>%28old%29About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="%28old%29About.aspx.designer.cs">
+      <DependentUpon>%28old%29About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.Master.cs">
+      <DependentUpon>Default.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.Master.designer.cs">
+      <DependentUpon>Default.Master</DependentUpon>
     </Compile>
     <Compile Include="Forum.aspx.cs">
       <DependentUpon>Forum.aspx</DependentUpon>
@@ -160,19 +170,19 @@
     <Compile Include="Forum.aspx.designer.cs">
       <DependentUpon>Forum.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="%28old%29Index.aspx.cs">
+      <DependentUpon>%28old%29Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="%28old%29Index.aspx.designer.cs">
+      <DependentUpon>%28old%29Index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Profile.aspx.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
+    <Compile Include="%28old%29Profile.aspx.cs">
+      <DependentUpon>%28old%29Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Profile.aspx.designer.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
+    <Compile Include="%28old%29Profile.aspx.designer.cs">
+      <DependentUpon>%28old%29Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProfileBrief.aspx.cs">
       <DependentUpon>ProfileBrief.aspx</DependentUpon>
@@ -196,6 +206,27 @@
     <Compile Include="Sign.aspx.designer.cs">
       <DependentUpon>Sign.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Wiki.aspx.cs">
       <DependentUpon>Wiki.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -217,6 +248,7 @@
     <Content Include="fonts\codropsicons\codropsicons.eot" />
     <Content Include="fonts\codropsicons\codropsicons.ttf" />
     <Content Include="fonts\codropsicons\codropsicons.woff" />
+    <Content Include="Default.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

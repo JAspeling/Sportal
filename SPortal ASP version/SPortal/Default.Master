@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="SPortal.Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head runat="server">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" href="css/baseCSS.css" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="css/default.css" />
+        <link rel="stylesheet" type="text/css" href="css/component.css" />
+        <script src="js/modernizer.custom.js"> </script>
+        <script src="js/toucheffects.js"> </script>
+        
+        <asp:ContentPlaceHolder ID="cphHead" runat="server">
+        </asp:ContentPlaceHolder>
+    </head>
+    <body>
+        <form id="form1" runat="server">
+            <div>
+                
+                <div class="Header">
+                    <div class=" nav">
+                        <ul id="menu">
+                            <li><a href="Index.aspx">HOME</a></li>
+                                    
+                            <li><a href="About.aspx">ABOUT</a></li>
+                                    
+                            <li><a href="Profile.aspx">PROFILE</a>
+                                <ul class="sub-menu">
+                                    <li><a href="ProfileBrief.aspx">View</a></li>
+                                    <li><a href="Register.aspx">Register</a></li>
+                                    <li><a href="#">Help</a></li>
+                                </ul>
+                            </li>
+                                    
+                            <li><a href="Forum.aspx">FORUM</a>
+                                <ul class="sub-menu">
+                                    <li><a href="#">Topics</a></li>
+                                    <li><a href="#">Moderations</a></li>
+                                    <li><a href="#">Projects</a></li>
+                                    <li><a href="#">Uploads</a></li>
+                                </ul>
+                            </li>
+                                    
+                            <li><a href="#">GROUPS</a>
+                                <ul class="sub-menu">
+                                    <li><a href="#">Mentors</a></li>
+                                    <li><a href="#">Moderations</a></li>
+                                    <li><a href="#">Projects</a></li>
+                                    <li><a href="#">Mentees</a></li>
+                                </ul>
+                            </li>
+                                    
+                            <li><a href="Wiki.aspx">WIKI</a></li>  
+                        </ul>
+                        <div class="Signblock" style="float: left; margin-left: 60%; width: 500px">
+                           
+                            <span style="float: right;"><a href="Register.aspx"><img src="images/register.png" alt="Not found" width="82" height="38"></a></span>             
+                            <span style="float: right; margin-right: -6%;"><a href="Sign.aspx"><img src="images/sign.png" alt="Not found" width="82" height="38"></a></span>
+                    
+                                    
+                            <div style="float: right; margin-top: 10px; margin-right: 15px;">
+                                <asp:Label ID="lblStatus" runat="server" ForeColor="White" Text="John Doe Logged in"></asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imBanner">
+                        <span style="float: right; padding-right: 1%"><a href="#"><img src="images/imBottom.png" alt="Not found" /></a></span>
+                    </div>
+                </div>
+
+                <asp:ContentPlaceHolder ID="cphMain" runat="server">
+        
+                </asp:ContentPlaceHolder>
+            </div>
+        </form>
+    </body>
+</html>
