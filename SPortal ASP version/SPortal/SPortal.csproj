@@ -68,7 +68,7 @@
     <Content Include="css\liteaccordion.css" />
     <Content Include="fonts\codropsicons\codropsicons.svg" />
     <Content Include="fonts\codropsicons\license.txt" />
-    <Content Include="Forum.aspx" />
+    <Content Include="%28old%29Forum.aspx" />
     <Content Include="images\Ad1.jpg" />
     <Content Include="images\AdBack.png" />
     <Content Include="images\Back.png" />
@@ -146,6 +146,7 @@
     <Content Include="Index.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Profile.aspx" />
+    <Content Include="Forum.aspx" />
     <Content Include="Wiki.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -163,12 +164,12 @@
     <Compile Include="Default.Master.designer.cs">
       <DependentUpon>Default.Master</DependentUpon>
     </Compile>
-    <Compile Include="Forum.aspx.cs">
-      <DependentUpon>Forum.aspx</DependentUpon>
+    <Compile Include="%28old%29Forum.aspx.cs">
+      <DependentUpon>%28old%29Forum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forum.aspx.designer.cs">
-      <DependentUpon>Forum.aspx</DependentUpon>
+    <Compile Include="%28old%29Forum.aspx.designer.cs">
+      <DependentUpon>%28old%29Forum.aspx</DependentUpon>
     </Compile>
     <Compile Include="%28old%29Index.aspx.cs">
       <DependentUpon>%28old%29Index.aspx</DependentUpon>
@@ -226,6 +227,13 @@
     </Compile>
     <Compile Include="Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forum.aspx.cs">
+      <DependentUpon>Forum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forum.aspx.designer.cs">
+      <DependentUpon>Forum.aspx</DependentUpon>
     </Compile>
     <Compile Include="Wiki.aspx.cs">
       <DependentUpon>Wiki.aspx</DependentUpon>
