@@ -35,11 +35,10 @@ namespace BLL
                                             new SqlParameter("@Surname", surname),
                                             new SqlParameter("@DOB", dob.ToString()),
                                             new SqlParameter("@Picture", picture),
-                                            new SqlParameter("@JoinDate", DateTime.Now.ToString()),
+                                            //new SqlParameter("@JoinDate", DateTime.Now.ToString()),
                                             //new SqlParameter("UserType", SqlDbType.Int, 3, Convert.ToString((int)userType)) };
                                             new SqlParameter("@UserTypeID", userType.ToString()) };
             return da.Insert("RegisterUser", parameters);
-            return true;
         }
     }
 }

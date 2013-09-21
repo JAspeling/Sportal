@@ -1,11 +1,15 @@
-﻿using System;
+﻿using BLL;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
-using BLL;
 
 namespace SPortal
 {
-    public partial class Register : Page
+    public partial class WebForm7 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,12 +31,17 @@ namespace SPortal
             string password = txtPassword.Text;
             string profile = imgProfile.FileName;
 
-            connection.Register(name + " " + surname, password, email, name, surname, DateTime.Now, profile, 1);
-
-            MessageBox.Show(string.Format("Profile '{0}' Created", name + " " + surname));
-            Session["UserStatus"] = name + " " + surname;
-
-            Response.Redirect("Index.aspx");
+            if (connection.Register(name + " " + surname, password, email, name, surname, DateTime.Now, profile, 1))
+            {
+                MessageBox.Show(string.Format("Profile '{0}' Created", name + " " + surname));
+                Session["UserStatus"] = name + " " + surname;
+                Response.Redirect("Index.aspx");
+            }
+            else
+            {
+                MessageBox.Show(string.Format("Error occured in creating the Profile."));
+                Response.Redirect("Index.aspx");
+            }
         }
     }
 }

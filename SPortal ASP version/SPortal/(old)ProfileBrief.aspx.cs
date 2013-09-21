@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace SPortal
 {
-    public partial class Default : System.Web.UI.MasterPage
+    public partial class ProfileBrief : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblStatus.Text = Session["UserStatus"] == null ? "" : Session["UserStatus"].ToString() + " Logged In";
+
         }
     }
 }

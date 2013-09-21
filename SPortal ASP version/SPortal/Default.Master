@@ -56,11 +56,11 @@
                         <div class="Signblock" style="float: left; margin-left: 60%; width: 500px">
                            
                             <span style="float: right;"><a href="Register.aspx"><img src="images/register.png" alt="Not found" width="82" height="38"></a></span>             
-                            <span style="float: right; margin-right: -6%;"><a href="Sign.aspx"><img src="images/sign.png" alt="Not found" width="82" height="38"></a></span>
+                            <span style="float: right; margin-right: -6%;"><a href="Login.aspx"><img src="images/sign.png" alt="Not found" width="82" height="38"></a></span>
                     
                                     
                             <div style="float: right; margin-top: 10px; margin-right: 15px;">
-                                <asp:Label ID="lblStatus" runat="server" ForeColor="White" Text="John Doe Logged in"></asp:Label>
+                                <asp:Label ID="lblStatus" runat="server" ForeColor="White" Text="--"></asp:Label>
                             </div>
                         </div>
                     </div>

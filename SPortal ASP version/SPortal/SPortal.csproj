@@ -139,14 +139,18 @@
     <Content Include="js\swfobject.js" />
     <Content Include="js\toucheffects.js" />
     <Content Include="%28old%29Profile.aspx" />
-    <Content Include="ProfileBrief.aspx" />
-    <Content Include="Register.aspx" />
-    <Content Include="Sign.aspx" />
+    <Content Include="%28old%29ProfileBrief.aspx" />
+    <Content Include="%28old%29Register.aspx" />
+    <Content Include="%28old%29Login.aspx" />
     <Content Include="Web.config" />
     <Content Include="Index.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Forum.aspx" />
+    <Content Include="%28old%29Wiki.aspx" />
+    <Content Include="ProfileBrief.aspx" />
+    <Content Include="Register.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="Wiki.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -185,27 +189,27 @@
     <Compile Include="%28old%29Profile.aspx.designer.cs">
       <DependentUpon>%28old%29Profile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProfileBrief.aspx.cs">
-      <DependentUpon>ProfileBrief.aspx</DependentUpon>
+    <Compile Include="%28old%29ProfileBrief.aspx.cs">
+      <DependentUpon>%28old%29ProfileBrief.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProfileBrief.aspx.designer.cs">
-      <DependentUpon>ProfileBrief.aspx</DependentUpon>
+    <Compile Include="%28old%29ProfileBrief.aspx.designer.cs">
+      <DependentUpon>%28old%29ProfileBrief.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
+    <Compile Include="%28old%29Register.aspx.cs">
+      <DependentUpon>%28old%29Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
+    <Compile Include="%28old%29Register.aspx.designer.cs">
+      <DependentUpon>%28old%29Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Sign.aspx.cs">
-      <DependentUpon>Sign.aspx</DependentUpon>
+    <Compile Include="%28old%29Login.aspx.cs">
+      <DependentUpon>%28old%29Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Sign.aspx.designer.cs">
-      <DependentUpon>Sign.aspx</DependentUpon>
+    <Compile Include="%28old%29Login.aspx.designer.cs">
+      <DependentUpon>%28old%29Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -234,6 +238,34 @@
     </Compile>
     <Compile Include="Forum.aspx.designer.cs">
       <DependentUpon>Forum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="%28old%29Wiki.aspx.cs">
+      <DependentUpon>%28old%29Wiki.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="%28old%29Wiki.aspx.designer.cs">
+      <DependentUpon>%28old%29Wiki.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileBrief.aspx.cs">
+      <DependentUpon>ProfileBrief.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfileBrief.aspx.designer.cs">
+      <DependentUpon>ProfileBrief.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Wiki.aspx.cs">
       <DependentUpon>Wiki.aspx</DependentUpon>
