@@ -11,7 +11,7 @@ namespace SPortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadPost(1, "This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, ");
+            LoadPost(1, "This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post");
             LoadPost(2, "...");
             LoadPost(3, "...");
             LoadPost(4, "This was my Last Post");
@@ -51,6 +51,8 @@ namespace SPortal
 
             #region Filling Controls
 
+            postContainer.Attributes["style"] = "margin-bottom: 15px;";
+
             postHeadingContainer.Attributes.Add("class", "postHeading");
             postHeadings[0].Attributes.Add("style", "float: left");
             postHeadings[0].Text = string.Format("POST #{0}", postId);
@@ -65,7 +67,7 @@ namespace SPortal
             foreach (var button in buttons)
             {
                 button.ImageUrl = "img-demo/button.png";
-                button.Width = 170;
+                button.Width = 168;
                 button.Height = 22;
                 button.Attributes.Add("class", "postButton");
             }

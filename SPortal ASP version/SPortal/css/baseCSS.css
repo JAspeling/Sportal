@@ -263,6 +263,7 @@ ul#menu, ul#menu ul.sub-menu {
         }
 
 /* JOHANs CSS = POTENTIAL DISASTER */
+/* TIMELINE CSS */
 
 .postHeading {
     float: none;
@@ -303,4 +304,15 @@ ul#menu, ul#menu ul.sub-menu {
 
 .postButton {
     margin-right: 3px;
+}
+
+/* PROFILE CSS */
+
+.profileName {
+    color: #59abb7;
+    float: right;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-right: 3%;
+    margin-top: -50%;
 }

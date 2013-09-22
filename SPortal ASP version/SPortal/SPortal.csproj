@@ -61,14 +61,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="%28old%29About.aspx" />
+    <Content Include="Old HTML Pages\%28old%29About.aspx" />
     <Content Include="css\baseCSS.css" />
     <Content Include="css\component.css" />
     <Content Include="css\default.css" />
     <Content Include="css\liteaccordion.css" />
     <Content Include="fonts\codropsicons\codropsicons.svg" />
     <Content Include="fonts\codropsicons\license.txt" />
-    <Content Include="%28old%29Forum.aspx" />
+    <Content Include="Old HTML Pages\%28old%29Forum.aspx" />
     <Content Include="images\Ad1.jpg" />
     <Content Include="images\AdBack.png" />
     <Content Include="images\Back.png" />
@@ -127,7 +127,7 @@
     <Content Include="img-demo\Tab_Back.png" />
     <Content Include="img-demo\user_icon.jpg" />
     <Content Include="img-demo\Wiki.jpg" />
-    <Content Include="%28old%29Index.aspx" />
+    <Content Include="Old HTML Pages\%28old%29Index.aspx" />
     <Content Include="js\jquery-1.6.js" />
     <Content Include="js\jquery.easing.1.3.js" />
     <Content Include="js\jquery.js" />
@@ -138,27 +138,27 @@
     <Content Include="js\script.js" />
     <Content Include="js\swfobject.js" />
     <Content Include="js\toucheffects.js" />
-    <Content Include="%28old%29Profile.aspx" />
-    <Content Include="%28old%29ProfileBrief.aspx" />
-    <Content Include="%28old%29Register.aspx" />
-    <Content Include="%28old%29Login.aspx" />
+    <Content Include="Old HTML Pages\%28old%29Profile.aspx" />
+    <Content Include="Old HTML Pages\%28old%29ProfileBrief.aspx" />
+    <Content Include="Old HTML Pages\%28old%29Register.aspx" />
+    <Content Include="Old HTML Pages\%28old%29Login.aspx" />
     <Content Include="Web.config" />
     <Content Include="Index.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Forum.aspx" />
-    <Content Include="%28old%29Wiki.aspx" />
+    <Content Include="Old HTML Pages\%28old%29Wiki.aspx" />
     <Content Include="ProfileBrief.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Wiki.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="%28old%29About.aspx.cs">
+    <Compile Include="Old HTML Pages\%28old%29About.aspx.cs">
       <DependentUpon>%28old%29About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="%28old%29About.aspx.designer.cs">
+    <Compile Include="Old HTML Pages\%28old%29About.aspx.designer.cs">
       <DependentUpon>%28old%29About.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.Master.cs">
@@ -168,47 +168,47 @@
     <Compile Include="Default.Master.designer.cs">
       <DependentUpon>Default.Master</DependentUpon>
     </Compile>
-    <Compile Include="%28old%29Forum.aspx.cs">
+    <Compile Include="Old HTML Pages\%28old%29Forum.aspx.cs">
       <DependentUpon>%28old%29Forum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="%28old%29Forum.aspx.designer.cs">
+    <Compile Include="Old HTML Pages\%28old%29Forum.aspx.designer.cs">
       <DependentUpon>%28old%29Forum.aspx</DependentUpon>
     </Compile>
-    <Compile Include="%28old%29Index.aspx.cs">
+    <Compile Include="Old HTML Pages\%28old%29Index.aspx.cs">
       <DependentUpon>%28old%29Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="%28old%29Index.aspx.designer.cs">
+    <Compile Include="Old HTML Pages\%28old%29Index.aspx.designer.cs">
       <DependentUpon>%28old%29Index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="%28old%29Profile.aspx.cs">
+    <Compile Include="Old HTML Pages\%28old%29Profile.aspx.cs">
       <DependentUpon>%28old%29Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="%28old%29Profile.aspx.designer.cs">
+    <Compile Include="Old HTML Pages\%28old%29Profile.aspx.designer.cs">
       <DependentUpon>%28old%29Profile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="%28old%29ProfileBrief.aspx.cs">
+    <Compile Include="Old HTML Pages\%28old%29ProfileBrief.aspx.cs">
       <DependentUpon>%28old%29ProfileBrief.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="%28old%29ProfileBrief.aspx.designer.cs">
+    <Compile Include="Old HTML Pages\%28old%29ProfileBrief.aspx.designer.cs">
       <DependentUpon>%28old%29ProfileBrief.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="%28old%29Register.aspx.cs">
+    <Compile Include="Old HTML Pages\%28old%29Register.aspx.cs">
       <DependentUpon>%28old%29Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="%28old%29Register.aspx.designer.cs">
+    <Compile Include="Old HTML Pages\%28old%29Register.aspx.designer.cs">
       <DependentUpon>%28old%29Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="%28old%29Login.aspx.cs">
+    <Compile Include="Old HTML Pages\%28old%29Login.aspx.cs">
       <DependentUpon>%28old%29Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="%28old%29Login.aspx.designer.cs">
+    <Compile Include="Old HTML Pages\%28old%29Login.aspx.designer.cs">
       <DependentUpon>%28old%29Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
@@ -239,11 +239,11 @@
     <Compile Include="Forum.aspx.designer.cs">
       <DependentUpon>Forum.aspx</DependentUpon>
     </Compile>
-    <Compile Include="%28old%29Wiki.aspx.cs">
+    <Compile Include="Old HTML Pages\%28old%29Wiki.aspx.cs">
       <DependentUpon>%28old%29Wiki.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="%28old%29Wiki.aspx.designer.cs">
+    <Compile Include="Old HTML Pages\%28old%29Wiki.aspx.designer.cs">
       <DependentUpon>%28old%29Wiki.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProfileBrief.aspx.cs">
@@ -301,6 +301,9 @@
       <Project>{873b9819-9d28-424a-89ab-021414b308c8}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\ProfilePictures\temp\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
