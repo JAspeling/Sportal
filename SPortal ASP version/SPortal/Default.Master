@@ -6,6 +6,7 @@
     <head runat="server">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link rel="stylesheet" href="css/baseCSS.css" type="text/css"/>
+        <link rel="stylesheet" href="css/MenuCSS.css" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="css/default.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
         <script src="js/modernizer.custom.js"> </script>
@@ -18,8 +19,121 @@
         <div>
                 
             <div class="Header">
-                <div class=" nav">
-                    <ul id="menu">
+                <div class="nav">
+                    
+                    <ul class="menuTemplate3 decor3_1" license="mylicense">
+                        <li><a href="Index.aspx">Home</a></li>
+                        <li class="separator"></li>
+                        <li><a href="About.aspx">About</a></li>
+                        <li class="separator"></li>
+                        <li><a href="Profile.aspx" class="arrow">Profile</a>
+                            <div class="drop decor3_2" style="width: 200px">
+                                <div class='left'>
+                                    <b>View</b>
+                                    <div>
+                                        <a href="#">Temp Link</a><br />
+                                        <a href="#">Temp Link</a><br />
+                                        <a href="#">Temp Link</a><br />
+                                        <a href="#">Temp Link</a><br />
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div class='left'>
+                                    <b>Register</b>
+                                    <div>
+                                        <a href="#">Temp Link</a><br />
+                                        <a href="#">Temp Link</a><br />
+                                        <a href="#">Temp Link</a><br />
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div class='left'>
+                                    <b>Help</b>
+                                    <div>
+                                        <a href="#">Temp Link</a><br />
+                                        <a href="#">Temp Link</a><br />
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div style='clear: both;'></div>
+                            </div>
+                        </li>
+                        <li><a href="Forum.aspx" class="arrow">Forum</a>
+                            <div class="drop decor3_2" style="width: 200px">
+                                <div class='left'>
+                                    <b>Topics</b>
+                                    <div>
+                                        <a href="#">Temp Link</a><br />
+                                        <a href="#">Temp Link</a><br />
+                                        <a href="#">Temp Link</a><br />
+                                        <a href="#">Temp Link</a><br />
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div class='left'>
+                                    <b>Moderations</b>
+                                    <div>
+                                        <a href="#">Temp Link</a><br />
+                                        <a href="#">Temp Link</a><br />
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div class='left'>
+                                    <b>Projects</b>
+                                    <div>
+                                        <a href="#">Temp Link</a><br />
+                                        <a href="#">Temp Link</a><br />
+                                        <a href="#">Temp Link</a><br />
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div class='left'>
+                                    <b>Uploads</b>
+                                    <div>
+                                        <a href="#">Temp Link</a><br />
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div style='clear: both;'></div>
+                            </div>
+                        </li>
+                        <li><a href="Forum.aspx" class="arrow">Groups</a>
+                            <div class="drop decor3_2">
+                                <div class='left'>
+                                    <b>Mentors</b>
+                                    <div>
+                                        <a href="#">Temp Link</a><br />
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div class='left'>
+                                    <b>Moderations</b>
+                                    <div>
+                                        <a href="#">Temp Link</a><br />
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div class='left'>
+                                    <b>Projects</b>
+                                    <div>
+                                        <a href="#">Temp Link</a><br />
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div class='left'>
+                                    <b>Mentees</b>
+                                    <div>
+                                        <a href="#">Uploads</a><br />
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div style='clear: both;'></div>
+                            </div>
+                        </li>
+                    </ul>
+                    
+
+                    <%--<ul id="menu">
                         <li><a href="Index.aspx">HOME</a></li>
                                     
                         <li><a href="About.aspx">ABOUT</a></li>
@@ -51,7 +165,7 @@
                         </li>
                                     
                         <li><a href="Wiki.aspx">WIKI</a></li>  
-                    </ul>
+                    </ul>--%>
                     <div class="Signblock" style="float: left; margin-left: 60%; width: 500px">
                            
                         <span style="float: right;"><a href="Register.aspx"><img src="images/register.png" alt="Not found" width="82" height="38"></a></span>             

@@ -73,6 +73,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\MenuCSS.css" />
+    <Content Include="Menus\css.css" />
+    <Content Include="Menus\menu1.html" />
     <Content Include="Old HTML Pages\%28old%29About.aspx" />
     <Content Include="css\baseCSS.css" />
     <Content Include="css\component.css" />
