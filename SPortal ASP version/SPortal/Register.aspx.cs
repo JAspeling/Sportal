@@ -1,6 +1,9 @@
 ﻿using BLL;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -53,7 +56,7 @@ namespace SPortal
             if (connection.Register(name + " " + surname, password, email, name, surname, DateTime.Now, profile, 1))
             {
                 //MessageBox.Show(string.Format("Profile '{0}' Created", name + " " + surname));
-                Session["UserStatus"] = name + " " + surname;
+                Session["UserStatus"] = name + " " + surname; // Should be replaced with the username
 
                 UploadImage();
 
@@ -84,7 +87,8 @@ namespace SPortal
                 string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
                 string destFile = System.IO.Path.Combine(targetPath, fileName);
 
-                File.Move(sourceFile, destFile);
+                if (!File.Exists(destFile))
+                    File.Move(sourceFile, destFile);
                 File.Delete(sourceFile);
             }
         }
@@ -103,7 +107,15 @@ namespace SPortal
                 try
                 {
                     // Save the file to a temp folder, to 're-load' it on a postback
-                    FileUpload1.SaveAs(Server.MapPath(imgPath));
+                    //FileUpload1.SaveAs(Server.MapPath(imgPath));
+
+                    System.Drawing.Image myImage = System.Drawing.Image.FromStream(FileUpload1.PostedFile.InputStream);
+
+                    string rootPath = HttpContext.Current.Request.PhysicalApplicationPath;
+                    string sourcePath = rootPath + "images/ProfilePictures/temp/";
+
+                    resizeImage(myImage, sourcePath,imgName, 300, 300, myImage.Width, myImage.Height);
+                    
                     imgProfilePicture.ImageUrl = imgPath;
 
                     //FileUpload1.SaveAs(Server.MapPath(".\\") + "images\\ProfilePictures\\temp\\" +
@@ -121,6 +133,56 @@ namespace SPortal
                     Label1.Text = "ERROR: " + ex.Message;
                 }
             }
+        }
+
+        private void resizeImage(System.Drawing.Image originalImage, string path, string originalFilename,
+            /* note changed names */
+                     int canvasWidth, int canvasHeight,
+            /* new */
+                     int originalWidth, int originalHeight)
+        {
+            System.Drawing.Image image = originalImage;
+
+            System.Drawing.Image thumbnail =
+                new Bitmap(canvasWidth, canvasHeight); // changed parm names
+            System.Drawing.Graphics graphic =
+                         System.Drawing.Graphics.FromImage(thumbnail);
+
+            graphic.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            graphic.SmoothingMode = SmoothingMode.HighQuality;
+            graphic.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            graphic.CompositingQuality = CompositingQuality.HighQuality;
+
+            /* ------------------ new code --------------- */
+
+            // Figure out the ratio
+            double ratioX = (double)canvasWidth / (double)originalWidth;
+            double ratioY = (double)canvasHeight / (double)originalHeight;
+            // use whichever multiplier is smaller
+            double ratio = ratioX < ratioY ? ratioX : ratioY;
+
+            // now we can get the new height and width
+            int newHeight = Convert.ToInt32(originalHeight * ratio);
+            int newWidth = Convert.ToInt32(originalWidth * ratio);
+
+            // Now calculate the X,Y position of the upper-left corner 
+            // (one of these will always be zero)
+            int posX = Convert.ToInt32((canvasWidth - (originalWidth * ratio)) / 2);
+            int posY = Convert.ToInt32((canvasHeight - (originalHeight * ratio)) / 2);
+
+            graphic.Clear(Color.White); // white padding
+            graphic.DrawImage(image, posX, posY, newWidth, newHeight);
+
+            /* ------------- end new code ---------------- */
+
+            System.Drawing.Imaging.ImageCodecInfo[] info =
+                             ImageCodecInfo.GetImageEncoders();
+            EncoderParameters encoderParameters;
+            encoderParameters = new EncoderParameters(1);
+            encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality,
+                             100L);
+            thumbnail.Save(path + originalFilename, info[1],
+                             encoderParameters);
         }
     }
 }
