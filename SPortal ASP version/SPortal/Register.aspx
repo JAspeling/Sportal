@@ -37,10 +37,14 @@
                                             <div style="float: left;">
                                                 <span style="color: #c0c0c0;">   
                                                     <img src="img-demo/user_icon.jpg" alt="image" /><label>Name</label><br/> 
-                                                    <asp:TextBox ID="txtName" runat="server" autocomplete="on" autofocus="" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox><br/><br/>
+                                                    <asp:TextBox ID="txtName" runat="server" autocomplete="on" autofocus="" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox>
+                                                <asp:CompareValidator ID="TestNameString" runat="server" ControlToValidate="txtName" ErrorMessage="Enter a valid Name" Operator="DataTypeCheck">*</asp:CompareValidator>
+                                                <br/><br/>
 
                                                     <img src="img-demo/user_icon.jpg" alt="image" /><label>Surname</label><br/> 
-                                                    <asp:TextBox ID="txtSurname" runat="server" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox><br/><br/>
+                                                    <asp:TextBox ID="txtSurname" runat="server" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox>
+                                                <asp:CompareValidator ID="TestSurnameString" runat="server" ControlToValidate="txtSurname" ErrorMessage="Enter a valid Surname" Operator="DataTypeCheck">*</asp:CompareValidator>
+                                                <br/><br/>
                                                 
                                                     <label>Date of Birth</label><br/>
                                                     <asp:TextBox ID="DateTextBox" runat="server"  />
@@ -51,13 +55,20 @@
                                                     </ajaxToolkit:CalendarExtender><br/><br/>
                                                         
                                                     <img src="img-demo/email_icon.jpg" alt="image" /><label>Email</label><br/> 
-                                                    <asp:TextBox ID="txtEmail" runat="server" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox><br/><br/>
+                                                    <asp:TextBox ID="txtEmail" runat="server" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox>
+                                                <asp:RegularExpressionValidator ID="EmailValidation" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter a valid email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator>
+                                                <br/><br/>
                                                                 
                                                     <label>Confirm Email</label><br/> 
-                                                    <asp:TextBox ID="txtConfirmEmail" runat="server" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox><br/><br/>
+                                                    <asp:TextBox ID="txtConfirmEmail" runat="server" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox>
+                                                    <asp:CompareValidator ID="CompareEmailValidator" runat="server" ErrorMessage="Emails dont match" ControlToCompare="txtConfirmEmail" ControlToValidate="txtEmail">*</asp:CompareValidator><br/>
+                                                
+                                                <br/>
                                                                 
                                                     <img src="img-demo/lock_icon.jpg" alt="image" /><label>Password</label><br/> 
-                                                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox><br/><br/>
+                                                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox>
+                                                <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPasswordConfirm" ControlToValidate="txtPassword" ErrorMessage="Passwords doesn't match">*</asp:CompareValidator>
+                                                <br/><br/>
                                                 
                                                     <img src="img-demo/lock_icon.jpg" alt="image" /><label>Confirm Password</label><br/> 
                                                     <asp:TextBox ID="txtPasswordConfirm" runat="server" TextMode="Password" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox><br/><br/>
@@ -85,6 +96,7 @@
                                 
                                 
                                         <div style="float: left; margin-left: 7%">
+                                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
                                             <br/>
                                             <table>
                                                 <tr>
