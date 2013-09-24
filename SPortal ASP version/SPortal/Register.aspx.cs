@@ -47,16 +47,31 @@ namespace SPortal
 
             string name = txtName.Text;
             string surname = txtSurname.Text;
+            DateTime dob = Convert.ToDateTime(txtDoB.Text);
             string email = txtEmail.Text;
             string password = txtPassword.Text;
+            string username = txtUsername.Text;
             string profile = Session["TempProfilePictureName"] == null
                 ? ""
                 : Session["TempProfilePictureName"].ToString();
 
-            if (connection.Register(name + " " + surname, password, email, name, surname, DateTime.Now, profile, 1))
+            if (connection.Register(username, password, email, name, surname, dob, profile, 1))
             {
                 //MessageBox.Show(string.Format("Profile '{0}' Created", name + " " + surname));
-                Session["UserStatus"] = name + " " + surname; // Should be replaced with the username
+                Session["UserStatus"] = username;
+
+                Cookie.SetCookie(this, "SPortalUsername", username, 2);
+                //HttpCookie userCookie = Request.Cookies["SPortalUsername"];
+
+                //if (userCookie == null)
+                //{
+                //    userCookie = new HttpCookie("SPortalUsername");
+                //}
+
+                //userCookie.Value = username;
+                //userCookie.Expires = DateTime.Now.AddDays(2);
+
+                //Response.Cookies.Add(userCookie);
 
                 UploadImage();
 
@@ -88,6 +103,7 @@ namespace SPortal
                 string destFile = System.IO.Path.Combine(targetPath, fileName);
 
                 if (!File.Exists(destFile))
+
                     File.Move(sourceFile, destFile);
                 File.Delete(sourceFile);
             }

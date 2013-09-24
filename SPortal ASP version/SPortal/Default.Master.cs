@@ -16,9 +16,11 @@ namespace SPortal
             if (userCookie != null)
             {
                 Session["UserStatus"] = userCookie.Value;
+
+
             }
 
-            lblStatus.Text = Session["UserStatus"] == null ? "" : Session["UserStatus"].ToString() + " Logged In";
+            lblStatus.Text = Session["UserStatus"] == null ? "" : Session["UserStatus"] + " Logged In";
         }
     }
 }

@@ -25,12 +25,14 @@ namespace SPortal
 
                 if (chkRemember.Checked)
                 {
-                    HttpCookie userCookie = new HttpCookie("SPortalUsername");
+                    Cookie.SetCookie(this, "SPortalUsername", txtUsername.Text, 2);
 
-                    userCookie.Value = txtUsername.Text;
-                    userCookie.Expires = DateTime.Now.AddDays(2);
+                    //HttpCookie userCookie = new HttpCookie("SPortalUsername");
 
-                    Response.Cookies.Add(userCookie);
+                    //userCookie.Value = txtUsername.Text;
+                    //userCookie.Expires = DateTime.Now.AddDays(2);
+
+                    //Response.Cookies.Add(userCookie);
                 }
 
                 MessageBox.Show("Login Success");

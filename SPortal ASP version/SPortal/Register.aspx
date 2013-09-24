@@ -47,10 +47,10 @@
                                                 <br/><br/>
                                                 
                                                     <label>Date of Birth</label><br/>
-                                                    <asp:TextBox ID="DateTextBox" runat="server"  />
+                                                    <asp:TextBox ID="txtDoB" runat="server" />
                                                     <asp:Image ID="Image1" runat="server" ImageUrl="img-demo/imgCalendar.png" />
                                                     <ajaxToolkit:CalendarExtender ID="CalendarExtender1" 
-                                                                                  runat="server" TargetControlID="DateTextBox" 
+                                                                                  runat="server" TargetControlID="txtDoB" 
                                                                                   PopupButtonID="Image1">
                                                     </ajaxToolkit:CalendarExtender><br/><br/>
                                                         

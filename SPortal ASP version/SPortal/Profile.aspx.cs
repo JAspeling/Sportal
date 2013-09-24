@@ -11,10 +11,15 @@ namespace SPortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadPost(1, "This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post");
-            LoadPost(2, "...");
-            LoadPost(3, "...");
-            LoadPost(4, "This was my Last Post");
+            if (Session["UserStatus"] != null)
+            {
+                
+            }
+
+            //LoadPost(1, "This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post");
+            //LoadPost(2, "...");
+            //LoadPost(3, "...");
+            //LoadPost(4, "This was my Last Post");
         }
 
         /// <summary>
