@@ -23,6 +23,16 @@ namespace SPortal
             {
                 Session["UserStatus"] = txtUsername.Text;
 
+                if (chkRemember.Checked)
+                {
+                    HttpCookie userCookie = new HttpCookie("SPortalUsername");
+
+                    userCookie.Value = txtUsername.Text;
+                    userCookie.Expires = DateTime.Now.AddDays(2);
+
+                    Response.Cookies.Add(userCookie);
+                }
+
                 MessageBox.Show("Login Success");
                 Response.Redirect("Index.aspx");
             }
