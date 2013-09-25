@@ -9,6 +9,7 @@ namespace BLL
     public enum UserType
     {
         USER = 1,
+        MODERATOR,
         STAFF,
         ADMIN
     }
@@ -16,8 +17,14 @@ namespace BLL
     [Flags]
     public enum UserRoles
     {
-        MENTOR = 1,
-        MENTEE = 2,
+        GROUPLEADER = 1,
+        GROUPMEMBER = 2,
         PROJECTLEADER = 4
+    }
+
+    public enum PostType
+    {
+        PARENT = 1,
+        CHILD
     }
 }

@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class Admin : User
+    class Moderator : User
     {
-        ///<constructor>
-        ///Constructor
-        ///</constructor>
-        public Admin(string username, string email, string name, string surname, DateTime dob, string picture, string institution, int rating, DateTime joinDate, UserRoles userRoles)
+        public Moderator(string username, string email, string name, string surname, DateTime dob, string picture, string institution, int rating, DateTime joinDate, UserRoles userRoles)
             : base(username, email, name, surname, dob, picture, institution, rating, joinDate, userRoles) { }
 
         #region Methods
+        public bool EditPost(string postID)
+        {
+            return true;
+        }
         #endregion
     }
 }
