@@ -27,7 +27,7 @@ namespace SPortal
             string password = txtPassword.Text;
             string profile = imgProfile.FileName;
 
-            connection.Register(name + " " + surname, password, email, name, surname, DateTime.Now, profile, 1);
+            //connection.Register(name + " " + surname, password, email, name, surname, DateTime.Now, profile, 1);
 
             MessageBox.Show(string.Format("Profile '{0}' Created", name + " " + surname));
             Session["UserStatus"] = name + " " + surname;

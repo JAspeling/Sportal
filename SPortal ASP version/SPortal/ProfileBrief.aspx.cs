@@ -11,7 +11,10 @@ namespace SPortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["UserStatus"] == null)
+            {
+                Response.Redirect("Register.aspx");
+            }
         }
     }
 }

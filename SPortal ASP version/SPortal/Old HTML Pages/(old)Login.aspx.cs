@@ -16,7 +16,7 @@ namespace SPortal
         {
             Connection connection = new Connection();
 
-            if (connection.Login(txtUsername.Text, txtPassword.Text))
+            if (Connection.Login(txtUsername.Text, txtPassword.Text))
             {
                 Session["UserStatus"] = txtUsername.Text;
                    

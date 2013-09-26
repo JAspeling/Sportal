@@ -43,8 +43,6 @@ namespace SPortal
 
         protected void btnOK_Click(object sender, ImageClickEventArgs e)
         {
-            Connection connection = new Connection();
-
             string name = txtName.Text;
             string surname = txtSurname.Text;
             DateTime dob = Convert.ToDateTime(txtDoB.Text);
@@ -55,23 +53,12 @@ namespace SPortal
                 ? ""
                 : Session["TempProfilePictureName"].ToString();
 
-            if (connection.Register(username, password, email, name, surname, dob, profile, 1))
+            if (BLL.User.CreateUser(username, password, email, name, surname, dob, profile, UserType.USER))
             {
                 //MessageBox.Show(string.Format("Profile '{0}' Created", name + " " + surname));
                 Session["UserStatus"] = username;
 
                 Cookie.SetCookie(this, "SPortalUsername", username, 2);
-                //HttpCookie userCookie = Request.Cookies["SPortalUsername"];
-
-                //if (userCookie == null)
-                //{
-                //    userCookie = new HttpCookie("SPortalUsername");
-                //}
-
-                //userCookie.Value = username;
-                //userCookie.Expires = DateTime.Now.AddDays(2);
-
-                //Response.Cookies.Add(userCookie);
 
                 UploadImage();
 
@@ -79,7 +66,7 @@ namespace SPortal
             }
             else
             {
-                MessageBox.Show(string.Format("Error occured in creating the Profile."));
+                //MessageBox.Show(string.Format("Error occured in creating the Profile."));
                 Response.Redirect("Register.aspx");
             }
         }
@@ -152,9 +139,7 @@ namespace SPortal
         }
 
         private void resizeImage(System.Drawing.Image originalImage, string path, string originalFilename,
-            /* note changed names */
                      int canvasWidth, int canvasHeight,
-            /* new */
                      int originalWidth, int originalHeight)
         {
             System.Drawing.Image image = originalImage;

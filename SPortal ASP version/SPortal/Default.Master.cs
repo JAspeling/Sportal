@@ -16,11 +16,24 @@ namespace SPortal
             if (userCookie != null)
             {
                 Session["UserStatus"] = userCookie.Value;
-
-
+                btnLogout.Visible = true;
+            }
+            else
+            {
+                btnLogout.Visible = false;
             }
 
-            lblStatus.Text = Session["UserStatus"] == null ? "" : Session["UserStatus"] + " Logged In";
+            lblStatus.Text = Session["UserStatus"] == null ? "" : Session["UserStatus"] + " Logged In - ";
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Request.Cookies["SPortalUsername"].Expires = DateTime.Now;
+            Session["UserStatus"] = null;
+
+            string prevPage = Request.UrlReferrer.ToString();
+
+            Response.Redirect(prevPage);
         }
     }
 }

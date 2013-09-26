@@ -11,15 +11,10 @@ namespace SPortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserStatus"] != null)
+            if (Session["UserStatus"] == null)
             {
-                
+                Response.Redirect("Register.aspx");
             }
-
-            //LoadPost(1, "This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post, This is my First Post");
-            //LoadPost(2, "...");
-            //LoadPost(3, "...");
-            //LoadPost(4, "This was my Last Post");
         }
 
         /// <summary>
