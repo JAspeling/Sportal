@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace SPortal
 {
@@ -11,9 +12,14 @@ namespace SPortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Cookie.SetSessionFromCookie(this);
             if (Session["User"] == null)
             {
                 Response.Redirect("Register.aspx");
+            }
+            else
+            {
+                InitialiseProfile(Session["User"].ToString());
             }
         }
 
@@ -95,6 +101,26 @@ namespace SPortal
             pnlTimelineContainer.Controls.Add(postContainer);
 
             #endregion
+        }
+
+        public void InitialiseProfile(string username)
+        {
+            BLL.User user = BLL.User.GetUserByUsername(username);
+
+            string rootPath = HttpContext.Current.Request.PhysicalApplicationPath;
+
+            if (File.Exists(rootPath + "images/ProfilePictures/" + user.Picture))
+                imgProfilePicture.ImageUrl = "~/images/ProfilePictures/" + user.Picture;
+            else
+                imgProfilePicture.ImageUrl = "~/images/ProfilePictures/default.png";
+                
+            lblUsername.Text = user.Username;
+            lblProfileName.Text = string.Format("{0} {1}", user.Name, user.Surname);
+            lblProfileBirthday.Text = user.DOB.ToLongDateString();
+            lblProfileGender.Text = "Not Specified";
+            lblProfileStatus.Text = "Not Specified";
+            lblProfileEmail.Text = user.Email;
+            lblProfileInstitution.Text = user.Institution;
         }
     }
 }

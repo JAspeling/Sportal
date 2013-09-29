@@ -165,10 +165,10 @@ namespace BLL
             DataAccess da = new DataAccess();
             SqlParameter[] parameters = { new SqlParameter("@Username",username) };
             UserRoles userRoles = new UserRoles();
-            DataTable dt = da.Select("SelectUserRoles", parameters);
-            foreach (DataRow row in dt.Rows)
-                userRoles += Convert.ToInt16(row["UserRoleID"]);
-            dt = da.Select("SelectUserInfo", parameters);
+            //DataTable dt = da.Select("SelectUserRoles", parameters);
+            //foreach (DataRow row in dt.Rows)
+            //    userRoles += Convert.ToInt16(row["UserRoleID"]);
+            DataTable dt = da.Select("SelectUserInfo", parameters);
             return new User(dt.Rows[0]["Username"].ToString(),dt.Rows[0]["Email"].ToString(),dt.Rows[0]["Name"].ToString(),dt.Rows[0]["Surname"].ToString(),
                             Convert.ToDateTime(dt.Rows[0]["DOB"]),dt.Rows[0]["Picture"].ToString(),dt.Rows[0]["Institution"].ToString(),
                             Convert.ToInt16(dt.Rows[0]["Rating"]),Convert.ToDateTime(dt.Rows[0]["JoinDate"]), userRoles);

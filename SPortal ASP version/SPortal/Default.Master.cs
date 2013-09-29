@@ -12,25 +12,7 @@ namespace SPortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie userCookie = Request.Cookies["SPortalUsername"];
-
-            if (userCookie != null) // User cookie is created.
-            {
-                Session["User"] = userCookie.Value;
-                SetLoginState(LoginState.LoggedIn);
-            }
-            else
-            {
-                if (Session["User"] != null)    // No cookie created, but user is logged in.
-                {
-                    SetLoginState(LoginState.LoggedIn);
-                }
-                else
-                {
-                    SetLoginState((LoginState.LoggedOut));
-                }
-                
-            }
+            btnLogin.ImageUrl = Cookie.SetSessionFromCookie(this.Page);
 
             lblStatus.Text = Session["User"] == null ? "" : Session["User"] + " Logged In - ";
         }
@@ -60,24 +42,6 @@ namespace SPortal
                     Response.Redirect("Index.aspx");
                     break;
             }
-        }
-
-        private void SetLoginState(LoginState login)
-        {
-            switch (login)
-            {
-                case LoginState.LoggedIn: btnLogin.ImageUrl = "images/logout.png";
-                    break;
-                case LoginState.LoggedOut: btnLogin.ImageUrl = "images/sign.png";
-                    break;
-            }
-            
-        }
-
-        enum LoginState
-        {
-            LoggedIn,
-            LoggedOut
         }
     }
 }

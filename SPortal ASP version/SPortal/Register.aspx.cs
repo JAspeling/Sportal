@@ -58,7 +58,7 @@ namespace SPortal
             string username = txtUsername.Text;
             string profile = Session["TempProfilePictureName"] == null
                 ? ""
-                : Session["TempProfilePictureName"].ToString();
+                : MD5Hashing.MD5Hash(Session["TempProfilePictureName"].ToString()) + getExtention(Session["TempProfilePictureType"].ToString());
 
             if (BLL.User.CreateUser(username, password, email, name, surname, dob, profile, UserType.USER))
             {
@@ -78,6 +78,8 @@ namespace SPortal
             }
         }
 
+        #region Image Resizing and Uploading
+
         private void UploadImage()
         {
             // Check to see if the user uploaded an image.
@@ -86,7 +88,7 @@ namespace SPortal
                 // TempFile Exists.
                 //MessageBox.Show("Session Exists");
 
-                string fileName = Session["TempProfilePictureName"].ToString();
+                string fileName = MD5Hashing.MD5Hash(Session["TempProfilePictureName"].ToString()) + getExtention(Session["TempProfilePictureType"].ToString());
 
                 string rootPath = HttpContext.Current.Request.PhysicalApplicationPath;
 
@@ -106,7 +108,10 @@ namespace SPortal
         private void UploadAndDisplay()
         {
             string imgName = FileUpload1.FileName;
-            string imgPath = "~/images/ProfilePictures/temp/" + imgName;
+
+            string contentType = FileUpload1.PostedFile.ContentType;
+            
+            string imgPath = "~/images/ProfilePictures/temp/" + MD5Hashing.MD5Hash(imgName) + getExtention(contentType);
             Session["TempProfilePicture"] = true;
             Session["TempProfilePictureName"] = imgName;
             Session["TempProfilePictureSize"] = FileUpload1.PostedFile.ContentLength;
@@ -189,8 +194,17 @@ namespace SPortal
             encoderParameters = new EncoderParameters(1);
             encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality,
                              100L);
-            thumbnail.Save(path + originalFilename, info[1],
+            thumbnail.Save(path + MD5Hashing.MD5Hash(originalFilename) + getExtention(Session["TempProfilePictureType"].ToString()), info[1],
                              encoderParameters);
         }
+
+        private string getExtention(string contentType)
+        {
+            int index = contentType.IndexOf("/") + 1;
+            int length = contentType.Length;
+            return string.Format(".{0}", contentType.Substring(index, length - index));
+        }
+
+        #endregion
     }
 }
