@@ -2,38 +2,82 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.SessionState;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace SPortal
 {
-    public partial class Default : System.Web.UI.MasterPage
+    public partial class Default : MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie userCookie = Request.Cookies["SPortalUsername"];
 
-            if (userCookie != null)
+            if (userCookie != null) // User cookie is created.
             {
-                Session["UserStatus"] = userCookie.Value;
-                btnLogout.Visible = true;
+                Session["User"] = userCookie.Value;
+                SetLoginState(LoginState.LoggedIn);
             }
             else
             {
-                btnLogout.Visible = false;
+                if (Session["User"] != null)    // No cookie created, but user is logged in.
+                {
+                    SetLoginState(LoginState.LoggedIn);
+                }
+                else
+                {
+                    SetLoginState((LoginState.LoggedOut));
+                }
+                
             }
 
-            lblStatus.Text = Session["UserStatus"] == null ? "" : Session["UserStatus"] + " Logged In - ";
+            lblStatus.Text = Session["User"] == null ? "" : Session["User"] + " Logged In - ";
         }
 
-        protected void btnLogout_Click(object sender, EventArgs e)
+        protected void btnLogin_Click(object sender, ImageClickEventArgs e)
         {
-            Request.Cookies["SPortalUsername"].Expires = DateTime.Now;
-            Session["UserStatus"] = null;
+            switch (btnLogin.ImageUrl)
+            {
+                case "images/sign.png" : // User is NOT logged in.
+                    Response.Redirect("Login.aspx");
+                    break;
+                case "images/logout.png" : // User is logged in.
 
-            string prevPage = Request.UrlReferrer.ToString();
+                    Session["User"] = null;
 
-            Response.Redirect(prevPage);
+                    if (Request.Cookies["SPortalUsername"] != null)
+                    {
+                        HttpCookie myCookie = new HttpCookie("SPortalUsername");
+                        myCookie.Expires = DateTime.Now.AddDays(-1d);
+                        Response.Cookies.Add(myCookie);
+                    }
+                    //Request.Cookies["SPortalUsername"].Expires = DateTime.Now;
+                    //Request.Cookies.Remove("SPortalUsername");
+
+                    btnLogin.ImageUrl = "images/sign.png";
+
+                    Response.Redirect("Index.aspx");
+                    break;
+            }
+        }
+
+        private void SetLoginState(LoginState login)
+        {
+            switch (login)
+            {
+                case LoginState.LoggedIn: btnLogin.ImageUrl = "images/logout.png";
+                    break;
+                case LoginState.LoggedOut: btnLogin.ImageUrl = "images/sign.png";
+                    break;
+            }
+            
+        }
+
+        enum LoginState
+        {
+            LoggedIn,
+            LoggedOut
         }
     }
 }

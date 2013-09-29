@@ -15,6 +15,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
+   <%-- <form id="frmProfile" runat="server">--%>
         <div class="centerBlock">
                                     
             <div class="Navblock">
@@ -169,4 +170,5 @@
                 </asp:Panel>
             </asp:Panel>
         </div>
+<%--    </form>--%>
 </asp:Content>

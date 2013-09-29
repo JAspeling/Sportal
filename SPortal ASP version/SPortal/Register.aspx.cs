@@ -13,10 +13,17 @@ using System.Windows.Forms;
 
 namespace SPortal
 {
-    public partial class WebForm7 : System.Web.UI.Page
+    public partial class WebForm7 : Page
     {
+        protected void Page_Init(object sender, EventArgs e) 
+        {
+            this.Form.Enctype = "multipart/form-data";
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (FileUpload1.PostedFile != null && FileUpload1.PostedFile.ContentLength > 0)
                 UploadAndDisplay();
             else
@@ -56,7 +63,7 @@ namespace SPortal
             if (BLL.User.CreateUser(username, password, email, name, surname, dob, profile, UserType.USER))
             {
                 //MessageBox.Show(string.Format("Profile '{0}' Created", name + " " + surname));
-                Session["UserStatus"] = username;
+                Session["User"] = username;
 
                 Cookie.SetCookie(this, "SPortalUsername", username, 2);
 

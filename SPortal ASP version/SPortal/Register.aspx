@@ -4,8 +4,7 @@
     <title>Register</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
-    <form ID="frmRegister" runat="server" enctype="multipart/form-data">
-        
+    <%--<form id="frmRegister" runat="server" enctype="multipart/form-data">--%>
         <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" > </ajaxToolkit:ToolkitScriptManager>
 
         <div class="centerBlock">
@@ -38,13 +37,13 @@
                                                 <span style="color: #c0c0c0;">   
                                                     <img src="img-demo/user_icon.jpg" alt="image" /><label>Name</label><br/> 
                                                     <asp:TextBox ID="txtName" runat="server" autocomplete="on" autofocus="" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox>
-                                                <asp:CompareValidator ID="TestNameString" runat="server" ControlToValidate="txtName" ErrorMessage="Enter a valid Name" Operator="DataTypeCheck">*</asp:CompareValidator>
-                                                <br/><br/>
+                                                    <asp:CompareValidator ID="TestNameString" runat="server" ControlToValidate="txtName" ErrorMessage="Enter a valid Name" Operator="DataTypeCheck">*</asp:CompareValidator>
+                                                    <br/><br/>
 
                                                     <img src="img-demo/user_icon.jpg" alt="image" /><label>Surname</label><br/> 
                                                     <asp:TextBox ID="txtSurname" runat="server" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox>
-                                                <asp:CompareValidator ID="TestSurnameString" runat="server" ControlToValidate="txtSurname" ErrorMessage="Enter a valid Surname" Operator="DataTypeCheck">*</asp:CompareValidator>
-                                                <br/><br/>
+                                                    <asp:CompareValidator ID="TestSurnameString" runat="server" ControlToValidate="txtSurname" ErrorMessage="Enter a valid Surname" Operator="DataTypeCheck">*</asp:CompareValidator>
+                                                    <br/><br/>
                                                 
                                                     <label>Date of Birth</label><br/>
                                                     <asp:TextBox ID="txtDoB" runat="server" />
@@ -56,19 +55,19 @@
                                                         
                                                     <img src="img-demo/email_icon.jpg" alt="image" /><label>Email</label><br/> 
                                                     <asp:TextBox ID="txtEmail" runat="server" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox>
-                                                <asp:RegularExpressionValidator ID="EmailValidation" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter a valid email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator>
-                                                <br/><br/>
+                                                    <asp:RegularExpressionValidator ID="EmailValidation" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter a valid email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator>
+                                                    <br/><br/>
                                                                 
                                                     <label>Confirm Email</label><br/> 
                                                     <asp:TextBox ID="txtConfirmEmail" runat="server" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox>
                                                     <asp:CompareValidator ID="CompareEmailValidator" runat="server" ErrorMessage="Emails dont match" ControlToCompare="txtConfirmEmail" ControlToValidate="txtEmail">*</asp:CompareValidator><br/>
                                                 
-                                                <br/>
+                                                    <br/>
                                                                 
                                                     <img src="img-demo/lock_icon.jpg" alt="image" /><label>Password</label><br/> 
                                                     <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox>
-                                                <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPasswordConfirm" ControlToValidate="txtPassword" ErrorMessage="Passwords doesn't match">*</asp:CompareValidator>
-                                                <br/><br/>
+                                                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPasswordConfirm" ControlToValidate="txtPassword" ErrorMessage="Passwords doesn't match">*</asp:CompareValidator>
+                                                    <br/><br/>
                                                 
                                                     <img src="img-demo/lock_icon.jpg" alt="image" /><label>Confirm Password</label><br/> 
                                                     <asp:TextBox ID="txtPasswordConfirm" runat="server" TextMode="Password" autocomplete="on" required="" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox><br/><br/>
@@ -86,7 +85,7 @@
                                                 <label>&nbsp;&nbsp;&nbsp;Profile Picture________________</label><br/>
                                                 <asp:Image ID="imgProfilePicture" ImageUrl="img-demo/Profile_Picture.png" AlternateText="Profile Picture" runat="server"/>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <asp:FileUpload ID="FileUpload1" runat="server" onchange="frmRegister.submit();"/>
+                                                <asp:FileUpload ID="FileUpload1" runat="server" onchange="if (confirm('Upload ' + this.value + '?')) this.form.submit();"/>
                                                 <br/>
                                                 <asp:Label ID="Label1" runat="server"></asp:Label>
                                                 <!-- <i><small><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -123,5 +122,5 @@
                 </div> 
             </div>
         </div>
-    </form>
+<%--    </form>--%>
 </asp:Content>

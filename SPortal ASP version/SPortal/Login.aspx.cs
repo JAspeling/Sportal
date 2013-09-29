@@ -15,27 +15,21 @@ namespace SPortal
         {
 
         }
+
         protected void btnOK_Click(object sender, ImageClickEventArgs e)
         {
            // Connection connection = new Connection();
 
             if (Connection.Login(txtUsername.Text, txtPassword.Text))
             {
-                Session["UserStatus"] = txtUsername.Text;
+                Session["User"] = txtUsername.Text;
 
                 if (chkRemember.Checked)
                 {
                     Cookie.SetCookie(this, "SPortalUsername", txtUsername.Text, 2);
-
-                    //HttpCookie userCookie = new HttpCookie("SPortalUsername");
-
-                    //userCookie.Value = txtUsername.Text;
-                    //userCookie.Expires = DateTime.Now.AddDays(2);
-
-                    //Response.Cookies.Add(userCookie);
                 }
 
-                MessageBox.Show("Login Success");
+                //MessageBox.Show("Login Success");
                 Response.Redirect("Index.aspx");
             }
             else
