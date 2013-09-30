@@ -112,7 +112,7 @@ namespace SPortal
             if (File.Exists(rootPath + "images/ProfilePictures/" + user.Picture))
                 imgProfilePicture.ImageUrl = "~/images/ProfilePictures/" + user.Picture;
             else
-                imgProfilePicture.ImageUrl = "~/images/ProfilePictures/default.png";
+                imgProfilePicture.ImageUrl = "~/images/ProfilePictures/default.png"; // Use the default picture
                 
             lblUsername.Text = user.Username;
             lblProfileName.Text = string.Format("{0} {1}", user.Name, user.Surname);

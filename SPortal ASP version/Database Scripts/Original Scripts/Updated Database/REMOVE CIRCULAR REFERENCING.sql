@@ -1,0 +1,29 @@
+USE SPortalDb
+
+GO
+CREATE TABLE MemberRole(
+	RoleID INT PRIMARY KEY IDENTITY(1,1),
+	RoleName VARCHAR(30)
+)
+
+GO
+CREATE TABLE GroupMembers
+(
+	MemberID INT PRIMARY KEY IDENTITY(1,1),
+	GroupID INT FOREIGN KEY (GroupID) REFERENCES GroupHouse(GroupID),
+	UserID INT FOREIGN KEY (UserID) REFERENCES Users(UserID),
+	RoleID INT FOREIGN KEY (RoleID) REFERENCES MemberRole(RoleID),	
+)
+
+GO
+INSERT INTO MemberRole (RoleName) VALUES ('Creator')
+GO
+INSERT INTO MemberRole (RoleName) VALUES ('Paricipant')
+
+GO 
+ALTER TABLE GroupHouse
+DROP CONSTRAINT FK__GroupHous__Creat__1BFD2C07
+
+GO 
+ALTER TABLE GroupHouse
+DROP COLUMN Creator

@@ -1,0 +1,30 @@
+USE [SPortalDb]
+GO
+
+/****** Object:  Table [dbo].[TopicPost]    Script Date: 09/30/2013 14:06:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TopicPost](
+	[TPID] [int] IDENTITY(1,1) NOT NULL,
+	[TopicID] [int] NULL,
+	[PostID] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[TPID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[TopicPost]  WITH CHECK ADD FOREIGN KEY([PostID])
+REFERENCES [dbo].[Post] ([PostID])
+GO
+
+ALTER TABLE [dbo].[TopicPost]  WITH CHECK ADD FOREIGN KEY([TopicID])
+REFERENCES [dbo].[Topic] ([TopicID])
+GO
+
