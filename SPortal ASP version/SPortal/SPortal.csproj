@@ -161,11 +161,11 @@
     <Content Include="Index.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Profile.aspx" />
-    <Content Include="Forum.aspx" />
     <Content Include="Old HTML Pages\%28old%29Wiki.aspx" />
     <Content Include="ProfileBrief.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Forum.aspx" />
     <Content Include="Wiki.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -248,13 +248,6 @@
     <Compile Include="Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forum.aspx.cs">
-      <DependentUpon>Forum.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forum.aspx.designer.cs">
-      <DependentUpon>Forum.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Old HTML Pages\%28old%29Wiki.aspx.cs">
       <DependentUpon>%28old%29Wiki.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -282,6 +275,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forum.aspx.cs">
+      <DependentUpon>Forum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forum.aspx.designer.cs">
+      <DependentUpon>Forum.aspx</DependentUpon>
     </Compile>
     <Compile Include="Wiki.aspx.cs">
       <DependentUpon>Wiki.aspx</DependentUpon>

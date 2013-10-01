@@ -261,6 +261,33 @@ ul#menu, ul#menu ul.sub-menu {
             display: block;
         }
 
+/*----------------------FORUM--------------------*/
+.mainBlack
+{
+    float: left;
+    background-image: url("../images/infoBackForum.png");
+    width: 69%;
+    height: auto;
+    color: white;
+    
+}
+
+.mainWhite
+{
+    float: left;
+    background-color: white;
+    width: 69%;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
 /* JOHANs CSS = POTENTIAL DISASTER */
 /* TIMELINE CSS */
 
