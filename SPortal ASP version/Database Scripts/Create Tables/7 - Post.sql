@@ -14,7 +14,7 @@ GO
 CREATE TABLE [dbo].[Post](
 	[PostID] [int] IDENTITY(1,1) NOT NULL,
 	[CommentID] [int] NULL,
-	[Text] [varchar](max) NULL,
+	[Text] text NULL,
 	[UserID] [int] NULL,
 	[Upvotes] [smallint] NULL,
 	[DownVotes] [smallint] NULL,
