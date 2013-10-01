@@ -14,7 +14,7 @@ GO
 CREATE TABLE [dbo].[Topic](
 	[TopicID] [int] IDENTITY(1,1) NOT NULL,
 	[TopicName] [varchar](30) NULL,
-	[TopicDescription] [varchar](100) NULL,
+	[TopicDescription] text NULL,
 	[CreationDate] [datetime2](7) NULL,
 PRIMARY KEY CLUSTERED 
 (

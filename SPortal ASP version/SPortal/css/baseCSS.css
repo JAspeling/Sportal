@@ -35,9 +35,10 @@ img {
 }
 
 .imBanner {
-    width: 100%;
+    /*width: 100%;*/
     /*background-image: url("../images/bottomBanner.png");*/
     height: 12%;
+    margin-right: 20px;
     position: fixed;
     bottom: 0px;
     right: 0px;
@@ -197,10 +198,8 @@ a {
     float: left;
     background-image: url("../images/infoBack.png");
     width: 69%;
-    height: 600%;
+    height: auto;
 }
-
-
 
 
 
@@ -270,7 +269,7 @@ ul#menu, ul#menu ul.sub-menu {
     color: white;
     margin-left: 14.5%;
     background-color: transparent;
-    height: 25px;
+    height: auto;
     width: 80%;
 }
 

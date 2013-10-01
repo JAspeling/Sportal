@@ -108,12 +108,12 @@ namespace BLL
             return da.Update("UpdatePostVotes", parameters);
         }
 
-        public static bool CreatePost(PostType postType, string description, string username)
+        public static bool CreatePost(PostType postType, string text, string username)
         {
             //create a new post
             DataAccess da = new DataAccess();
             SqlParameter[] parameters = { new SqlParameter("@PostTypeID",Convert.ToString((int)postType)),
-                                            new SqlParameter("@Text", description),
+                                            new SqlParameter("@Text", text),
                                             new SqlParameter("@Username", username)};
             return da.Insert("CreatePost", parameters);
         }
@@ -122,11 +122,34 @@ namespace BLL
         {
             //gets a new post based on the unique postID
             DataAccess da = new DataAccess();
-            SqlParameter[] parameters = { new SqlParameter("@PostID", postID) };
+            SqlParameter[] parameters = {new SqlParameter("@PostID", postID)};
             DataTable dt = da.Select("SelectPostByPostID", parameters);
-            return new Post((PostType)Convert.ToInt16(dt.Rows[0]["PostTypeID"]), Convert.ToInt16(dt.Rows[0]["PostID"]), Convert.ToInt16(dt.Rows[0]["CommentID"]), 
-                            dt.Rows[0]["Text"].ToString(), dt.Rows[0]["Username"].ToString(), Convert.ToInt16(dt.Rows[0]["UpVotes"]), 
-                            Convert.ToInt16(dt.Rows[0]["DownVotes"]), Convert.ToDateTime(dt.Rows[0]["SubmissionDate"]));
+            if (dt.Rows.Count > 0)
+            {
+                PostType postType = dt.Rows[0]["PostTypeID"].ToString() == "Parent" ? PostType.PARENT : PostType.CHILD;
+                int commentId = dt.Rows[0]["CommentID"] == DBNull.Value ? -1 : Convert.ToInt16(dt.Rows[0]["CommentID"]);
+                return new Post(postType,
+                    Convert.ToInt16(dt.Rows[0]["PostID"]),
+                    commentId,
+                    dt.Rows[0]["Text"].ToString(), dt.Rows[0]["Username"].ToString(),
+                    Convert.ToInt16(dt.Rows[0]["UpVotes"]),
+                    Convert.ToInt16(dt.Rows[0]["DownVotes"]), Convert.ToDateTime(dt.Rows[0]["SubmissionDate"]));
+            }
+
+            return null;
+        }
+
+        public static string GetPostTopicName(int postID)
+        {
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@PostID", postID) };
+            DataTable dt = da.Select("SelectPostTopicName", parameters);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["TopicName"].ToString();
+            }
+
+            return null;
         }
 
         public static List<Post> GetPostsByPostID(int postID)

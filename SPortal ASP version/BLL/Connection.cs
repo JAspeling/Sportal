@@ -15,8 +15,8 @@ namespace BLL
             DataTable dt = da.Select("LoginUser", parameters);
             if (dt.Rows.Count != 0)
                 return true;
-            else
-                return false;
+
+            return false;
         }
     }
 }

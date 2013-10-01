@@ -53,9 +53,9 @@ namespace BLL
         #endregion
 
         #region Methods
-        public void GetProjectByName(string name)
+        public Project GetProjectByName(string name)
         {
-
+            return null;
         }
 
         public bool Update()

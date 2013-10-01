@@ -11,7 +11,7 @@ GO
 CREATE PROCEDURE [dbo].[SelectUserInfo]
 @Username VARCHAR(30)
 AS
-SELECT Username, Email, Name, Surname, DOB, Institution, Rating, JoinDate
+SELECT Username, Email, Name, Surname, DOB, Picture, Institution, Rating, JoinDate
 FROM Users U INNER JOIN Institution I
 	ON U.InstitutionID = I.InstitutionID
 WHERE Username = @Username

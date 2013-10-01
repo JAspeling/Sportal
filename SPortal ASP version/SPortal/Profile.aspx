@@ -150,9 +150,22 @@
                     <br/><br/><br/>
 
                     <%--<div style="margin-bottom: 15px;">
-                        <div style=" color: white ;margin-left: 14.5% ;background-color: transparent; height: 25px; width: 80%">
-                            <asp:Label ID="Label3" style="float: left" runat="server">POST #1</asp:Label>
-                            <asp:Label ID="Label4" style="float: right" runat="server">2 hours</asp:Label>
+                        <div style=" color: white ;margin-left: 14.5% ;background-color: transparent; height: auto; width: 80%">
+                            <table>
+                                <tr>
+                                    <td style="width: 400px; background-color: red;">
+                                        <asp:Label ID="Label13" style="float: left" runat="server">POST #1</asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="Label14" style="float: right" runat="server">2 hours</asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="Label8" style="float: left" runat="server"><br/>Topic: Test</asp:Label>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                         <div style="border-color: black; border-width: 20px; border: solid; padding: -1px; color: black ;margin-left: 14.5% ;background-color: whitesmoke; height: 100px; width: 80%">
                             <asp:TextBox ID="TextBox1" runat="server" Height="88px" Width="506px"></asp:TextBox>

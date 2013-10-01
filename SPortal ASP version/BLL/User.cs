@@ -169,9 +169,12 @@ namespace BLL
             //foreach (DataRow row in dt.Rows)
             //    userRoles += Convert.ToInt16(row["UserRoleID"]);
             DataTable dt = da.Select("SelectUserInfo", parameters);
-            return new User(dt.Rows[0]["Username"].ToString(),dt.Rows[0]["Email"].ToString(),dt.Rows[0]["Name"].ToString(),dt.Rows[0]["Surname"].ToString(),
+            if (dt.Rows.Count > 0)
+                return new User(dt.Rows[0]["Username"].ToString(),dt.Rows[0]["Email"].ToString(),dt.Rows[0]["Name"].ToString(),dt.Rows[0]["Surname"].ToString(),
                             Convert.ToDateTime(dt.Rows[0]["DOB"]),dt.Rows[0]["Picture"].ToString(),dt.Rows[0]["Institution"].ToString(),
                             Convert.ToInt16(dt.Rows[0]["Rating"]),Convert.ToDateTime(dt.Rows[0]["JoinDate"]), userRoles);
+            
+            return null;
         }
 
         public static UserType GetUserType(string username)
@@ -181,7 +184,10 @@ namespace BLL
             SqlParameter[] parameters = { new SqlParameter("@Username", username) };
             DataTable dt = da.Select("SelectUserType", parameters);
             dt = da.Select("SelectUserInfo", parameters);
-            return (UserType)Convert.ToInt16(dt.Rows[0]["UserTypeID"]);
+            if (dt.Rows.Count > 0)
+                return (UserType)Convert.ToInt16(dt.Rows[0]["UserTypeID"]);
+
+            return UserType.USER; // Should be changed to unspecified
         }
 
         public static List<User> GetUsersByInstitution(string institution)

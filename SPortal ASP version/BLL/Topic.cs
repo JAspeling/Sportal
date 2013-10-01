@@ -62,7 +62,9 @@ namespace BLL
             DataAccess da = new DataAccess();
             SqlParameter[] parameters = { new SqlParameter("@TopicName", topic) };
             DataTable dt = da.Select("SelectTopicByName", parameters);
-            return new Topic(dt.Rows[0]["TopicName"].ToString(), dt.Rows[0]["Text"].ToString(), Convert.ToDateTime(dt.Rows[0]["CreationDate"]));
+            if (dt.Rows.Count > 0)
+                return new Topic(dt.Rows[0]["TopicName"].ToString(), dt.Rows[0]["Text"].ToString(), Convert.ToDateTime(dt.Rows[0]["CreationDate"]));
+            return null;
         }
 
         public static List<Topic> GetTopics()

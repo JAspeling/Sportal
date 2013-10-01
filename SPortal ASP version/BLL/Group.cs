@@ -89,7 +89,12 @@ namespace BLL
             DataAccess da = new DataAccess();
             SqlParameter[] parameters = { new SqlParameter("@GroupName", name) };
             DataTable dt = da.Select("SelectGroupByGroupName", parameters);
-            return new Group(dt.Rows[0]["GroupHouse"].ToString(), dt.Rows[0]["Description"].ToString(), dt.Rows[0]["Username"].ToString(), Convert.ToBoolean(dt.Rows[0]["Limited"]), Convert.ToDateTime(dt.Rows[0]["FoundedDate"]));
+            if (dt.Rows.Count > 0)
+                return new Group(dt.Rows[0]["GroupHouse"].ToString(), dt.Rows[0]["Description"].ToString(),
+                    dt.Rows[0]["Username"].ToString(), Convert.ToBoolean(dt.Rows[0]["Limited"]),
+                    Convert.ToDateTime(dt.Rows[0]["FoundedDate"]));
+            
+            return null;
         }
 
         public static List<Group> GetGroupsByUsername(string username)
