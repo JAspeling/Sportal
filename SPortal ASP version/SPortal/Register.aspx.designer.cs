@@ -37,7 +37,16 @@ namespace SPortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator TestNameString;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator TestNameString;
+        
+        /// <summary>
+        /// testNameRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator testNameRequired;
         
         /// <summary>
         /// txtSurname control.
@@ -55,7 +64,16 @@ namespace SPortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator TestSurnameString;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator TestSurnameString;
+        
+        /// <summary>
+        /// testSurnameRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator testSurnameRequired;
         
         /// <summary>
         /// txtDoB control.
@@ -85,6 +103,24 @@ namespace SPortal {
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
         
         /// <summary>
+        /// dateValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator dateValidator;
+        
+        /// <summary>
+        /// dateRangeValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator dateRangeValidator;
+        
+        /// <summary>
         /// txtEmail control.
         /// </summary>
         /// <remarks>
@@ -101,6 +137,15 @@ namespace SPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailValidation;
+        
+        /// <summary>
+        /// testEmailRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator testEmailRequired;
         
         /// <summary>
         /// txtConfirmEmail control.
@@ -121,6 +166,15 @@ namespace SPortal {
         protected global::System.Web.UI.WebControls.CompareValidator CompareEmailValidator;
         
         /// <summary>
+        /// testConfirmEmailRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator testConfirmEmailRequired;
+        
+        /// <summary>
         /// txtPassword control.
         /// </summary>
         /// <remarks>
@@ -139,6 +193,15 @@ namespace SPortal {
         protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
         
         /// <summary>
+        /// testPasswordRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator testPasswordRequired;
+        
+        /// <summary>
         /// txtPasswordConfirm control.
         /// </summary>
         /// <remarks>
@@ -148,6 +211,15 @@ namespace SPortal {
         protected global::System.Web.UI.WebControls.TextBox txtPasswordConfirm;
         
         /// <summary>
+        /// testPasswordConfirmRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator testPasswordConfirmRequired;
+        
+        /// <summary>
         /// txtUsername control.
         /// </summary>
         /// <remarks>
@@ -155,6 +227,15 @@ namespace SPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUsername;
+        
+        /// <summary>
+        /// TestUsernameRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator TestUsernameRequired;
         
         /// <summary>
         /// imgProfilePicture control.

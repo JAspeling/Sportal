@@ -2,6 +2,22 @@
 
 <head>
     <title>Login</title>
+    
+    <script type="text/javascript">
+        function tryPlaceholder(txtbox, placehold) {
+            if (txtbox.value.length == 0) {
+                txtbox.value = placehold.toString();
+                txtbox.style.color = "#959595";
+            }
+            else {
+                if (txtbox.value == placehold.toString()) {
+                    txtbox.value = '';
+                    txtbox.style.color = "#000000";
+                }
+            }
+        }
+    </script>
+
 </head>
 <body>
     <form id="frmLogin" runat="server">
@@ -15,7 +31,7 @@
                                 <label style="font-size: 17pt; color: white;">Username</label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtUsername" runat="server" Value="(Username or E-Mail)" style="background-color: #c0c0c0; border: none; margin-top: 15px;" size="50" autocomplete="on" autofocus=""></asp:TextBox><br/><br/>
+                                <asp:TextBox ID="txtUsername" runat="server" Value=""  style="background-color: #c0c0c0; border: none; margin-top: 15px;" size="50" autocomplete="on" autofocus="" onclick="tryPlaceholder(this,'Enter your Username')" onblur="tryPlaceholder(this,'Enter your Username')" ></asp:TextBox><br/><br/>
                             </td>
                         </tr>
                         <tr>
@@ -23,7 +39,7 @@
                                 <label style="font-size: 17pt; color: white;">Password</label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtPassword" runat="server" value="" style="background-color: #c0c0c0; border: none; margin-top: 10px;" size="50" autocomplete="on" autofocus=""></asp:TextBox><br/><br/>
+                                <asp:TextBox TextMode="Password" ID="txtPassword" runat="server" value="" style="background-color: #c0c0c0; border: none; margin-top: 10px;" size="50" autocomplete="on" autofocus=""></asp:TextBox><br/><br/>
                             </td>
                         </tr>
                     </table>

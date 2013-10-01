@@ -20,8 +20,8 @@ CREATE PROCEDURE [dbo].[RegisterUser]
 AS
 BEGIN
 INSERT INTO Users
-(Username,UserPassword,Email,Name,Surname,DOB,JoinDate,UserTypeID,InstitutionID,Picture)
-VALUES (@Username,@Password,@Email,@Name,@Surname,@DOB,CONVERT(DATE,GETDATE()),@UserTypeID,1,@Picture)
+(Username,UserPassword,Email,Name,Surname,DOB,JoinDate,UserTypeID,InstitutionID,Picture, Rating)
+VALUES (@Username,@Password,@Email,@Name,@Surname,@DOB,CONVERT(DATE,GETDATE()),@UserTypeID,1,@Picture, 0)
 END
 
 

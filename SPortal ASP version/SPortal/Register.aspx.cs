@@ -23,6 +23,8 @@ namespace SPortal
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            dateRangeValidator.MinimumValue = DateTime.Now.AddYears(-100).ToString("MM/dd/yyyy");
+            dateRangeValidator.MaximumValue = DateTime.Now.AddYears(-10).ToString("MM/dd/yyyy");
 
             if (FileUpload1.PostedFile != null && FileUpload1.PostedFile.ContentLength > 0)
                 UploadAndDisplay();
@@ -52,7 +54,9 @@ namespace SPortal
         {
             string name = txtName.Text;
             string surname = txtSurname.Text;
-            DateTime dob = Convert.ToDateTime(txtDoB.Text);
+            DateTime dob = Convert.ToDateTime(new DateTime(1800, 1, 1).ToString("MM/dd/yyyy"));
+            if (txtDoB.Text.Trim() != string.Empty)
+             dob = Convert.ToDateTime(txtDoB.Text);
             string email = txtEmail.Text;
             string password = txtPassword.Text;
             string username = txtUsername.Text;

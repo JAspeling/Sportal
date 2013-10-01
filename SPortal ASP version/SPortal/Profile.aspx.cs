@@ -68,7 +68,7 @@ namespace SPortal
 
             postHeadingContainer.Attributes.Add("class", "postHeading");
             postHeadings[0].Attributes.Add("style", "float: left");
-            postHeadings[0].Text = string.Format("POST #{0}", post.PostID);
+            postHeadings[0].Text = string.Format("POST ID: {0}", post.PostID);
             postHeadings[1].Attributes.Add("style", "float: right");
             postHeadings[1].Text = "13 Years ago";
             postHeadings[2].Text = string.Format("<br/>Topic: {0}", Post.GetPostTopicName(post.PostID));
@@ -90,6 +90,8 @@ namespace SPortal
             table2.Rows.Add(tRow);
 
             postContentContainer.Attributes.Add("class", "postContentContainer");
+            if (post.Text.Length <= 350)
+                postContentContainer.Attributes.Add("style", "height: 100px;");
             postContent.Text = post.Text;
             postContent.Attributes.Add("class", "postContent");
 

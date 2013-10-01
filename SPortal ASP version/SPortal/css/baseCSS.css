@@ -281,7 +281,7 @@ ul#menu, ul#menu ul.sub-menu {
     color: black;
     margin-left: 14.5%;
     background-color: whitesmoke;
-    height: 100px;
+    height: auto;
     width: 80%;
 }
 
