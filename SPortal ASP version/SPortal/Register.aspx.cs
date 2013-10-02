@@ -78,6 +78,7 @@ namespace SPortal
             else
             {
                 //MessageBox.Show(string.Format("Error occured in creating the Profile."));
+                
                 Response.Redirect("Register.aspx");
             }
         }

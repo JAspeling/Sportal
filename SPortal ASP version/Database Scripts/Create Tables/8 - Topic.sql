@@ -13,9 +13,13 @@ GO
 
 CREATE TABLE [dbo].[Topic](
 	[TopicID] [int] IDENTITY(1,1) NOT NULL,
-	[TopicName] [varchar](30) NULL,
-	[TopicDescription] text NULL,
+	[TopicName] [varchar](100) NULL,
+	[TopicDescription] [text] NULL,
+	[TopicBody] [text] NOT NULL,
 	[CreationDate] [datetime2](7) NULL,
+	[Upvotes] [int] NOT NULL,
+	[Downvotes] [int] NOT NULL,
+	[AmountOfPosts] [int] NOT NULL
 PRIMARY KEY CLUSTERED 
 (
 	[TopicID] ASC
