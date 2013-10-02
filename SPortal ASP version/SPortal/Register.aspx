@@ -65,7 +65,15 @@
                                                     ErrorMessage="Please enter a valid date.">*
                                                 </asp:CompareValidator>
                                                 
-                                                <asp:RangeValidator ID="dateRangeValidator" runat="server" ErrorMessage="Enter a valid date (Out of Range)" ControlToValidate="txtDoB" Text="*" Type="Date" Display="Dynamic"></asp:RangeValidator>
+                                                <asp:RangeValidator ID="RangeValidator1" runat="server"
+                                                                    ControlToValidate="txtDoB" ErrorMessage="Invalid Range"
+                                                                    Type="Date">
+                                                </asp:RangeValidator>
+                
+                                                <ajaxToolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RangeValidator1"></ajaxToolkit:ValidatorCalloutExtender>
+                                                
+
+                                                <%--<asp:RangeValidator ID="dateRangeValidator" runat="server" ErrorMessage="Enter a valid date (Out of Range)" ControlToValidate="txtDoB" Text="*" Type="Date" Display="Dynamic"></asp:RangeValidator>--%>
                                                 <br/><br/>
                                                     
                                                 

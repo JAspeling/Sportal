@@ -23,8 +23,11 @@ namespace SPortal
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            dateRangeValidator.MinimumValue = DateTime.Now.AddYears(-100).ToString("MM/dd/yyyy");
-            dateRangeValidator.MaximumValue = DateTime.Now.AddYears(-10).ToString("MM/dd/yyyy");
+            RangeValidator1.MinimumValue = DateTime.Now.AddYears(-100).ToString("MM/dd/yyyy");
+            RangeValidator1.MaximumValue = DateTime.Now.AddYears(-10).ToString("MM/dd/yyyy");
+
+            //dateRangeValidator.MinimumValue = DateTime.Now.AddYears(-100).ToString("MM/dd/yyyy");
+            //dateRangeValidator.MaximumValue = DateTime.Now.AddYears(-10).ToString("MM/dd/yyyy");
 
             if (FileUpload1.PostedFile != null && FileUpload1.PostedFile.ContentLength > 0)
                 UploadAndDisplay();
