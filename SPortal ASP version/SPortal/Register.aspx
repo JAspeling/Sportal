@@ -70,7 +70,7 @@
                                                                     Type="Date">
                                                 </asp:RangeValidator>
                 
-                                                <ajaxToolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RangeValidator1"></ajaxToolkit:ValidatorCalloutExtender>
+                                                <%--<ajaxToolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RangeValidator1"></ajaxToolkit:ValidatorCalloutExtender>--%>
                                                 
 
                                                 <%--<asp:RangeValidator ID="dateRangeValidator" runat="server" ErrorMessage="Enter a valid date (Out of Range)" ControlToValidate="txtDoB" Text="*" Type="Date" Display="Dynamic"></asp:RangeValidator>--%>
@@ -97,8 +97,8 @@
                                                 <br/><br/>
                                                 
                                                 <img src="img-demo/lock_icon.jpg" alt="image" /><label>Confirm Password</label><br/> 
-                                                <asp:TextBox ID="txtPasswordConfirm" runat="server" TextMode="Password" autocomplete="on" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox><br/><br/>
-                                                <asp:RequiredFieldValidator ID="testPasswordConfirmRequired" runat="server" ErrorMessage="Confirmation Password Required" ControlToValidate="txtPasswordConfirm">*</asp:RequiredFieldValidator>
+                                                <asp:TextBox ID="txtPasswordConfirm" runat="server" TextMode="Password" autocomplete="on" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="testPasswordConfirmRequired" runat="server" ErrorMessage="Confirmation Password Required" ControlToValidate="txtPasswordConfirm">*</asp:RequiredFieldValidator><br/><br/>
                                                 <%--<img src="img-demo/lock_icon.jpg" alt="image" /><label>Password</label><br/> --%>
                                                 <label>Username</label><br/>
                                                 <asp:TextBox ID="txtUsername" runat="server" autocomplete="on" size="40" style="background-image: url('images/searchTxt.png')"></asp:TextBox><br/><br/>
