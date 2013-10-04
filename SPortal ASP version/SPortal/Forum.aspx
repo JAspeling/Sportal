@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Forum.aspx.cs" Inherits="SPortal.WebForm4" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="server">
-    <title>SPortal</title>
+    <title id="titleForum">SPortal</title>
+    <script src="js/jquery.min.js"> </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
 
@@ -34,18 +36,18 @@
                     <div style="font-family: 'Dekar'; font-size: 25pt">General Topics</div>
                     <%--<div style="background-image: url('images/pro_lineGraphic.png'); height: 2px; margin-bottom: -1.5%; margin-left: 0; margin-top: 1%; width: 91%;"></div>--%>                                      
                     <hr/>
-                    <asp:Image runat="server" ImageUrl="images/dropDown.png" AlternateText="Show More"/>
-                    <%--<a href="#"><img src="images/dropDown.png" alt="Not found"></a>--%>
-                    <br/>
+                    <div class="clickme" style="width: 30px; height: 24px;">
+                        <asp:Image runat="server" ImageUrl="images/dropDown.png" AlternateText="Show More"/>
+                    </div>
                     
-                    <asp:Panel ID="pnlGeneral" runat="server" style="float: left; background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%;">
+                    <asp:Panel ID="pnlGeneral" runat="server" style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; float: left; font-size: 10pt; height: auto; padding: 10px; width: 90%;">
                         <!--<table style="float: left;">
-                            <tr>
-                                <td>    <%--Image--%>
-                                    <asp:Image runat="server" ImageUrl="~/images/LOGO.png" Height="50" Width="50"/>
-                                </td>
-                            </tr>
-                        </table>-->
+                                <tr>
+                                    <td>    <%--Image--%>
+                                        <asp:Image runat="server" ImageUrl="~/images/LOGO.png" Height="50" Width="50"/>
+                                    </td>
+                                </tr>
+                            </table>-->
 
                         <%--<asp:Table ID="Table1" runat="server" style="border-style: solid; border-width: 0px; border-bottom: 1px white solid;" Width="90%">
                             <asp:TableRow runat="server" BorderColor="White" BorderStyle="Solid" BorderWidth="1">
@@ -99,8 +101,9 @@
                     <%--<div style="background-image: url('images/pro_lineGraphic.png'); height: 2px; margin-bottom: -1.5%; margin-left: 0; margin-top: 1%; width: 91%;"></div>--%>                                      
                     <hr/>
                     <%--<a href="#"><img src="images/dropDown.png" alt="Not found"></a>--%>
-                    <asp:Image runat="server" ImageUrl="images/dropDown.png" AlternateText="Show More"/>
-                    <br/>
+                    <div class="clickme" style="width: 30px; height: 24px;">
+                        <asp:Image runat="server" ImageUrl="images/dropDown.png" AlternateText="Show More"/>
+                    </div>
                     
                     <asp:Panel ID="pnlInstitution" runat="server" style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%;">
                         
@@ -116,8 +119,9 @@
                     <%--<div style="background-image: url('images/pro_lineGraphic.png'); height: 2px; margin-bottom: -1.5%; margin-left: 0; margin-top: 1%; width: 91%;"></div>--%>                                      
                     <hr/>
                     <%--<a href="#"><img src="~/images/dropDown.png" alt="Not found"></a>--%>
-                    <asp:Image runat="server" ImageUrl="images/dropDown.png" AlternateText="Show More"/>
-                    <br>
+                    <div class="clickme" style="width: 30px; height: 24px;">
+                        <asp:Image runat="server" ImageUrl="images/dropDown.png" AlternateText="Show More"/>
+                    </div>
                     
                     <asp:Panel ID="pnlGroup" runat="server" style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%;">
                         
@@ -226,4 +230,13 @@
         </div>
                             
     </body>
+    
+    <script> 
+        $('.clickme').click(function() {
+            $(this).next().slideToggle('fast', function() {
+                // Animation complete.
+            });
+        });
+    </script>
+
 </asp:Content>

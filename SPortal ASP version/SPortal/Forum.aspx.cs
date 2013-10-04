@@ -5,11 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using AjaxControlToolkit;
 using AjaxControlToolkit.HTMLEditor.ToolbarButton;
 using BLL;
 using HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign;
+using Label = System.Web.UI.WebControls.Label;
+using Panel = System.Web.UI.WebControls.Panel;
 
 namespace SPortal
 {
@@ -18,7 +21,6 @@ namespace SPortal
         protected void Page_Load(object sender, EventArgs e)
         {
             List<Topic> topics = Topic.GetTopics();
-
 
             foreach (var topic in topics)
             {
@@ -36,7 +38,7 @@ namespace SPortal
                         break;
                 }
 
-                LoadNewPost(topic.Name, topic.Description.LimitLength(190), topic.GetTopicReplyAmount(), topic.Date, DateTime.Now, pnlParent);
+                LoadNewPost(topic, pnlParent);
             }
 
 
@@ -64,7 +66,7 @@ namespace SPortal
             parent.Controls.Add(tblImage);
         }
 
-        public void CreateTableRow(ref Table table, string header1, string header2, string header3, string header4, bool isHeader)
+        public void CreateTableRow(ref Table table, string topicId, string header1, string header2, string header3, string header4, bool isHeader)
         {
             TableRow tr = new TableRow();
 
@@ -75,7 +77,12 @@ namespace SPortal
 
             if (header1.Length >= 190)
             {
-                tds[0].Text = string.Format("{0} {1}", header1, "<a href=\"#\"> View more</a>");
+                tds[0].Text = string.Format("{0} {1}", header1.LimitLength(190),
+                        "<a href=\"Forum.aspx?Expand=" + topicId + "\"> View more</a>");
+                
+                if (topicId == Request.QueryString["Expand"])
+                    tds[0].Text = string.Format("{0}", header1);
+
             }
             else
             {
@@ -83,7 +90,7 @@ namespace SPortal
             }
 
             if (isHeader)
-                tds[0].Text = "<a href=\"#\">" + header1 + "</a>";
+                tds[0].Text = "<a href=\"Forum.aspx?TopicID=" + topicId + "\">" + header1 + "</a>";
 
             tds[0].Width = Unit.Percentage(70);
             tds[1].Text = header2;
@@ -103,16 +110,18 @@ namespace SPortal
             table.Rows.Add(tr);
         }
 
-        public void LoadNewPost(string topicName, string topicDescription, int replies, DateTime created, DateTime lastReply, Panel parent)
+        public void LoadNewPost(Topic topic, Panel parent)
         {
+            HiddenField topicId = new HiddenField() {Value = topic.Id.ToString()};
+            parent.Controls.Add(topicId);
+
             CreatePostPicture("~/images/LOGO.png", parent);
 
             Table tblTopic = new Table();
             tblTopic.Width = Unit.Percentage(90);
 
-            CreateTableRow(ref tblTopic, topicName, "Replies", "Created", "Last Reply", true);
-            CreateTableRow(ref tblTopic, topicDescription, replies.ToString(), created.ToString(), lastReply.ToString(), false);
-           // CreateTableRow(ref tblTopic, topicDescription, "123 398", "1 hour 12 min ago", "1 min 10 sec ago");
+            CreateTableRow(ref tblTopic, topicId.Value, topic.Name, "Replies", "Created", "Last Reply", true);
+            CreateTableRow(ref tblTopic, topicId.Value, topic.Description, topic.GetTopicReplyAmount().ToString(), topic.Date.ToString(), DateTime.Now.ToString(), false);
 
             tblTopic.Attributes.Add("style", "margin-bottom: 15px;");
 
