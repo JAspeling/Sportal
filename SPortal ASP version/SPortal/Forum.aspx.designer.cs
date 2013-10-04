@@ -13,6 +13,33 @@ namespace SPortal {
     public partial class WebForm4 {
         
         /// <summary>
+        /// pnlGeneral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlGeneral;
+        
+        /// <summary>
+        /// pnlInstitution control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlInstitution;
+        
+        /// <summary>
+        /// pnlGroup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlGroup;
+        
+        /// <summary>
         /// lblPostBody control.
         /// </summary>
         /// <remarks>

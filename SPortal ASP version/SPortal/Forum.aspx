@@ -34,11 +34,63 @@
                     <div style="font-family: 'Dekar'; font-size: 25pt">General Topics</div>
                     <%--<div style="background-image: url('images/pro_lineGraphic.png'); height: 2px; margin-bottom: -1.5%; margin-left: 0; margin-top: 1%; width: 91%;"></div>--%>                                      
                     <hr/>
-                    <a href="#"><img src="images/dropDown.png" alt="Not found"></a>
+                    <asp:Image runat="server" ImageUrl="images/dropDown.png" AlternateText="Show More"/>
+                    <%--<a href="#"><img src="images/dropDown.png" alt="Not found"></a>--%>
                     <br/>
-                    <div style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%;">
+                    
+                    <asp:Panel ID="pnlGeneral" runat="server" style="float: left; background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%;">
+                        <!--<table style="float: left;">
+                            <tr>
+                                <td>    <%--Image--%>
+                                    <asp:Image runat="server" ImageUrl="~/images/LOGO.png" Height="50" Width="50"/>
+                                </td>
+                            </tr>
+                        </table>-->
+
+                        <%--<asp:Table ID="Table1" runat="server" style="border-style: solid; border-width: 0px; border-bottom: 1px white solid;" Width="90%">
+                            <asp:TableRow runat="server" BorderColor="White" BorderStyle="Solid" BorderWidth="1">
+                                <asp:TableCell runat="server" >Topic Name<hr/></asp:TableCell>
+                                <asp:TableCell runat="server" HorizontalAlign="Center">Replies<hr/></asp:TableCell>
+                                <asp:TableCell runat="server" HorizontalAlign="Center">Created<hr/></asp:TableCell>
+                                <asp:TableCell runat="server" HorizontalAlign="Center">Last Reply<hr/></asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell runat="server" Width="70%">This is a topic description</asp:TableCell>
+                                <asp:TableCell runat="server">123</asp:TableCell>
+                                <asp:TableCell runat="server">1 hour 12 min ago</asp:TableCell>
+                                <asp:TableCell runat="server">1 min 10 sec ago</asp:TableCell>
+                            </asp:TableRow>
+                        </asp:Table>--%>
+
+                        <%--<table>
+                            <tr style="border-bottom: 1px solid white;">
+                                <td>Topic Name
+                                </td>
+                                <td align="center">Replies</td>
+                                <td align="center">Created</td>
+                                <td align="center">Last Reply</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 70%">
+                                    This is a topic description which may be longer than one line so the word wrapping must work
+                                </td>
+                                <td align="center">
+                                    132
+                                </td>
+                                <td align="center">
+                                    1 hour 12 min ago by olderbutwiser
+                                </td>
+                                <td align="center">
+                                    1 min 10 sec ago by jumanji
+                                </td>
+                            </tr>
+                        </table>--%>
+                        <%--<hr style="border-color: #40e0d0; background-color: #40e0d0"/>--%>
+                    </asp:Panel>
+
+                    <%--<div style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%;">
                         <a href="#">+ Software Engineering</a> | <a href="#">+ Software Engineering</a> | <a href="#">+ Software Engineering</a> | <a href="#">+ Software Engineering</a> | <a>+ Business.M 300</a> | <a href="#">+ Software Engineering</a>
-                    </div>
+                    </div>--%>
                                            
                 </div>
                 <!-- Institution Topics -->                                   
@@ -46,22 +98,34 @@
                     <div style="font-family: 'Dekar'; font-size: 25pt">Institution Topics</div>
                     <%--<div style="background-image: url('images/pro_lineGraphic.png'); height: 2px; margin-bottom: -1.5%; margin-left: 0; margin-top: 1%; width: 91%;"></div>--%>                                      
                     <hr/>
-                    <a href="#"><img src="images/dropDown.png" alt="Not found"></a>
+                    <%--<a href="#"><img src="images/dropDown.png" alt="Not found"></a>--%>
+                    <asp:Image runat="server" ImageUrl="images/dropDown.png" AlternateText="Show More"/>
                     <br/>
-                    <div style="background-image: url('images/TopicBack4.png'); border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%;">
+                    
+                    <asp:Panel ID="pnlInstitution" runat="server" style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%;">
+                        
+                    </asp:Panel>
+
+                    <%--<div style="background-image: url('images/TopicBack4.png'); border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%;">
                         <a href="#">+ Software Engineering</a> | <a href="#">+ Software Engineering</a> | <a href="#">+ Software Engineering</a> | <a href="#">+ Software Engineering</a> | <a href="#">+ Business.M 300</a> | <a>+ Software Engineering</a>
-                    </div>
+                    </div>--%>
                 </div>
                 <!-- Group Topics -->                                  
                 <div style="padding-left: 28px; padding-top: 20px;">
                     <div style="font-family: 'Dekar'; font-size: 25pt">Group Topics</div>
                     <%--<div style="background-image: url('images/pro_lineGraphic.png'); height: 2px; margin-bottom: -1.5%; margin-left: 0; margin-top: 1%; width: 91%;"></div>--%>                                      
                     <hr/>
-                    <a href="#"><img src="~/images/dropDown.png" alt="Not found"></a>
+                    <%--<a href="#"><img src="~/images/dropDown.png" alt="Not found"></a>--%>
+                    <asp:Image runat="server" ImageUrl="images/dropDown.png" AlternateText="Show More"/>
                     <br>
-                    <div style="background-image: url('images/TopicBack4.png'); border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%;">
+                    
+                    <asp:Panel ID="pnlGroup" runat="server" style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%;">
+                        
+                    </asp:Panel>
+
+                    <%--<div style="background-image: url('images/TopicBack4.png'); border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%;">
                         <a href="#">+ Software Engineering</a> | <a href="#">+ Software Engineering</a> | <a href="#">+ Software Engineering</a> | <a href="#">+ Software Engineering</a> | <a href="#">+ Business.M 300</a> | <a href="#">+ Software Engineering</a>
-                    </div>
+                    </div>--%>
                                            
                 </div>
                 <br/><br/><br/>
