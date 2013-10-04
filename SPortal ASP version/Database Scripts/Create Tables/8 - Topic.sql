@@ -1,7 +1,7 @@
 USE [SPortalDb]
 GO
 
-/****** Object:  Table [dbo].[Topic]    Script Date: 09/30/2013 14:06:15 ******/
+/****** Object:  Table [dbo].[Topic]    Script Date: 10/04/2013 22:05:51 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -19,15 +19,16 @@ CREATE TABLE [dbo].[Topic](
 	[CreationDate] [datetime2](7) NULL,
 	[Upvotes] [int] NOT NULL,
 	[Downvotes] [int] NOT NULL,
-	[AmountOfPosts] [int] NOT NULL
+	[TopicTypeID] [int] NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[TopicID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
 
 SET ANSI_PADDING OFF
 GO
+
 

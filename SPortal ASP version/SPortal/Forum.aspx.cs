@@ -5,8 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms.VisualStyles;
 using AjaxControlToolkit;
 using AjaxControlToolkit.HTMLEditor.ToolbarButton;
+using BLL;
+using HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign;
 
 namespace SPortal
 {
@@ -14,12 +17,34 @@ namespace SPortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            LoadNewPost("MultiThreading", "This is a topic description", 10, DateTime.Now, DateTime.Now.AddMinutes(-54));
-            LoadNewPost("Testing", "This is a longer topic description to test the word wrapping of the table. The table width should remain the same but the text should just overflow as it reaches the maximum width", 10, DateTime.Now, DateTime.Now.AddMinutes(-54));
+            List<Topic> topics = Topic.GetTopics();
+
+
+            foreach (var topic in topics)
+            {
+                Panel pnlParent = new Panel();
+                switch (topic.TopicType)
+                {
+                    case "General" :
+                        pnlParent = pnlGeneral;
+                        break;
+                    case "Institution" :
+                        pnlParent = pnlInstitution;
+                        break;
+                    case "Group" :
+                        pnlParent = pnlGroup;
+                        break;
+                }
+
+                LoadNewPost(topic.Name, topic.Description.LimitLength(190), topic.GetTopicReplyAmount(), topic.Date, DateTime.Now, pnlParent);
+            }
+
+
+            //LoadNewPost("MultiThreading", "This is a topic description", 10, DateTime.Now, DateTime.Now.AddMinutes(-54), pnlGeneral);
+            //LoadNewPost("Testing", "This is a longer topic description to test the word wrapping of the table. The table width should remain the same but the text should just overflow as it reaches the maximum width", 10, DateTime.Now, DateTime.Now.AddMinutes(-54), pnlGeneral);
         }
 
-        public void CreatePostPicture(string imagePath)
+        public void CreatePostPicture(string imagePath, Panel parent)
         {
             Table tblImage = new Table();
             tblImage.Attributes.Add("style", "float: left;");
@@ -36,7 +61,7 @@ namespace SPortal
 
             tblImage.Rows.Add(tr);
 
-            pnlGeneral.Controls.Add(tblImage);
+            parent.Controls.Add(tblImage);
         }
 
         public void CreateTableRow(ref Table table, string header1, string header2, string header3, string header4, bool isHeader)
@@ -48,7 +73,18 @@ namespace SPortal
             for (int b = 0; b < 4; b++)
                 tds[b] = new TableCell();
 
-            tds[0].Text = header1;
+            if (header1.Length >= 190)
+            {
+                tds[0].Text = string.Format("{0} {1}", header1, "<a href=\"#\"> View more</a>");
+            }
+            else
+            {
+                tds[0].Text = header1;
+            }
+
+            if (isHeader)
+                tds[0].Text = "<a href=\"#\">" + header1 + "</a>";
+
             tds[0].Width = Unit.Percentage(70);
             tds[1].Text = header2;
             tds[1].HorizontalAlign = HorizontalAlign.Center;
@@ -67,9 +103,9 @@ namespace SPortal
             table.Rows.Add(tr);
         }
 
-        public void LoadNewPost(string topicName, string topicDescription, int replies, DateTime created, DateTime lastReply)
+        public void LoadNewPost(string topicName, string topicDescription, int replies, DateTime created, DateTime lastReply, Panel parent)
         {
-            CreatePostPicture("~/images/LOGO.png");
+            CreatePostPicture("~/images/LOGO.png", parent);
 
             Table tblTopic = new Table();
             tblTopic.Width = Unit.Percentage(90);
@@ -80,9 +116,9 @@ namespace SPortal
 
             tblTopic.Attributes.Add("style", "margin-bottom: 15px;");
 
-            pnlGeneral.Controls.Add(tblTopic);
+            parent.Controls.Add(tblTopic);
 
-            pnlGeneral.Controls.Add(new Label() { Text = "<hr style=\"border-color: #40e0d0; background-color: #40e0d0\"/>" });
+            parent.Controls.Add(new Label() { Text = "<hr style=\"border-color: #40e0d0; background-color: #40e0d0\"/>" });
         }
     }
 }

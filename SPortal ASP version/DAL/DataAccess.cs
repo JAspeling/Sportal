@@ -11,7 +11,7 @@ namespace DAL
         /// </constructor>
         public DataAccess()
         {
-            connection = new SqlConnection("Data Source=XCYTHER;Initial Catalog=SportalDb;Integrated Security=True");
+            connection = new SqlConnection("Data Source=XCYTHER;Initial Catalog=SPortalDb;Integrated Security=True");
 
             //string connString = ConfigurationManager.ConnectionStrings["Johan Computer"].ConnectionString;
 

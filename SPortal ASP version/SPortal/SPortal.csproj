@@ -176,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cookie.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="Old HTML Pages\%28old%29About.aspx.cs">
       <DependentUpon>%28old%29About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

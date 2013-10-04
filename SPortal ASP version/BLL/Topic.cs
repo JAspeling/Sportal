@@ -9,22 +9,33 @@ using DAL;
 
 namespace BLL
 {
-    class Topic
+    public class Topic
     {
         ///<constructor>
         ///Constructor
         ///</constructor>
-        public Topic(string name, string text, DateTime date)
+        public Topic(int id, string name, string description, string text, DateTime date, int upvotes, int downvotes, string topicType)
         {
+            this.id = id;
             Name = name;
             Text = text;
             this.date = date;
+            Description = description;
+            Upvotes = upvotes;
+            Downvotes = downvotes;
+            TopicType = topicType;
         }
 
         #region Fields
+
+        private int id;
         private string name;
+        private string description;
         private string text;
         private DateTime date;
+        private int downvotes;
+        private int upvotes;
+        private string topicType;
         #endregion
 
         #region Properties
@@ -44,6 +55,36 @@ namespace BLL
         {
             get { return date; }
         }
+
+        public int Id
+        {
+            get { return id; }
+        }
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+
+        public int Downvotes
+        {
+            get { return downvotes; }
+            set { downvotes = value; }
+        }
+
+        public int Upvotes
+        {
+            get { return upvotes; }
+            set { upvotes = value; }
+        }
+
+        public string TopicType
+        {
+            get { return topicType; }
+            set { topicType = value; }
+        }
+
         #endregion
 
         #region Methods
@@ -63,7 +104,12 @@ namespace BLL
             SqlParameter[] parameters = { new SqlParameter("@TopicName", topic) };
             DataTable dt = da.Select("SelectTopicByName", parameters);
             if (dt.Rows.Count > 0)
-                return new Topic(dt.Rows[0]["TopicName"].ToString(), dt.Rows[0]["Text"].ToString(), Convert.ToDateTime(dt.Rows[0]["CreationDate"]));
+                return new Topic(Convert.ToInt16(dt.Rows[0]["TopicID"].ToString()), dt.Rows[0]["TopicName"].ToString(),
+                    dt.Rows[0]["TopicDescription"].ToString(), dt.Rows[0]["TopicBody"].ToString(),
+                    Convert.ToDateTime(dt.Rows[0]["CreationDate"].ToString()),
+                    Convert.ToInt16(dt.Rows[0]["Upvotes"].ToString()),
+                    Convert.ToInt16(dt.Rows[0]["Downvotes"].ToString()),
+                    dt.Rows[0]["TopicType"].ToString());
             return null;
         }
 
@@ -85,6 +131,18 @@ namespace BLL
             SqlParameter[] parameters = { new SqlParameter("@TopicName", topic) };
             return da.Delete("RemoveTopic", parameters);
         }
+
+        public int GetTopicReplyAmount()
+        {
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@TopicName", name) };
+            DataTable dt = da.Select("SelectTopicRepliesAmount", parameters);
+
+            if (dt.Rows.Count > 0)
+                return Convert.ToInt16(dt.Rows[0]["Amount"].ToString());
+            return 0;
+        }
+
         #endregion
     }
 }
