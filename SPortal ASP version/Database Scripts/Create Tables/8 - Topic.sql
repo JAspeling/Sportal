@@ -1,7 +1,7 @@
 USE [SPortalDb]
 GO
 
-/****** Object:  Table [dbo].[Topic]    Script Date: 10/04/2013 22:05:51 ******/
+/****** Object:  Table [dbo].[Topic]    Script Date: 10/05/2013 12:49:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -20,7 +20,8 @@ CREATE TABLE [dbo].[Topic](
 	[Upvotes] [int] NOT NULL,
 	[Downvotes] [int] NOT NULL,
 	[TopicTypeID] [int] NOT NULL,
-PRIMARY KEY CLUSTERED 
+	[CreatedBy] [int] NOT NULL
+ CONSTRAINT [PK__Topic__022E0F7D286302EC] PRIMARY KEY CLUSTERED 
 (
 	[TopicID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -29,6 +30,13 @@ PRIMARY KEY CLUSTERED
 GO
 
 SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[Topic]  WITH CHECK ADD  CONSTRAINT [FK_Topic_TopicType] FOREIGN KEY([TopicTypeID])
+REFERENCES [dbo].[TopicType] ([TopicTypeID])
+GO
+
+ALTER TABLE [dbo].[Topic] CHECK CONSTRAINT [FK_Topic_TopicType]
 GO
 
 

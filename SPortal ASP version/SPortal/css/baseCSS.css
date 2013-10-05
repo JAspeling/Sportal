@@ -362,3 +362,23 @@ cursor:pointer;
 .slideOut .section{
 display:block;
 }
+
+/* TOPIC */
+
+.hidden {
+    display: none;
+}
+
+.showComment {
+    cursor: pointer;
+}
+
+.myTextAreas {
+    
+}
+
+.TopicHeader {
+    color: White; 
+    font-family: 'Dekar'; 
+    font-size: 25pt
+}

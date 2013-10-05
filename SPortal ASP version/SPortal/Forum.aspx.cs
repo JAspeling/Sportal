@@ -90,7 +90,7 @@ namespace SPortal
             }
 
             if (isHeader)
-                tds[0].Text = "<a href=\"Forum.aspx?TopicID=" + topicId + "\">" + header1 + "</a>";
+                tds[0].Text = "<a href=\"Topic.aspx?TopicID=" + topicId + "\">" + header1 + "</a>";
 
             tds[0].Width = Unit.Percentage(70);
             tds[1].Text = header2;
