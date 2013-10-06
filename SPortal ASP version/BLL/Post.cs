@@ -14,12 +14,12 @@ namespace BLL
         ///<constructor>
         ///Constructor
         ///</constructor>
-        public Post(PostType postType, int postID, int commentID, string text, string username, int upvotes, int downvotes, DateTime date)
+        public Post(PostType postType, int id, int commentID, string text, string username, int upvotes, int downvotes, DateTime date)
         {
             //postID = thread or main post
             //commentID = main post or comments on that post
             this.postType = postType;
-            this.postID = postID;
+            this.id = id;
             this.commentID = commentID;
             Text = text;
             Username = username;
@@ -30,7 +30,7 @@ namespace BLL
 
         #region Fields
         private PostType postType;
-        private int postID;
+        private int id;
         private int commentID;
         private string text;
         private string username;
@@ -45,9 +45,9 @@ namespace BLL
             get { return postType; }
         }
 
-        public int PostID
+        public int Id
         {
-            get { return postID; }
+            get { return id; }
         }
 
         public int CommentID
@@ -181,6 +181,42 @@ namespace BLL
             DataAccess da = new DataAccess();
             SqlParameter[] parameters = { new SqlParameter("@PostID", postID.ToString()) };
             return da.Delete("RemovePost", parameters);
+        }
+
+        public int GetPostRating()
+        {
+            int upvotes = 0;
+            int downvotes = 0;
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@PostID", id) };
+            DataTable dt = da.Select("SelectPostRating", parameters);
+            if (dt.Rows.Count > 0)
+            {
+                upvotes = Convert.ToInt16(dt.Rows[0]["Upvotes"].ToString());
+                downvotes = Convert.ToInt16(dt.Rows[0]["Downvotes"].ToString());
+                return (upvotes - downvotes);
+            }
+                
+            return 0;
+        }
+
+        public static List<Post> GetPostsByTopicID(int topicId)
+        {
+            List<Post> posts = new List<Post>();
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@TopicID", topicId) };
+            DataTable dt = da.Select("SelectPostsByTopicID", parameters);
+            foreach (DataRow row in dt.Rows)
+            {
+                PostType postType = row["PostType"].ToString() == "Parent" ? PostType.PARENT : PostType.CHILD;
+                int commentID = row["CommentID"] == DBNull.Value ? 0 : Convert.ToInt16(row["CommentID"].ToString());
+                posts.Add(new Post(postType, Convert.ToInt16(row["PostID"].ToString()),
+                    commentID, row["Text"].ToString(),
+                    row["Username"].ToString(), Convert.ToInt16(row["Upvotes"].ToString()),
+                    Convert.ToInt16(row["Downvotes"].ToString()), Convert.ToDateTime(row["SubmissionDate"])));
+            }
+
+            return posts;
         }
         #endregion
     }

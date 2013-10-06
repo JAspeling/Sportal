@@ -2,14 +2,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="server">
     <title>Topic</title>
     <script src="js/jquery.min.js"> </script>
-    <script src="js/autogrow.js"> </script>
+<%--    <script src="js/autogrow.js"> </script>--%>
+    <script src="js/jquery.elastic.source.js"> </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
-    <div class="centerBlock">
-        <div style="height: 30px"><img src="images/bottomTopic.png" alt="Not found" width="895" height="35"></div>
-        <div class="mainBlack">
-            <asp:Panel runat="server" id="pnlTopic" style="padding-left: 28px; padding-top: 30px;">
-                <div class="TopicHeader">Software Engineering
+    <body >
+        
+    <%--onload=" javascript:document.getElementById('div1').scrollTop = document.getElementById('scroll').value; "--%>
+    <%--<div id="div1" style="overflow: auto; height: 100px;" onscroll="javascript:document.getElementById('scroll').value = this.scrollTop">--%>
+        <div class="centerBlock">
+            <div style="height: 30px"><img src="images/bottomTopic.png" alt="Not found" width="895" height="35"></div>
+            <div class="mainBlack">
+                <asp:Panel runat="server" id="pnlTopic" style="padding-left: 28px; padding-top: 30px;">
+                    <%--<div class="TopicHeader">Software Engineering
                     <span>
                         &nbsp;
                         <img src="images/fire.png" alt="Not found" width="25" height="26">
@@ -18,12 +23,15 @@
                         &nbsp;
                         <img src="images/fire.png" alt="Not found" width="25" height="26">
                     </span>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> 
                 <div style="color: grey; height: 7px; margin-top: -10px"></div>
                 <span style="color: grey;"><hr/></span>
                 <br/><br/>
                                            
-                                           
+                     
+               
+                
+                                      
                 <div style="background-color: transparent; height: 80px; width: 92%;">
                     <!--Rating-->
                     <div style="background-color: transparent; height: 100%; padding-left: 5%; width: 10%;">
@@ -79,21 +87,21 @@
                 </div>
                 <br/><br/>
                                          
-                <%--<div style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; margin-top: 10px; padding: 10px; width: 90%;">
+                <div style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; margin-top: 10px; padding: 10px; width: 90%;">
                         
                     <asp:Label ID="lblPostBody" runat="server" Text="Test" Width="820px"></asp:Label>
                         
                 </div>
-                <div id="postComment" class="hidden">
+                <div id="postComment" class="">
                     <a href="#" style="color: grey">Comment</a>
                     <div style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 92%;">
                         <asp:TextBox CssClass="myTextAreas" ID="TextBox1" runat="server" TextMode="MultiLine" Width="790px"  Font-Names="Arial"></asp:TextBox>
                     </div>
                     <hr/>
                     <br/><br/>
-                </div>
+                </div>--%>
                 
-                <hr style="background-color: #40e0d0; border-color: #40e0d0;"/>
+                    <%--<hr style="background-color: #40e0d0; border-color: #40e0d0;"/>
 
                 <div style="font-family: 'Dekar';">
                     <h2>New Post:</h2>
@@ -106,16 +114,16 @@
                 <br/>
                 <a href="#" style="float: right; margin-right: 5%"><img src="img-demo/NewButtonsPost.png" alt="Not found" width="138" height="44"></a>
                 --%>
-            </asp:Panel>
-            <br/>
+                </asp:Panel>
+                <br/>
+            </div>
         </div>
-    </div>
-    
+    </body>
     <script>
         $('.showComment').click(function() {
-            $('#postComment').slideToggle('fast', function() {
+            $(this).next().slideToggle('slow', function() {
             });
-            $('#postComment').removeClass('hidden');
+            $(this).next().removeClass('hidden');
             //slideToggle('fast', function () {
             // Animation complete.
         });
@@ -123,6 +131,23 @@
     </script>
     
     <script>
+        $('.myTextAreas').elastic();
+    </script>
+
+    <%--<script>
         $('.myTextAreas').autogrow();
+    </script>--%>
+    
+    <script>
+        function ToggleVisibility(element) {
+            //alert(element);
+            //alert(document.getElementById(element).className);
+            if (document.getElementById(element).className == "hidden") {
+                document.getElementById(element).className = "shown";
+            } else {
+                document.getElementById(element).className = "hidden";
+            }
+            //alert(element.class);
+        }
     </script>
 </asp:Content>

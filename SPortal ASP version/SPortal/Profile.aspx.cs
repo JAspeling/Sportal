@@ -68,10 +68,10 @@ namespace SPortal
 
             postHeadingContainer.Attributes.Add("class", "postHeading");
             postHeadings[0].Attributes.Add("style", "float: left");
-            postHeadings[0].Text = string.Format("POST ID: {0}", post.PostID);
+            postHeadings[0].Text = string.Format("POST ID: {0}", post.Id);
             postHeadings[1].Attributes.Add("style", "float: right");
             postHeadings[1].Text = "13 Years ago";
-            postHeadings[2].Text = string.Format("<br/>Topic: {0}", Post.GetPostTopicName(post.PostID));
+            postHeadings[2].Text = string.Format("<br/>Topic: {0}", Post.GetPostTopicName(post.Id));
 
             tCell.Attributes.Add("style", "width: 80%;");
             tCell.Text = postHeadings[0].Text;
@@ -104,7 +104,7 @@ namespace SPortal
                 button.Attributes.Add("class", "postButton");
             }
 
-            postIdField.Value = post.PostID.ToString();
+            postIdField.Value = post.Id.ToString();
 
             #endregion
 

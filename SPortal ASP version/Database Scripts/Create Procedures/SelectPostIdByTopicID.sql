@@ -8,14 +8,14 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[SelectPostsByTopicID]
+CREATE PROCEDURE [dbo].[SelectPostIdByTopicID]
 @TopicID INT
 AS
 
 SELECT TP.PostID
 	FROM TopicPost TP INNER JOIN Post P
 		ON TP.PostID = P.PostID
-			WHERE TopicID = @TopicID 
+			WHERE TopicID = @TopicID
 			
 GO
 

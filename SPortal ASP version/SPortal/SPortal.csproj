@@ -76,11 +76,14 @@
     <Content Include="css\MenuCSS.css" />
     <Content Include="images\dropDown.png" />
     <Content Include="images\fire.png" />
+    <Content Include="images\Pixel-575757-50.png" />
     <Content Include="images\TopicBack.jpg" />
     <Content Include="images\TopicBack4.png" />
     <Content Include="images\VotingIconDown.png" />
     <Content Include="images\VotingIconUp.png" />
+    <Content Include="js\autogrow.js" />
     <Content Include="js\jquery-1.9.1.js" />
+    <Content Include="js\jquery.elastic.source.js" />
     <Content Include="Menus\css.css" />
     <Content Include="Menus\menu1.html" />
     <Content Include="Old HTML Pages\%28old%29About.aspx" />

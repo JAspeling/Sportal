@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,7 +75,12 @@ namespace BLL
 
         public string Picture
         {
-            get { return picture; }
+            get
+            {
+                if (File.Exists(picture))
+                    return picture;
+                return "~/Images/ProfilePictures/default.png";
+            }
             set { picture = value; }
         }
 
@@ -233,6 +239,17 @@ namespace BLL
             SqlParameter[] parameters = { new SqlParameter("@Username", username) };
             return da.Delete("RemoveUser", parameters);
         }
+
+        public int GetPostsAmount(string username)
+        {
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@Username", username) };
+            DataTable dt = da.Select("SelectUserPostsAmount", parameters);
+            if (dt.Rows.Count > 0)
+                return Convert.ToInt16(dt.Rows[0]["Amount"].ToString());
+            return 0;
+        }
+
         #endregion
     }
 }

@@ -113,6 +113,21 @@ namespace BLL
             return null;
         }
 
+        public static Topic GetTopicByID(int id)
+        {
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@TopicID", id) };
+            DataTable dt = da.Select("SelectTopicByID", parameters);
+            if (dt.Rows.Count > 0)
+                return new Topic(Convert.ToInt16(dt.Rows[0]["TopicID"].ToString()), dt.Rows[0]["TopicName"].ToString(),
+                    dt.Rows[0]["TopicDescription"].ToString(), dt.Rows[0]["TopicBody"].ToString(),
+                    Convert.ToDateTime(dt.Rows[0]["CreationDate"].ToString()),
+                    Convert.ToInt16(dt.Rows[0]["Upvotes"].ToString()),
+                    Convert.ToInt16(dt.Rows[0]["Downvotes"].ToString()),
+                    dt.Rows[0]["TopicType"].ToString());
+            return null;
+        }
+
         public static List<Topic> GetTopics()
         {
             //uses a stored procedure to get all topic names, then uses those names to get a list of topics
@@ -141,6 +156,14 @@ namespace BLL
             if (dt.Rows.Count > 0)
                 return Convert.ToInt16(dt.Rows[0]["Amount"].ToString());
             return 0;
+        }
+
+        public int GetRating()
+        {
+            double val = upvotes/(float)(upvotes + downvotes)*10f;
+            if (upvotes + downvotes == 0)
+                return 0;
+            return Convert.ToInt16(val);
         }
 
         #endregion
