@@ -8,11 +8,11 @@ using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using AjaxControlToolkit;
-using AjaxControlToolkit.HTMLEditor.ToolbarButton;
 using BLL;
 using HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign;
 using Label = System.Web.UI.WebControls.Label;
 using Panel = System.Web.UI.WebControls.Panel;
+using TextBox = System.Web.UI.WebControls.TextBox;
 
 namespace SPortal
 {
@@ -20,6 +20,11 @@ namespace SPortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+                Cookie.SetSessionFromCookie(this);
+
+            bool isPostEnabled = Session["User"] == null ? false : true;
+
             List<Topic> topics = Topic.GetTopics();
 
             foreach (var topic in topics)
@@ -41,9 +46,95 @@ namespace SPortal
                 LoadNewPost(topic, pnlParent);
             }
 
+            if (isPostEnabled)
+            {
+                CreatePostArea(pnlGeneral, "General");
+                CreatePostArea(pnlInstitution, "Institution");
+                CreatePostArea(pnlGroup, "Group");
+            }
+            else
+            {
+                CreateLoginArea(pnlGeneral);
+                CreateLoginArea(pnlInstitution);
+                CreateLoginArea(pnlGroup);
+            }
+            
 
             //LoadNewPost("MultiThreading", "This is a topic description", 10, DateTime.Now, DateTime.Now.AddMinutes(-54), pnlGeneral);
             //LoadNewPost("Testing", "This is a longer topic description to test the word wrapping of the table. The table width should remain the same but the text should just overflow as it reaches the maximum width", 10, DateTime.Now, DateTime.Now.AddMinutes(-54), pnlGeneral);
+        }
+
+        public void CreateLoginArea(Panel parent)
+        {
+            Panel pnlHeader = new Panel();
+            pnlHeader.Attributes.Add("style", "margin-left: 2em;");
+            //pnlHeader.Controls.Add(new Literal(){ Text="<hr style=\"border-color: #40e0d0; background-color: #40e0d0\"/><br/>"});
+            Panel pnlHeaderText = new Panel();
+            pnlHeaderText.Attributes.Add("style", "font-family: 'Dekar'; font-size: 17pt; color: honeydew");
+            pnlHeaderText.Controls.Add(new Literal() { Text = "<a id=\"NormalLinks\" href=\"Login.aspx\">Login</a> or <a  id=\"NormalLinks\" href=\"Register.aspx\">Register</a> to Post Topics<hr/>" });
+
+            pnlHeader.Controls.Add(pnlHeaderText);
+
+            parent.Controls.Add(pnlHeader);
+        }
+
+        public void CreatePostArea(Panel parent, string type)
+        {
+            Panel pnlHeader = new Panel();
+            pnlHeader.Attributes.Add("style", "margin-left: 2em;");
+            //pnlHeader.Controls.Add(new Literal(){ Text="<hr style=\"border-color: #40e0d0; background-color: #40e0d0\"/><br/>"});
+            Panel pnlHeaderText = new Panel();
+            pnlHeaderText.Attributes.Add("style", "font-family: 'Dekar'; font-size: 17pt; color: honeydew");
+            pnlHeaderText.Controls.Add(new Literal() {Text = "Create a New Topic<hr/>"}) ;
+
+            Panel pnlPostArea = new Panel() {CssClass = "UserInfo"};
+            pnlPostArea.Attributes.Add("style", "margin-bottom: 2em; margin-top: 1em; margin-right: 4em; padding-top: 1em; padding-bottom: 0.5em; border-radius: 0.5em;");
+
+            TextBox txtPost = new TextBox();
+            txtPost.Font.Name = "Arial";
+            txtPost.TextMode = TextBoxMode.MultiLine;
+            txtPost.CssClass = "myTextAreas";
+            txtPost.Height = 91;
+            txtPost.Width = 646;
+
+            pnlPostArea.Controls.Add(txtPost);
+
+            Panel pnlButtons = new Panel();
+            pnlButtons.Attributes.Add("style", "float: right; margin-top: 1em; margin-right: 0.5em;");
+            ImageButton btnPost = new ImageButton() { ID="btnPost" + type, ImageUrl = "~/img-demo/NewButtonsComment.png", Height = 33, Width = 103};
+            btnPost.Attributes.Add("style", "margin-left: 1em;");
+            btnPost.Click += btnPost_Click;
+
+            ImageButton btnCancel = new ImageButton() { ImageUrl = "~/img-demo/NewButtonsCancel.png", Height = 33, Width = 103 };
+            btnPost.Attributes.Add("style", "margin-left: 1em;");
+
+            pnlButtons.Controls.Add(btnPost);
+            pnlButtons.Controls.Add(btnCancel);
+
+            pnlPostArea.Controls.Add(pnlButtons);
+
+            pnlHeader.Controls.Add(pnlHeaderText);
+            pnlHeader.Controls.Add(pnlPostArea);
+
+            parent.Controls.Add(pnlHeader);
+
+        }
+
+        void btnPost_Click(object sender, ImageClickEventArgs e)
+        {
+            ImageButton temp = (ImageButton) (sender);
+
+            switch (temp.ID)
+            {
+                case "btnPostGeneral" :
+                    break;
+                case "btnPostInstitution" :
+                    break;
+                case "btnPostGroup" :
+                    break;
+            }
+
+            //MessageBox.Show(temp.ID);
         }
 
         public void CreatePostPicture(string imagePath, Panel parent)
@@ -90,7 +181,7 @@ namespace SPortal
             }
 
             if (isHeader)
-                tds[0].Text = "<a href=\"Topic.aspx?TopicID=" + topicId + "\">" + header1 + "</a>";
+                tds[0].Text = "<a id=\"ForumLinks\" href=\"Topic.aspx?TopicID=" + topicId + "\">" + header1 + "</a>";
 
             tds[0].Width = Unit.Percentage(70);
             tds[1].Text = header2;

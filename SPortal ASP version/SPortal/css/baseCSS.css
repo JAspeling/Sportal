@@ -396,3 +396,23 @@ display:block;
     background-image: url('../images/Pixel-575757-50.png');
     background-repeat: repeat;
 }
+
+#ForumLinks {
+    color: goldenrod;
+}
+
+#ForumLinks:hover {
+    color: darkorange;
+}
+
+#NormalLinks {
+    color: #888;
+}
+
+#NormalLinks:hover {
+    color: white;
+}
+
+#a:hover {
+    color: cadetblue;
+}

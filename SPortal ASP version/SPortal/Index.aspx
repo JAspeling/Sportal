@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SPortal.WebForm1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="server">
     <title>Home</title>
+    <script src="js/modernizer.custom.js"> </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <div class="centerBlock">
