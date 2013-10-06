@@ -32,3 +32,5 @@ BEGIN
 	ON t.TopicTypeID = tt.TopicTypeID
 	WHERE t.TopicID = @TopicID;
 END
+
+GO
