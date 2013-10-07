@@ -18,8 +18,22 @@ namespace SPortal
 {
     public partial class WebForm4 : System.Web.UI.Page
     {
+        private TextBox txtPost;
+        private TextBox txtDescription;
+        private TextBox txtName;
+
+        private string post, description, name;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            //if (IsPostBack)
+            //{
+            //    post = txtPost.Text;
+            //    description = txtDescription.Text;
+            //    name = txtName.Text;
+            //}
+
             if (Session["User"] == null)
                 Cookie.SetSessionFromCookie(this);
 
@@ -58,7 +72,13 @@ namespace SPortal
                 CreateLoginArea(pnlInstitution);
                 CreateLoginArea(pnlGroup);
             }
-            
+
+            if (IsPostBack)
+            {
+                post = txtPost.Text;
+                description = txtDescription.Text;
+                name = txtName.Text;
+            }
 
             //LoadNewPost("MultiThreading", "This is a topic description", 10, DateTime.Now, DateTime.Now.AddMinutes(-54), pnlGeneral);
             //LoadNewPost("Testing", "This is a longer topic description to test the word wrapping of the table. The table width should remain the same but the text should just overflow as it reaches the maximum width", 10, DateTime.Now, DateTime.Now.AddMinutes(-54), pnlGeneral);
@@ -90,13 +110,43 @@ namespace SPortal
             Panel pnlPostArea = new Panel() {CssClass = "UserInfo"};
             pnlPostArea.Attributes.Add("style", "margin-bottom: 2em; margin-top: 1em; margin-right: 4em; padding-top: 1em; padding-bottom: 0.5em; border-radius: 0.5em;");
 
-            TextBox txtPost = new TextBox();
+            Label lblName = new Label() {Text = "Topic Name<br/>"};
+            lblName.Attributes.Add("style", "width: 100%;");
+            lblName.Font.Name = "Dekar";
+            lblName.Font.Size = FontUnit.Point(12);
+            txtName = new TextBox();
+            txtName.CssClass = "myTextAreas";
+
+            Label lblDescription = new Label() { Text = "<br/>Brief Description<br/>" };
+            lblDescription.Font.Name = "Dekar";
+            lblDescription.Font.Size = FontUnit.Point(12);
+            txtDescription = new TextBox() {TextMode = TextBoxMode.MultiLine};
+            txtDescription.Attributes.Add("style", "width: 100%;");
+            txtDescription.CssClass = "myTextAreas";
+
+            Label lblBody = new Label() {Text = "<br/>Body of Topic<br/>"};
+            lblBody.Font.Name = "Dekar";
+            lblBody.Font.Size = FontUnit.Point(12);
+
+            //TextBox txtPost = new TextBox();
+            //txtPost.CssClass = "myTextAreas";
+            //txtPost.TextMode = TextBoxMode.MultiLine;
+            //txtPost.Width = 790;
+            //txtPost.Font.Name = "Arial";
+
+            txtPost = new TextBox();
+            txtPost.EnableViewState = false;
             txtPost.Font.Name = "Arial";
             txtPost.TextMode = TextBoxMode.MultiLine;
             txtPost.CssClass = "myTextAreas";
             txtPost.Height = 91;
             txtPost.Width = 646;
 
+            pnlPostArea.Controls.Add(lblName);
+            pnlPostArea.Controls.Add(txtName);
+            pnlPostArea.Controls.Add(lblDescription);
+            pnlPostArea.Controls.Add(txtDescription);
+            pnlPostArea.Controls.Add(lblBody);
             pnlPostArea.Controls.Add(txtPost);
 
             Panel pnlButtons = new Panel();
@@ -123,18 +173,23 @@ namespace SPortal
         void btnPost_Click(object sender, ImageClickEventArgs e)
         {
             ImageButton temp = (ImageButton) (sender);
-
+            int type = 0;
             switch (temp.ID)
             {
                 case "btnPostGeneral" :
+                    type = 1;
                     break;
                 case "btnPostInstitution" :
+                    type = 2;
                     break;
                 case "btnPostGroup" :
+                    type = 3;
                     break;
             }
 
-            //MessageBox.Show(temp.ID);
+            Response.Write(txtPost.Text);
+
+            //bool val = Topic.CreateTopic(txtName.Text, txtDescription.Text, txtPost.Text, type, Session["User"].ToString());
         }
 
         public void CreatePostPicture(string imagePath, Panel parent)

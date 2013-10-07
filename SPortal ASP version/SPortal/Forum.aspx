@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="server">
     <title id="titleForum">SPortal</title>
     <script src="js/jquery-1.9.1.js"> </script>
+    <script src="js/jquery.min.js"> </script>
     <script src="js/jquery.elastic.source.js"> </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
@@ -63,38 +64,12 @@
                     </div>
                     
                     <asp:Panel ID="pnlGroup" runat="server" style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%; float: left; margin-bottom: 2em;">
-                        <%--<div style="margin-left: 2em;">
-                            <hr style="border-color: #40e0d0; background-color: #40e0d0"/><br/>
-                            <div style="font-family: 'Dekar'; font-size: 17pt; color: honeydew">Create a New Topic:</div>
-                            <hr/>
-                    
-                            <div class="UserInfo" style="margin-bottom: 2em; margin-top: 1em; margin-right: 4em; padding-top: 1em; padding-bottom: 0.5em; border-radius: 0.5em">
-                                <asp:TextBox ID="TextBox1" runat="server" Font-Names="Arial" TextMode="MultiLine" CssClass="myTextAreas" Height="91px" Width="646px"></asp:TextBox>
-                                <div style="float: right; margin-top: 1em; margin-right: 0.5em;">
-                                    <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/img-demo/NewButtonsComment.png" Height="33" Width="103" style="margin-left: 1em;"/>
-                                    <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/img-demo/NewButtonsCancel.png" Height="33" Width="103" style="margin-left: 1em;"/>
-                                </div>
-                            </div>
-                        </div>--%>
+
                     </asp:Panel><br/>
                     
                 </div>
                 <br/><br/><br/>
-                
-                
-                <%--<div style="margin-left: 2em;">
-                    <hr style="border-color: #40e0d0; background-color: #40e0d0"/><br/>
-                    <div style="font-family: 'Dekar'; font-size: 17pt; color: honeydew">Post Your Comment:</div>
-                    <hr/>
-                    
-                    <div class="UserInfo" style="margin-bottom: 2em; margin-top: 1em; margin-right: 4em; padding-top: 1em; padding-bottom: 0.5em; border-radius: 0.5em">
-                        <asp:TextBox runat="server" Font-Names="Arial" TextMode="MultiLine" CssClass="myTextAreas" Height="91px" Width="731px"></asp:TextBox>
-                        <div style="float: right; margin-top: 1em; margin-right: 0.5em;">
-                            <asp:ImageButton runat="server" ImageUrl="~/img-demo/NewButtonsComment.png" Height="33" Width="103" style="margin-left: 1em;"/>
-                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/img-demo/NewButtonsCancel.png" Height="33" Width="103" style="margin-left: 1em;"/>
-                        </div>
-                    </div>
-                </div>--%>
+               
             </div>
                                       
         </div>
@@ -107,7 +82,10 @@
                 // Animation complete.
             });
         });
-        
+       
+    </script>
+    
+    <script>
         $('.myTextAreas').elastic();
     </script>
 

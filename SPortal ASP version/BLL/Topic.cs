@@ -88,12 +88,15 @@ namespace BLL
         #endregion
 
         #region Methods
-        public static bool CreateTopic(string name, string text)
+        public static bool CreateTopic(string name, string description, string text, int type, string username)
         {
             //create a new topic
             DataAccess da = new DataAccess();
             SqlParameter[] parameters = { new SqlParameter("@TopicName", name),
-                                            new SqlParameter("@Text", text) };
+                                            new SqlParameter("@Description", text),
+                                            new SqlParameter("@Text", text),
+                                            new SqlParameter("@Username", text),
+                                            new SqlParameter("@Type", text),};
             return da.Insert("CreateTopic", parameters);
         }
 
