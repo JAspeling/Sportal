@@ -120,13 +120,15 @@ a {
 .Navblock2 {
     list-style-type: none;
     text-decoration: none;
-    background-color: transparent;
+    background-color: white;
+    border-radius: 0.5em;
+    border-color: #1e9094;
+    border: solid #1e9094;
     padding: 10px;
-    display: inline-block;
+    display:inline-block;
     float: right;
     width: 54%;
     height: 51.7%;
-    background-image: url("../images/AdBack.png");
     margin-right: 24%;
 }
 
