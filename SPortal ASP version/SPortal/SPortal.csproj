@@ -178,6 +178,7 @@
     <Content Include="Forum.aspx" />
     <Content Include="Topic.aspx" />
     <Content Include="ProfileSummary.aspx" />
+    <Content Include="HelpTopics.aspx" />
     <Content Include="Wiki.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -309,6 +310,13 @@
     </Compile>
     <Compile Include="ProfileSummary.aspx.designer.cs">
       <DependentUpon>ProfileSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HelpTopics.aspx.cs">
+      <DependentUpon>HelpTopics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HelpTopics.aspx.designer.cs">
+      <DependentUpon>HelpTopics.aspx</DependentUpon>
     </Compile>
     <Compile Include="Wiki.aspx.cs">
       <DependentUpon>Wiki.aspx</DependentUpon>
