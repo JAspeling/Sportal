@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="infoblock1">
-            <div class="infoblock1A">
+            <div class="infoblock1A" style="border-radius: 1em">
                 <ul class="grid cs-style-3">
                     <li>
                         <figure>
@@ -32,7 +32,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="infoblock1B">
+            <div class="infoblock1B"  style="border-radius: 1em">
                 <ul class="grid cs-style-3">
                     <li>
                         <figure>
@@ -46,7 +46,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="infoblock1C">
+            <div class="infoblock1C"  style="border-radius: 1em">
                 <ul class="grid cs-style-3">
                     <li>
                         <figure>
@@ -61,11 +61,11 @@
                 </ul>
             </div>
         </div>
-        <div class="infoblock2">
+        <div class="infoblock2" style="border-top-left-radius: 0.5em;border-top-right-radius: 0.5em">
             <div class="infoQuote">
             </div>
         </div>
-        <div class="infoblock3">
+        <div class="infoblock3" style=" margin-top: -1.1%;border-bottom-left-radius: 0.5em;border-bottom-right-radius: 0.5em">
         </div>
     </div>
 </asp:Content>
