@@ -38,8 +38,3 @@ GO
 ALTER TABLE [dbo].[Post]  WITH CHECK ADD FOREIGN KEY([PostTypeID])
 REFERENCES [dbo].[PostType] ([PostTypeID])
 GO
-
-ALTER TABLE [dbo].[Post]  WITH CHECK ADD FOREIGN KEY([UserID])
-REFERENCES [dbo].[Users] ([UserID])
-GO
-

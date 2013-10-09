@@ -8,7 +8,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[GroupMembers](
+CREATE TABLE [dbo].[UserGroup](
 	[MemberID] [int] IDENTITY(1,1) NOT NULL,
 	[GroupID] [int] NULL,
 	[UserID] [int] NULL,
@@ -21,15 +21,15 @@ PRIMARY KEY CLUSTERED
 
 GO
 
-ALTER TABLE [dbo].[GroupMembers]  WITH CHECK ADD FOREIGN KEY([GroupID])
-REFERENCES [dbo].[GroupHouse] ([GroupID])
+ALTER TABLE [dbo].[UserGroup]  WITH CHECK ADD FOREIGN KEY([GroupID])
+REFERENCES [dbo].[Group] ([GroupID])
 GO
 
-ALTER TABLE [dbo].[GroupMembers]  WITH CHECK ADD FOREIGN KEY([RoleID])
+ALTER TABLE [dbo].[UserGroup]  WITH CHECK ADD FOREIGN KEY([RoleID])
 REFERENCES [dbo].[MemberRole] ([RoleID])
 GO
 
-ALTER TABLE [dbo].[GroupMembers]  WITH CHECK ADD FOREIGN KEY([UserID])
+ALTER TABLE [dbo].[UserGroup]  WITH CHECK ADD FOREIGN KEY([UserID])
 REFERENCES [dbo].[Users] ([UserID])
 GO
 

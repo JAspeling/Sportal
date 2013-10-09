@@ -11,7 +11,7 @@ GO
 SET ANSI_PADDING ON
 GO
 
-CREATE TABLE [dbo].[GroupHouse](
+CREATE TABLE [dbo].[Group](
 	[GroupID] [int] IDENTITY(1,1) NOT NULL,
 	[GroupName] [varchar](30) NULL,
 	[Description] [varchar](300) NOT NULL,
