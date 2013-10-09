@@ -78,7 +78,8 @@
     
     <script> 
         $('.clickme').click(function() {
-            $(this).next().slideToggle('medium', function() {
+            //$(this).next().slideToggle('medium', function() {
+            $(this).next().slideup('medium', function () {
                 // Animation complete.
             });
         });
@@ -87,6 +88,13 @@
     
     <script>
         $('.myTextAreas').elastic();
+    </script>
+    
+    <script>
+        function AlertPost(element, type) {
+            if (confirm('Create post ' + element.value + ' in ' + type.value + '?'))
+                this.form.submit();
+        }
     </script>
 
 </asp:Content>

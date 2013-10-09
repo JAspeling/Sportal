@@ -18,9 +18,11 @@ namespace SPortal
 {
     public partial class WebForm4 : System.Web.UI.Page
     {
-        private TextBox txtPost;
-        private TextBox txtDescription;
-        private TextBox txtName;
+        //private TextBox txtPost;
+        //private TextBox txtDescription;
+        //private TextBox txtName;
+
+        private Panel pnlPostArea;
 
         private string post, description, name;
 
@@ -73,12 +75,12 @@ namespace SPortal
                 CreateLoginArea(pnlGroup);
             }
 
-            if (IsPostBack)
-            {
-                post = txtPost.Text;
-                description = txtDescription.Text;
-                name = txtName.Text;
-            }
+            //if (IsPostBack)
+            //{
+            //    post = txtPost.Text;
+            //    description = txtDescription.Text;
+            //    name = txtName.Text;
+            //}
 
             //LoadNewPost("MultiThreading", "This is a topic description", 10, DateTime.Now, DateTime.Now.AddMinutes(-54), pnlGeneral);
             //LoadNewPost("Testing", "This is a longer topic description to test the word wrapping of the table. The table width should remain the same but the text should just overflow as it reaches the maximum width", 10, DateTime.Now, DateTime.Now.AddMinutes(-54), pnlGeneral);
@@ -107,21 +109,25 @@ namespace SPortal
             pnlHeaderText.Attributes.Add("style", "font-family: 'Dekar'; font-size: 17pt; color: honeydew");
             pnlHeaderText.Controls.Add(new Literal() {Text = "Create a New Topic<hr/>"}) ;
 
-            Panel pnlPostArea = new Panel() {CssClass = "UserInfo"};
+            pnlPostArea = new Panel() {CssClass = "UserInfo"};
             pnlPostArea.Attributes.Add("style", "margin-bottom: 2em; margin-top: 1em; margin-right: 4em; padding-top: 1em; padding-bottom: 0.5em; border-radius: 0.5em;");
+            pnlPostArea.ID = "pnlPost" + type;
+
 
             Label lblName = new Label() {Text = "Topic Name<br/>"};
             lblName.Attributes.Add("style", "width: 100%;");
             lblName.Font.Name = "Dekar";
             lblName.Font.Size = FontUnit.Point(12);
-            txtName = new TextBox();
+            TextBox txtName = new TextBox();
+            txtName.ID = "txtName" + type;
             txtName.CssClass = "myTextAreas";
 
             Label lblDescription = new Label() { Text = "<br/>Brief Description<br/>" };
             lblDescription.Font.Name = "Dekar";
             lblDescription.Font.Size = FontUnit.Point(12);
-            txtDescription = new TextBox() {TextMode = TextBoxMode.MultiLine};
+            TextBox txtDescription = new TextBox() {TextMode = TextBoxMode.MultiLine};
             txtDescription.Attributes.Add("style", "width: 100%;");
+            txtDescription.ID = "txtDescription" + type;
             txtDescription.CssClass = "myTextAreas";
 
             Label lblBody = new Label() {Text = "<br/>Body of Topic<br/>"};
@@ -134,8 +140,8 @@ namespace SPortal
             //txtPost.Width = 790;
             //txtPost.Font.Name = "Arial";
 
-            txtPost = new TextBox();
-            txtPost.EnableViewState = false;
+            TextBox txtPost = new TextBox();
+            txtPost.ID = "txtPost" + type;
             txtPost.Font.Name = "Arial";
             txtPost.TextMode = TextBoxMode.MultiLine;
             txtPost.CssClass = "myTextAreas";
@@ -153,6 +159,7 @@ namespace SPortal
             pnlButtons.Attributes.Add("style", "float: right; margin-top: 1em; margin-right: 0.5em;");
             ImageButton btnPost = new ImageButton() { ID="btnPost" + type, ImageUrl = "~/img-demo/NewButtonsComment.png", Height = 33, Width = 103};
             btnPost.Attributes.Add("style", "margin-left: 1em;");
+            btnPost.Attributes.Add("onclick", "return confirm('Upload the post?');");
             btnPost.Click += btnPost_Click;
 
             ImageButton btnCancel = new ImageButton() { ImageUrl = "~/img-demo/NewButtonsCancel.png", Height = 33, Width = 103 };
@@ -173,23 +180,36 @@ namespace SPortal
         void btnPost_Click(object sender, ImageClickEventArgs e)
         {
             ImageButton temp = (ImageButton) (sender);
-            int type = 0;
+            string type = string.Empty;
+            int typeID = 0;
             switch (temp.ID)
             {
                 case "btnPostGeneral" :
-                    type = 1;
+                    type = "General";
+                    typeID = 1;
                     break;
                 case "btnPostInstitution" :
-                    type = 2;
+                    type = "Institution";
+                    typeID = 2;
                     break;
                 case "btnPostGroup" :
-                    type = 3;
+                    type = "Group";
+                    typeID = 3;
                     break;
             }
 
-            Response.Write(txtPost.Text);
+            TextBox name = (TextBox)pnlPostArea.FindControl(string.Format("txtName{0}", type));
+            TextBox description = (TextBox)pnlPostArea.FindControl(string.Format("txtDescription{0}", type));
+            TextBox post = (TextBox)pnlPostArea.FindControl(string.Format("txtPost{0}", type));
 
-            //bool val = Topic.CreateTopic(txtName.Text, txtDescription.Text, txtPost.Text, type, Session["User"].ToString());
+
+            //Response.Write(txtPost.Text);
+
+            if (Topic.CreateTopic(name.Text, description.Text, post.Text, typeID, Session["User"].ToString()))
+            {
+            //    Page.ClientScript.RegisterStartupScript(this.GetType(), "Call my function", string.Format("AlertPost({0}, {1})", pnlPostArea.FindControl(string.Format("txtName{0}", type)), type), true);
+                Response.Redirect("Forum.aspx");
+            }
         }
 
         public void CreatePostPicture(string imagePath, Panel parent)

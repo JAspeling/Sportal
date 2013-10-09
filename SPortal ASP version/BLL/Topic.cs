@@ -93,10 +93,10 @@ namespace BLL
             //create a new topic
             DataAccess da = new DataAccess();
             SqlParameter[] parameters = { new SqlParameter("@TopicName", name),
-                                            new SqlParameter("@Description", text),
+                                            new SqlParameter("@Description", description),
                                             new SqlParameter("@Text", text),
-                                            new SqlParameter("@Username", text),
-                                            new SqlParameter("@Type", text),};
+                                            new SqlParameter("@Username", username),
+                                            new SqlParameter("@Type", type),};
             return da.Insert("CreateTopic", parameters);
         }
 
