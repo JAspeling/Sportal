@@ -11,4 +11,3 @@ GO
 :r "C:\Database Scripts\Create Tables\8.1 - Topic.sql"
 :r "C:\Database Scripts\Create Tables\9 - Topic Post.sql"
 :r "C:\Database Scripts\Create Tables\10 - PostViews.sql"
-:r "C:\Database Scripts\Create Tables\11 - TopicViews.sql"
