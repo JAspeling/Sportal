@@ -33,7 +33,7 @@ namespace SPortal
                 string tempName = Session["TempProfilePictureName"] == null ? "" : Session["TempProfilePictureName"].ToString();
                 string tempSize = Session["TempProfilePictureSize"] == null ? "" : Session["TempProfilePictureSize"].ToString();
                 string tempType = Session["TempProfilePictureType"] == null ? "" : Session["TempProfilePictureType"].ToString();
-
+                btnOK.AlternateText = "";
                 Label1.Text = "File name: " +
                          tempName + "<br>" +
                          tempSize + " kb<br>" +
@@ -68,7 +68,7 @@ namespace SPortal
             {
                 //MessageBox.Show(string.Format("Profile '{0}' Created", name + " " + surname));
                 Session["User"] = username;
-
+                
                 Cookie.SetCookie(this, "SPortalUsername", username, 2);
 
                 UploadImage();

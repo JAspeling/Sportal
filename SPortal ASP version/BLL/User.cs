@@ -40,6 +40,13 @@ namespace BLL
         private int rating;
         private DateTime joinDate;
         private UserRoles userRoles;
+        private Gender gender;
+
+        public Gender Gender
+        {
+            get { return gender; }
+            set { gender = value; }
+        }
         #endregion
 
         #region Properties
