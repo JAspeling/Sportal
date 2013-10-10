@@ -108,14 +108,26 @@ namespace BLL
             return da.Update("UpdatePostVotes", parameters);
         }
 
-        public static bool CreatePost(PostType postType, string text, string username)
+        public static bool CreatePost(PostType postType, string text, string username, int topicID)
         {
             //create a new post
             DataAccess da = new DataAccess();
-            SqlParameter[] parameters = { new SqlParameter("@PostTypeID",Convert.ToString((int)postType)),
+            SqlParameter[] parameters = { new SqlParameter("@PostTypeID",(int)postType),
                                             new SqlParameter("@Text", text),
-                                            new SqlParameter("@Username", username)};
+                                            new SqlParameter("@Username", username),
+                                            new SqlParameter("@TopicID", topicID)};
             return da.Insert("CreatePost", parameters);
+        }
+
+        public static bool CreatePostReply(PostType postType, string text, string username, int postID)
+        {
+            //create a new post
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@PostTypeID",(int)postType),
+                                            new SqlParameter("@Text", text),
+                                            new SqlParameter("@Username", username),
+                                            new SqlParameter("@PostID", postID)};
+            return da.Insert("CreatePostReply", parameters);
         }
 
         public static Post GetPostByPostID(int postID)
@@ -218,6 +230,18 @@ namespace BLL
 
             return posts;
         }
+
+        public static List<Post> GetPostsReplies(int postID)
+        {
+            List<Post> posts = new List<Post>();
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@PostID", postID) };
+            DataTable dt = da.Select("SelectPostReplies", parameters);
+            foreach (DataRow row in dt.Rows)
+                posts.Add(Post.GetPostByPostID(Convert.ToInt16(row["PostID"])));
+            return posts;
+        }
+
         #endregion
     }
 }

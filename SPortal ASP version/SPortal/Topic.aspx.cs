@@ -14,6 +14,8 @@ namespace SPortal
 {
     public partial class WebForm9 : System.Web.UI.Page
     {
+        private Panel pnlComment;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -96,7 +98,7 @@ namespace SPortal
             // TopicUser
 
             // Votes
-            Panel userInfo = new Panel() { ID = "UserInfo", CssClass = "UserInfo" };
+            Panel userInfo = new Panel() { ID = "UserInfo" + post.Id, CssClass = "UserInfo" };
             Table tblVotes = new Table() { Width = Unit.Percentage(10) };
             tblVotes.Attributes.Add("style", "float: left;");
             userInfo.Attributes.Add("style", "float: left;");
@@ -202,26 +204,74 @@ namespace SPortal
             pnlPost.Controls.Add(lblPost);
 
             parent.Controls.Add(pnlPost);
+
+            AddUserRepliesSection(pnlTopic, Post.GetPostsReplies(post.Id));
+        }
+
+        public void AddUserRepliesSection(Panel parent, List<Post> replies)
+        {
+            if (replies.Count > 0)
+            {
+                Panel pnlReplies = new Panel();
+                pnlReplies.CssClass = "UserInfo";
+                pnlReplies.Attributes.Add("style",
+                    "float: left; font-family: Arial; margin-left: 4em; margin-top: 1em; padding-bottom: 1em; padding-top: 1em; width: 79%;");
+
+                foreach (var reply in replies)
+                {
+                    Panel pnlContent = new Panel();
+                    pnlContent.Attributes.Add("style", "float: left; width: 100%;");
+
+                    Label rating = new Label() { Text = string.Format("{0}", (reply.Upvotes - reply.Downvotes)) };
+                    rating.Attributes.Add("style", "color: chocolate; float: left; margin-left: -1em; margin-right: 1em;");
+
+                    Panel post = new Panel();
+                    post.Attributes.Add("style", "float: left; width: 96%;");
+
+                    Label lblPost = new Label()
+                    {
+                        Text =
+                            string.Format("{0} - {1}, {2}<hr>", reply.Text, reply.Username, reply.Date)
+                    };
+
+                    post.Controls.Add(lblPost);
+
+                    pnlContent.Controls.Add(rating);
+                    pnlContent.Controls.Add(post);
+
+                    pnlReplies.Controls.Add((pnlContent));
+                }
+                
+
+                parent.Controls.Add(pnlReplies);
+            }
         }
 
         public void AddUserCommentSection(Panel parent, Post post)
         {
             // User Comment
 
-            Panel pnlComment = new Panel() { ID = "postComment" + post.Id, CssClass = "hidden" };        // Add Reply post ID here.
+            pnlComment = new Panel() { ID = "postComment" + post.Id, CssClass = "hidden" };        // Add Reply post ID here.
             Label lblComment = new Label() { Text = "<br/>Post Comment Here:" };
-            pnlComment.Attributes.Add("style", "float: left; margin-top: -2em;");
+            pnlComment.Attributes.Add("style", "float: left; width: 100%");
             pnlComment.Controls.Add(lblComment);
             Panel pnlCommentContent = new Panel();
-            pnlCommentContent.Attributes.Add("style", "background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 97%;");
+            pnlCommentContent.Attributes.Add("style", "background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%; margin-top: 1em; float: left");
 
             TextBox replyComment = new TextBox();
+            replyComment.ID = "txtPost" + post.Id;
             replyComment.CssClass = "myTextAreas";
             replyComment.TextMode = TextBoxMode.MultiLine;
-            replyComment.Width = 790;
+            replyComment.Width = Unit.Percentage(98);
             replyComment.Font.Name = "Arial";
 
+            ImageButton btnPost = new ImageButton() { ID = "btnPost" + post.Id, ImageUrl = "~/img-demo/NewButtonsComment.png", Height = 33, Width = 103 };
+            btnPost.Attributes.Add("style", "float: right; margin-right: 0.5em; margin-top: 0.4em;");
+            btnPost.Attributes.Add("onclick", "return confirm('Upload your Reply?');");
+            btnPost.Click += btnPostCommentReply_Click;
+
             pnlCommentContent.Controls.Add(replyComment);
+            pnlCommentContent.Controls.Add(btnPost);
             pnlComment.Controls.Add(pnlCommentContent);
 
             //Label hr = new Label() { Text = "<hr style=\"border-color: #40e0d0; background-color: #40e0d0\"/>" };
@@ -241,6 +291,37 @@ namespace SPortal
 
             parent.Controls.Add(pnlComment);
             parent.Controls.Add(closing);
+        }
+
+        private void btnPostCommentReply_Click(object sender, ImageClickEventArgs e)
+        {
+            ImageButton temp = (ImageButton)(sender);
+
+            int postID = Convert.ToInt16(temp.ID.Remove(0, 7));
+            int topicID = Convert.ToInt16(Request.QueryString["TopicID"]);
+
+            TextBox post = (TextBox)pnlComment.FindControl("txtPost" + postID);
+
+            if (BLL.Post.CreatePostReply(PostType.CHILD, post.Text, Session["User"].ToString(), postID))
+            {
+                Response.Redirect("Topic.aspx?TopicID=" + topicID);
+            }
+        }
+
+        void btnPost_Click(object sender, ImageClickEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        protected void btnPostReply_OnClick(object sender, ImageClickEventArgs e)
+        {
+            string post = txtPost.Text;
+            int topicID = Convert.ToInt16(Request.QueryString["TopicID"]);
+
+            if (BLL.Post.CreatePost(PostType.PARENT, post, Session["User"].ToString(), topicID))
+            {
+                Response.Redirect("Topic.aspx?TopicID=" + topicID);
+            }
         }
     }
 }

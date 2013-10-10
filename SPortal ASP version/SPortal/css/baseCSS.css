@@ -401,6 +401,12 @@ display:block;
     background-repeat: repeat;
 }
 
+.confirmPost {
+    
+}
+
+/* FORUM */
+
 #ForumLinks {
     color: goldenrod;
 }

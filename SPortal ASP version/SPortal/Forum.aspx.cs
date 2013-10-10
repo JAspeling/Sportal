@@ -18,10 +18,6 @@ namespace SPortal
 {
     public partial class WebForm4 : System.Web.UI.Page
     {
-        //private TextBox txtPost;
-        //private TextBox txtDescription;
-        //private TextBox txtName;
-
         private Panel pnlPostArea;
 
         private string post, description, name;
@@ -162,11 +158,7 @@ namespace SPortal
             btnPost.Attributes.Add("onclick", "return confirm('Upload the post?');");
             btnPost.Click += btnPost_Click;
 
-            ImageButton btnCancel = new ImageButton() { ImageUrl = "~/img-demo/NewButtonsCancel.png", Height = 33, Width = 103 };
-            btnPost.Attributes.Add("style", "margin-left: 1em;");
-
             pnlButtons.Controls.Add(btnPost);
-            pnlButtons.Controls.Add(btnCancel);
 
             pnlPostArea.Controls.Add(pnlButtons);
 

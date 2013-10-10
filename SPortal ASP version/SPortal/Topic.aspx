@@ -2,14 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="server">
     <title>Topic</title>
     <script src="js/jquery.min.js"> </script>
-<%--    <script src="js/autogrow.js"> </script>--%>
+    <%--    <script src="js/autogrow.js"> </script>--%>
     <script src="js/jquery.elastic.source.js"> </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <body >
         
-    <%--onload=" javascript:document.getElementById('div1').scrollTop = document.getElementById('scroll').value; "--%>
-    <%--<div id="div1" style="overflow: auto; height: 100px;" onscroll="javascript:document.getElementById('scroll').value = this.scrollTop">--%>
+        <%--onload=" javascript:document.getElementById('div1').scrollTop = document.getElementById('scroll').value; "--%>
+        <%--<div id="div1" style="overflow: auto; height: 100px;" onscroll="javascript:document.getElementById('scroll').value = this.scrollTop">--%>
         <div class="centerBlock">
             <div style="height: 30px"><img src="images/bottomTopic.png" alt="Not found" width="895" height="35"></div>
             <div class="mainBlack">
@@ -17,6 +17,18 @@
                    
                 </asp:Panel>
                 <br/>
+                
+ 
+
+                <div style="float: left; margin-bottom: 2em; margin-left: 2em; width: 96%;">
+                    <div style="font-family: 'Dekar'; font-size: 25pt;">Post your Reply</div>
+                    <hr/>
+                    
+                    <div style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; float: left; font-size: 10pt; height: auto; margin-top: 1em; padding: 10px; width: 90%;">
+                        <asp:TextBox ID="txtPost" runat="server" CssClass="myTextAreas" TextMode="MultiLine" Width="98%" Font-Names="Arial" Height="170"/>
+                        <asp:ImageButton runat="server" ImageUrl="~/img-demo/NewButtonsComment.png" Height="33" Width="103" ID="btnPostReply" style="float: right; margin-right: 0.5em; margin-top: 0.4em;" CssClass="confirmPost" OnClick="btnPostReply_OnClick"/>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
@@ -27,6 +39,10 @@
             $(this).next().removeClass('hidden');
             //slideToggle('fast', function () {
             // Animation complete.
+        });
+
+        $('.confirmPost').click(function() {
+            return confirm('Upload your Reply?');
         });
     //});
     </script>

@@ -78,8 +78,8 @@
     
     <script> 
         $('.clickme').click(function() {
-            //$(this).next().slideToggle('medium', function() {
-            $(this).next().slideup('medium', function () {
+            $(this).next().slideToggle('medium', function() {
+            //$(this).next().slideup('medium', function () {
                 // Animation complete.
             });
         });
@@ -96,5 +96,5 @@
                 this.form.submit();
         }
     </script>
-
+    
 </asp:Content>

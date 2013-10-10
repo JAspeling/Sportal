@@ -23,3 +23,6 @@ GO
 :r "C:\Database Scripts\Create Procedures\SelectUserType.sql"
 :r "C:\Database Scripts\Create Procedures\UpdatePostVotes.sql"
 :r "C:\Database Scripts\Create Procedures\UpdateUser.sql"
+:r "C:\Database Scripts\Create Procedures\CreateTopic.sql"
+:r "C:\Database Scripts\Create Procedures\CreatePostReply.sql"
+:r "C:\Database Scripts\Create Procedures\SelectPostReplies.sql"
