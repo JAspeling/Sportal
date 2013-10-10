@@ -19,8 +19,12 @@
                 <br/>
                 
  
+                <asp:Panel ID="pnlTopicPost" runat="server" style="float: left; margin-bottom: 2em; margin-left: 2em; width: 96%;">
+                    
+                </asp:Panel>
+                
 
-                <div style="float: left; margin-bottom: 2em; margin-left: 2em; width: 96%;">
+                <%--<asp:Panel runate="server" id="pnlTopicPost" style="float: left; margin-bottom: 2em; margin-left: 2em; width: 96%;">
                     <div style="font-family: 'Dekar'; font-size: 25pt;">Post your Reply</div>
                     <hr/>
                     
@@ -28,7 +32,7 @@
                         <asp:TextBox ID="txtPost" runat="server" CssClass="myTextAreas" TextMode="MultiLine" Width="98%" Font-Names="Arial" Height="170"/>
                         <asp:ImageButton runat="server" ImageUrl="~/img-demo/NewButtonsComment.png" Height="33" Width="103" ID="btnPostReply" style="float: right; margin-right: 0.5em; margin-top: 0.4em;" CssClass="confirmPost" OnClick="btnPostReply_OnClick"/>
                     </div>
-                </div>
+                </asp:Panel>--%>
             </div>
         </div>
     </body>

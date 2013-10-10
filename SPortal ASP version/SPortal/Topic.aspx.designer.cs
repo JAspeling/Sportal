@@ -22,21 +22,12 @@ namespace SPortal {
         protected global::System.Web.UI.WebControls.Panel pnlTopic;
         
         /// <summary>
-        /// txtPost control.
+        /// pnlTopicPost control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPost;
-        
-        /// <summary>
-        /// btnPostReply control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnPostReply;
+        protected global::System.Web.UI.WebControls.Panel pnlTopicPost;
     }
 }
