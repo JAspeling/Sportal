@@ -11,6 +11,25 @@
         <%--onload=" javascript:document.getElementById('div1').scrollTop = document.getElementById('scroll').value; "--%>
         <%--<div id="div1" style="overflow: auto; height: 100px;" onscroll="javascript:document.getElementById('scroll').value = this.scrollTop">--%>
         <div class="centerBlock">
+            <div class="Navblock">
+                    <ul class="Navblock1">
+                        <li><a href="">View</a></li>
+                        <li><a href="">Register</a></li>
+                        <li><a href="">Help</a></li>
+                        <li><a href="">View</a></li>
+                        <li><a href="">Register</a></li>
+                        <li><a href="">Help</a></li>
+                        <li><a href="">View</a></li>
+                        <li><a href="">Register</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                    <div class="Navblock2">
+                        <%-- ReSharper disable once Asp.Image --%>
+                        <a href="http://www.belgiumcampus.co.za"><img src="images/bc.jpg" alt="Not found" width="150" height="160"></a>
+                        <a href="#"><img src="images/Ad1.jpg" alt="Not found" width="200" height="160"></a>
+                    </div>
+                </div>
+
             <div style="height: 30px"><img src="images/bottomTopic.png" alt="Not found" width="895" height="35"></div>
             <div class="mainBlack">
                 <asp:Panel runat="server" id="pnlTopic" style="padding-left: 28px; padding-top: 30px;">

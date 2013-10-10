@@ -30,22 +30,22 @@
                 </div>
             </div>
                                       
-            <div style="background-color: transparent; background-image: url('images/infoBack.png'); height: 150%; margin-top: -5%; padding: 5px; width: 16%;">
+            <div style="background-color: transparent; background-image: url('../images/infoBackForum2.png'); padding: 5px; width: 16%;border-radius: 0.5em; border-style: solid; border-width: 1px; border-color: rgb(46, 46, 46); float: left; margin-top: 3.8em;">
+                <asp:Label ID="lblUsername" runat="server" style="color: #59abb7;float: right;font-size: 12pt;font-weight: bold;margin-bottom: 0.5em;">@This is a very long username intended for testing purposes</asp:Label>
                 <div style="background-color: transparent; height: 105px; padding: 5px; width: 95%;">
                     <div>
                         <div style="background-color: transparent; height: 64%; padding: 0%; width: 62%;">
                             <div>
                                 <asp:Image ID="imgProfilePicture" runat="server" ImageUrl="images/proPic.jpg" Width="100" Height="95"/>
                                 <div style="margin-top: -82%">
-                                    <asp:Image ID="imgProfileFrame" ImageUrl="images/ProPic_Container.png" Width="102" Height="97" runat="server"/>
+                                    <asp:Image ID="imgProfileFrame" ImageUrl="images/ProPic_Container.png" Width="102" Height="97" runat="server" style="border-radius: 0.5em;"/>
                                 </div>
                             </div>
                         </div>
-                        <asp:Label ID="lblUsername" runat="server" CssClass="profileName">@RaZor192</asp:Label>
                     </div>
                                               
                 </div>
-                <div style="background-color: transparent; color: #59abb7; display: inline-block; font-size: 8pt; list-style: none; list-style-type: none; padding: 5px; text-decoration: none; width: 95%;">
+                <div style="background-image: url('images/TopicBack4.png'); color: #59abb7; display: inline-block; font-size: 8pt; list-style: none; list-style-type: none; padding: 5px; text-decoration: none; width: 95%; border-radius: 0.5em; border-color: rgb(95, 95, 95); border-style: solid; border-width: 1px;">
                     <span style="color: #ededed; font-size: 12pt;"><u>Basic Info_______________</u></span>
                     <div>
                         <br/>
@@ -121,7 +121,7 @@
                 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="#"><img src="img-demo/button.png" width="146" height="22" alt="button"/></a>--%>
                 
-                    <table style="border-color: transparent; border-width: 0; margin-left: 20px;">
+                    <%--<table style="border-color: transparent; border-width: 0; margin-left: 20px;">
                         <tr>
                             <td>
                                 <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="img-demo/button.png" Width="146" Height="22" AlternateText="Button"/>
@@ -137,17 +137,17 @@
                                 <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="img-demo/button.png" Width="146" Height="22" AlternateText="Button"/>
                             </td>
                         </tr>
-                    </table>
+                    </table>--%>
                 </div>
             </div>
                                     
-            <asp:Panel ID="pnlTimelineBody" style="background-image: url('images/proBack.jpg'); float: right; margin-top: -36%; padding: 13px; width: 50%;" runat="server">
+            <asp:Panel ID="pnlTimelineBody" style="background-image: url('../images/infoBackForum2.png'); padding: 13px; width: 50%; float: left;" runat="server">
                 <div style="background-image: url('images/pro_lineGraphic.png'); height: 44px; margin-left: -2%; margin-top: -2%; width: 104%;"></div>
-                <asp:Panel runat="server" ID="pnlTimelineContainer" style="background-image: url('images/infoBack.png'); width: 100%;">
+                <asp:Panel runat="server" ID="pnlTimelineContainer" style="background-image: url('images/TopicBack4.png'); width: 100%; margin-top: 1em; padding-bottom: 1em;background-image: url('images/TopicBack4.png'); width: 100%; margin-top: 1em; padding-bottom: 1em; border-radius: 0.5em; border-color: rgb(95, 95, 95); border-style: solid; border-width: 1px;float: left">
                     <br/>
                     <asp:TextBox style="float: right; margin-right: 20px;" type="text" ID="txtSearchTimeline" value=""  runat="server" Width="400px"/>
                     <asp:Label style="color: white; float: right; margin-right: 10px;" ID="Label7" runat="server" >&nbsp;&star;&nbsp;SEARCH TIMELINE</asp:Label>&nbsp;
-                    <br/><br/><br/>
+                    <br/><br/><hr/><br/>
 
                     <%--<div style="margin-bottom: 15px;">
                         <div style=" color: white ;margin-left: 14.5% ;background-color: transparent; height: auto; width: 80%">

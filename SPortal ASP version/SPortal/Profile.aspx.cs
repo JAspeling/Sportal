@@ -40,7 +40,9 @@ namespace SPortal
             Panel postHeadingContainer = new Panel();
             Label[] postHeadings = new Label[3];
             Table table1 = new Table();
+            table1.Attributes.Add("style", "width: 100%;margin-left: 2em;margin-top: 0.5em;");
             Table table2 = new Table();
+            table2.Attributes.Add("style", "margin-top: -1em;margin-left: 2em;margin-bottom: 0.5em;");
             TableRow tRow = new TableRow();
             TableCell tCell = new TableCell();
             postHeadings[0] = new Label();
@@ -64,7 +66,7 @@ namespace SPortal
 
             #region Filling Controls
 
-            postContainer.Attributes["style"] = "margin-bottom: 15px;";
+            postContainer.Attributes.Add("style","margin-bottom: 1em; margin-left: 1em;padding-left: 0em;padding-right: 1em;border-color: dimgrey;border-width: 1px;border-style: solid;background-image: url('../images/Pixel-575757-50.png');background-repeat: repeat;border-radius: 0.5em;width: 93%;float: left");
 
             postHeadingContainer.Attributes.Add("class", "postHeading");
             postHeadings[0].Attributes.Add("style", "float: left");
@@ -91,16 +93,16 @@ namespace SPortal
 
             postContentContainer.Attributes.Add("class", "postContentContainer");
             if (post.Text.Length <= 350)
-                postContentContainer.Attributes.Add("style", "height: 100px;");
+                postContentContainer.Attributes.Add("style", "height: auto;");
             postContent.Text = post.Text;
             postContent.Attributes.Add("class", "postContent");
 
             postButtonsContainer.Attributes.Add("class", "postButtonsContainer");
             foreach (var button in buttons)
             {
-                button.ImageUrl = "img-demo/button.png";
-                button.Width = 168;
-                button.Height = 22;
+                button.ImageUrl = "img-demo/NewButtonsComment.png";
+                button.Width = 103;
+                button.Height = 33;
                 button.Attributes.Add("class", "postButton");
             }
 

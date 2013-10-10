@@ -305,7 +305,7 @@ namespace SPortal
                 var pnlReplies = new Panel();
                 pnlReplies.CssClass = "UserInfo";
                 pnlReplies.Attributes.Add("style",
-                    "float: left; font-family: Arial; margin-left: 4em; margin-top: 1em; margin-bottom: 1em; padding-bottom: 1em; padding-top: 1em; width: 79%;");
+                    "float: left; font-family: Arial; margin-left: 4em; margin-bottom: 1em; padding-bottom: 1em; padding-top: 1em; width: 79%;");
 
                 foreach (Post reply in replies)
                 {
