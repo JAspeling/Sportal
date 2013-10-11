@@ -27,4 +27,10 @@ namespace BLL
         PARENT = 1,
         CHILD
     }
+
+    public enum Gender
+    {
+        MALE,
+        FEMALE
+    }
 }

@@ -68,19 +68,26 @@ namespace SPortal
 
             postContainer.Attributes.Add("style","margin-bottom: 1em; margin-left: 1em;padding-left: 0em;padding-right: 1em;border-color: dimgrey;border-width: 1px;border-style: solid;background-image: url('../images/Pixel-575757-50.png');background-repeat: repeat;border-radius: 0.5em;width: 93%;float: left");
 
+            int years = 0;
+            int months = 0;
+            int weeks = 0;
+            int days = 0;
+            int hours = 0;
+            int minutes = 0;
+
             postHeadingContainer.Attributes.Add("class", "postHeading");
             postHeadings[0].Attributes.Add("style", "float: left");
             postHeadings[0].Text = string.Format("POST ID: {0}", post.Id);
-            postHeadings[1].Attributes.Add("style", "float: right");
-            postHeadings[1].Text = "13 Years ago";
+            postHeadings[1].Attributes.Add("style", "float: right;");
+            postHeadings[1].Text = (DateTime.Now.ToString());
             postHeadings[2].Text = string.Format("<br/>Topic: {0}", Post.GetPostTopicName(post.Id));
 
-            tCell.Attributes.Add("style", "width: 80%;");
+            tCell.Attributes.Add("style", "width: 80%; color: rgb(158, 158, 158)");
             tCell.Text = postHeadings[0].Text;
             tRow.Cells.Add(tCell);
             tCell = new TableCell();
             tCell.Text = postHeadings[1].Text;
-            tCell.Attributes.Add("style", "float: right; width: auto;");
+            tCell.Attributes.Add("style", "float: right; width: auto; color: rgb(158, 158, 158)");
             tRow.Cells.Add(tCell);
             table1.Rows.Add(tRow);
 

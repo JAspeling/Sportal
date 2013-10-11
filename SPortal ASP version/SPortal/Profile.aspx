@@ -141,7 +141,7 @@
                 </div>
             </div>
                                     
-            <asp:Panel ID="pnlTimelineBody" style="background-image: url('../images/infoBackForum2.png'); padding: 13px; width: 50%; float: left;" runat="server">
+            <asp:Panel ID="pnlTimelineBody" style="background-image: url('../images/infoBackForum2.png'); padding: 13px; width: 49%; float: left; margin-left: 1em;" runat="server">
                 <div style="background-image: url('images/pro_lineGraphic.png'); height: 44px; margin-left: -2%; margin-top: -2%; width: 104%;"></div>
                 <asp:Panel runat="server" ID="pnlTimelineContainer" style="background-image: url('images/TopicBack4.png'); width: 100%; margin-top: 1em; padding-bottom: 1em;background-image: url('images/TopicBack4.png'); width: 100%; margin-top: 1em; padding-bottom: 1em; border-radius: 0.5em; border-color: rgb(95, 95, 95); border-style: solid; border-width: 1px;float: left">
                     <br/>

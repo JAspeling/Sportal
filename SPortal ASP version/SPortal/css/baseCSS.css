@@ -300,7 +300,7 @@ ul#menu, ul#menu ul.sub-menu {
     color: white;
     background-color: transparent;
     height: auto;
-    width: 80%;
+    width: 100%;
 }
 
 .postContentContainer {
