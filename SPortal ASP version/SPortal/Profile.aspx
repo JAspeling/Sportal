@@ -30,7 +30,7 @@
                 </div>
             </div>
                                       
-            <div style="background-color: transparent; background-image: url('../images/infoBackForum2.png'); padding: 5px; width: 16%;border-radius: 0.5em; border-style: solid; border-width: 1px; border-color: rgb(46, 46, 46); float: left; margin-top: 3.8em;">
+            <div style="background-color: transparent; background-image: url('../images/infoBackForum2.png'); padding: 5px; width: 16%;border-radius: 0.5em; border-style: solid; border-width: 1px; border-color: rgb(46, 46, 46); float: left; margin-top: 0%;">
                 <asp:Label ID="lblUsername" runat="server" style="color: #59abb7;float: right;font-size: 12pt;font-weight: bold;margin-bottom: 0.5em;">@This is a very long username intended for testing purposes</asp:Label>
                 <div style="background-color: transparent; height: 105px; padding: 5px; width: 95%;">
                     <div>
@@ -102,10 +102,10 @@
                     </div>
                     <div>
                         <br/>
-                        <table style="border-color: transparent; border-width: 0; margin-left: 20px;">
+                        <table style="border-color: transparent; border-width: 0; margin-left: 38px;">
                             <tr>
                                 <td>
-                                    <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="img-demo/button.png" Width="146" Height="22" AlternateText="Button"/>
+                                    <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="img-demo/NewButtonsEdit.png" Width="116" Height="33" AlternateText="Button"/>
                                 </td>
                             </tr>
                         </table>
@@ -141,11 +141,11 @@
                 </div>
             </div>
                                     
-            <asp:Panel ID="pnlTimelineBody" style="background-image: url('../images/infoBackForum2.png'); padding: 13px; width: 49%; float: left; margin-left: 1em;" runat="server">
-                <div style="background-image: url('images/pro_lineGraphic.png'); height: 44px; margin-left: -2%; margin-top: -2%; width: 104%;"></div>
+            <asp:Panel ID="pnlTimelineBody" style="background-image: url('../images/infoBackForum2.png'); padding: 13px; width: 49%; float: left; margin-left: 1em; border-radius: 0.5em" runat="server">
+                <div style="background-image: url('images/pro_lineGraphic.png'); height: 44px; margin-left: -2%; margin-top: -2%; width: 104%;border-radius: 0.5em"></div>
                 <asp:Panel runat="server" ID="pnlTimelineContainer" style="background-image: url('images/TopicBack4.png'); width: 100%; margin-top: 1em; padding-bottom: 1em;background-image: url('images/TopicBack4.png'); width: 100%; margin-top: 1em; padding-bottom: 1em; border-radius: 0.5em; border-color: rgb(95, 95, 95); border-style: solid; border-width: 1px;float: left">
                     <br/>
-                    <asp:TextBox style="float: right; margin-right: 20px;" type="text" ID="txtSearchTimeline" value=""  runat="server" Width="400px"/>
+                    <asp:TextBox style="float: right; margin-right: 20px;border-radius: 0.5em;" type="text" ID="txtSearchTimeline" value=""  runat="server" Width="400px"/>
                     <asp:Label style="color: white; float: right; margin-right: 10px;" ID="Label7" runat="server" >&nbsp;&star;&nbsp;SEARCH TIMELINE</asp:Label>&nbsp;
                     <br/><br/><hr/><br/>
 

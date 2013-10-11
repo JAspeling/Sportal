@@ -22,7 +22,7 @@
         </div>
         <div class="infoblock1About">
             <div>
-                <div style="background-color: white; width: 855px;">
+                <div style="background-color: white; width: 855px; border-radius: 1em">
 
                     <div style="width: 855px;">
                         <asp:Image runat="server" ImageUrl="img-demo/RegisterBackHeader.jpg"/>
@@ -129,7 +129,7 @@
                             
                     <div style="height: auto; margin-top: 30px; width: 855px;">
                         <asp:Image runat="server" ImageUrl="img-demo/RegisterBackFooter.jpg"/>
-                        <div style="margin-top: -8em;">
+                        <div style="margin-top: -6em;">
                                         
                             <br/>
                             <table>

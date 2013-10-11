@@ -31,7 +31,7 @@
                                 <label style="font-size: 17pt; color: white;">Username</label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtUsername" runat="server" Value=""  style="background-color: #c0c0c0; border: none; margin-top: 15px;" size="50" autocomplete="on" autofocus="" onclick="tryPlaceholder(this,'Enter your Username')" onblur="tryPlaceholder(this,'Enter your Username')" ></asp:TextBox><br/><br/>
+                                <asp:TextBox ID="txtUsername" runat="server" Value=""  style="background-color: #c0c0c0; border: double #ccccff; margin-top: 15px; border-radius: 0.5em" size="50" autocomplete="on" autofocus="" onclick="tryPlaceholder(this,'Enter your Username')" onblur="tryPlaceholder(this,'Enter your Username')" ></asp:TextBox><br/><br/>
                             </td>
                         </tr>
                         <tr>
@@ -39,7 +39,7 @@
                                 <label style="font-size: 17pt; color: white;">Password</label>
                             </td>
                             <td>
-                                <asp:TextBox TextMode="Password" ID="txtPassword" runat="server" value="" style="background-color: #c0c0c0; border: none; margin-top: 10px;" size="50" autocomplete="on" autofocus=""></asp:TextBox><br/><br/>
+                                <asp:TextBox TextMode="Password" ID="txtPassword" runat="server" value="" style="background-color: #c0c0c0; border: double #ccccff; margin-top: 10px;border-radius: 0.5em" size="50" autocomplete="on" autofocus=""></asp:TextBox><br/><br/>
                             </td>
                         </tr>
                     </table>
@@ -68,13 +68,13 @@
                         </tr>
                     </table>
                  
-                    <table style="margin-left:16%;">
+                    <table style="margin-left:36%;">
                         <tr>
-                            <td style="width: 250px;">
-                                <asp:ImageButton ID="btnOK" runat="server" ImageUrl="img-demo/Button_Register.png" OnClick="btnOK_Click"/>
+                            <td style="width: 150px;">
+                                <asp:ImageButton ID="btnOK" runat="server" ImageUrl="img-demo/NewButtonsOK.png" OnClick="btnOK_Click"/>
                             </td>
                             <td>
-                                <asp:ImageButton ID="btnCancel" runat="server" ImageUrl="img-demo/Button_Cancel.png"/>
+                                <asp:ImageButton ID="btnCancel" runat="server" ImageUrl="img-demo/NewButtonsCancel.png"/>
                             </td>
                         </tr>
                     </table>
