@@ -15,7 +15,7 @@ namespace BLL
         ///<constructor>
         ///Constructor
         ///</constructor>
-        public User(string username, string email, string name, string surname, DateTime dob, string picture, string institution, int rating, DateTime joinDate, UserRoles userRoles)
+        public User(string username, string email, string name, string surname, DateTime dob, string picture, string institution, int rating, DateTime joinDate, UserRoles userRoles, UserType userType)
         {
             Username = username;
             Email = email;
@@ -27,6 +27,32 @@ namespace BLL
             Rating = rating;
             this.joinDate = joinDate;
             UserRoles = userRoles;
+            this.UserType = userType;
+        }
+
+        public User(string username, string email, string name, string surname, DateTime dob, string picture, string institution, int rating, DateTime joinDate, UserRoles userRoles, int userType)
+        {
+            Username = username;
+            Email = email;
+            Name = name;
+            Surname = surname;
+            DOB = dob;
+            Picture = picture;
+            Institution = institution;
+            Rating = rating;
+            this.joinDate = joinDate;
+            UserRoles = userRoles;
+            switch (userType)
+            {
+                case 1: this.userType = UserType.ADMIN;
+                    break;
+                case 2: this.userType = UserType.USER;
+                    break;
+                case 3: this.userType = UserType.STAFF;
+                    break;
+                case 4: this.userType = UserType.MODERATOR;
+                    break;
+            }
         }
 
         #region Fields
@@ -40,6 +66,7 @@ namespace BLL
         private int rating;
         private DateTime joinDate;
         private UserRoles userRoles;
+        private UserType userType;
         private Gender gender;
 
         public Gender Gender
@@ -114,6 +141,13 @@ namespace BLL
             get { return userRoles; }
             set { userRoles = value; }
         }
+
+        public UserType UserType
+        {
+            get { return userType; }
+            set { userType = value; }
+        }
+
         #endregion
 
         #region Methods
@@ -185,7 +219,7 @@ namespace BLL
             if (dt.Rows.Count > 0)
                 return new User(dt.Rows[0]["Username"].ToString(),dt.Rows[0]["Email"].ToString(),dt.Rows[0]["Name"].ToString(),dt.Rows[0]["Surname"].ToString(),
                             Convert.ToDateTime(dt.Rows[0]["DOB"]),dt.Rows[0]["Picture"].ToString(),dt.Rows[0]["Institution"].ToString(),
-                            Convert.ToInt16(dt.Rows[0]["Rating"]),Convert.ToDateTime(dt.Rows[0]["JoinDate"]), userRoles);
+                            Convert.ToInt16(dt.Rows[0]["Rating"]), Convert.ToDateTime(dt.Rows[0]["JoinDate"]), userRoles, Convert.ToInt16(dt.Rows[0]["UserType"]));
             
             return null;
         }
@@ -252,6 +286,16 @@ namespace BLL
             DataAccess da = new DataAccess();
             SqlParameter[] parameters = { new SqlParameter("@Username", username) };
             DataTable dt = da.Select("SelectUserPostsAmount", parameters);
+            if (dt.Rows.Count > 0)
+                return Convert.ToInt16(dt.Rows[0]["Amount"].ToString());
+            return 0;
+        }
+
+        public int GetTopicsAmount(string username)
+        {
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@Username", username) };
+            DataTable dt = da.Select("SelectUserTopicsAmount", parameters);
             if (dt.Rows.Count > 0)
                 return Convert.ToInt16(dt.Rows[0]["Amount"].ToString());
             return 0;

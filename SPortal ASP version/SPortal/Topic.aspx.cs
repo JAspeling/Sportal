@@ -27,14 +27,14 @@ namespace SPortal
 
                 Topic topic = Topic.GetTopicByID(id);
                 List<Post> replies = Post.GetPostsByTopicID(topic.Id);
-                User user; // = BLL.User.GetUserByUsername("Admin");
-
-                LoadHeader(pnlTopic, topic);
+                User user = BLL.User.GetUserByUsername(topic.Username);
+                
+                LoadHeader(pnlTopic, user, topic, null);
 
                 foreach (Post reply in replies)
                 {
                     user = BLL.User.GetUserByUsername(reply.Username);
-                    LoadUserInfo(pnlTopic, user, topic, reply);
+                    LoadNewUserInfo(pnlTopic, user, topic);
                     LoadUserPost(pnlTopic, reply);
                     AddUserCommentSection(pnlTopic, reply);
                 }
@@ -95,7 +95,7 @@ namespace SPortal
             parent.Controls.Add(pnlPost);
         }
 
-        public void LoadHeader(Panel parent, Topic topic)
+        public void LoadHeader(Panel parent,User user, Topic topic, Post post)
         {
             var pnlTopicHeader = new Panel();
 
@@ -123,18 +123,116 @@ namespace SPortal
 
             pnlTopicHeader.Controls.Add(new Literal {Text = string.Format("<hr style=\"width: 100%\"/>")});
 
-            var pnlTopicBody = new Panel();
+
+            // User Panel
+
+            LoadNewUserInfo(pnlTopicHeader, user, topic);
+
+            Panel pnlTopicBody = new Panel();
             pnlTopicBody.Attributes.Add("style",
-                "float: left; background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; margin-top: 10px; padding: 10px; width: 90%;");
-            var lblTopicBody = new Label {Text = topic.Text};
-
+                "float: left;background-image: url('images/TopicBack4.png');background-repeat: repeat-y;border: solid black;border-radius: 1em;border-width: 2px;font-size: 12pt; font-family: Arial; height: auto;margin-top: 10px;margin-left: 1em;padding: 10px;width: 76%;margin-bottom: 2em;");
+            var lblTopicBody = new Label { Text = topic.Text };
             pnlTopicBody.Controls.Add(lblTopicBody);
-            pnlTopicHeader.Controls.Add(pnlTopicBody);
 
-            pnlTopicHeader.CssClass = "TopicHeader";
-            pnlTopicHeader.Controls.Add(new Literal {Text = "<br/><br/>Replies<hr/>"});
+            Panel pnlReplies = new Panel() { CssClass = "TopicHeader" };
+            pnlReplies.Attributes.Add("style", "float: left;width: 100%;");
+            Label lblReply = new Label() { Text = "Replies<hr>" };
+            pnlReplies.Controls.Add(lblReply);
+
+            pnlTopicHeader.Controls.Add(pnlTopicBody);
+            pnlTopicHeader.Controls.Add(pnlReplies);
 
             parent.Controls.Add(pnlTopicHeader);
+        }
+
+        public void LoadNewUserInfo(Panel parent, User user, Topic topic)
+        {
+            Panel pnlTopic = new Panel();
+            pnlTopic.Attributes.Add("style", "font-size: 12pt;font-family: Arial; margin-bottom:1em;");
+
+            Panel pnlUserInfo = new Panel();
+            pnlUserInfo.Attributes.Add("style", "float: left;border-color: dimgrey;border-width: 1px;border-style: solid;background-image: url('../images/Pixel-575757-50.png');background-repeat: repeat;margin-bottom: 1em;padding-bottom: 1em;margin-top: 1em; width: 17%;border-radius: 0.5em;");
+            //pnlUserInfo
+
+            Label lblUserName = new Label() { Text = user.Username };
+            lblUserName.Attributes.Add("style", "margin-top: 0.5em; color: #18adad;");
+            //lblUserName.ID = "lblOPusername" + topic.Id;
+
+            Panel pnlUserPicture = new Panel();
+            pnlUserPicture.Attributes.Add("style", "float: left;padding: 20px;height: 110px;width: 110px;");
+            //pnlUserPicture.ID = "imgOPPicture" + topic.Id;
+            Image imgProfile = new Image() { ImageUrl = "~/Images/ProfilePictures/default.png", Height = 110, Width = 110 };
+            pnlUserPicture.Controls.Add(imgProfile);
+
+            Table tblInfo = new Table();
+            tblInfo.Attributes.Add("style", "width:100%");
+            TableRow[] rows = new TableRow[7];
+            TableCell[] cells = new TableCell[14];
+
+            for (int a = 0; a < 7; a++)
+                rows[a] = new TableRow();
+
+            for (int a = 0; a < 14; a++)
+            {
+                cells[a] = new TableCell();
+                if (a%2 != 0)
+                {
+                    cells[a].Attributes.Add("style", "color: #18adad;width:50%");
+                }
+            }
+
+
+            rows[0].Cells.Add(cells[0]);
+            rows[0].Cells[0].Controls.Add(new Label() { Text = "Type" });
+            rows[0].Cells.Add(cells[1]);
+            rows[0].Cells[1].Controls.Add(new Label() { Text = user.UserType.ToString() });
+
+            rows[1].Cells.Add(cells[2]);
+            rows[1].Cells[0].Controls.Add(new Label() { Text = "Rating" });
+            rows[1].Cells.Add(cells[3]);
+            rows[1].Cells[1].Controls.Add(new Label() { Text = user.Rating.ToString() });
+
+            rows[2].Cells.Add(cells[4]);
+            rows[2].Cells[0].Controls.Add(new Label() { Text = "Topics" });
+            rows[2].Cells.Add(cells[5]);
+            rows[2].Cells[1].Controls.Add(new Label() { Text = user.GetTopicsAmount(user.Username).ToString() });
+
+            rows[3].Cells.Add(cells[6]);
+            rows[3].Cells[0].Controls.Add(new Label() { Text = "Replies" });
+            rows[3].Cells.Add(cells[7]);
+            rows[3].Cells[1].Controls.Add(new Label() { Text = user.GetPostsAmount(user.Username).ToString() });
+
+            rows[4].Cells.Add(cells[8]);
+            rows[4].Cells[0].Controls.Add(new Label() { Text = "Institution" });
+            rows[4].Cells.Add(cells[9]);
+            rows[4].Cells[1].Controls.Add(new Label() { Text = user.Institution});
+
+            rows[5].Cells.Add(cells[10]);
+            rows[5].Cells[0].Controls.Add(new Label() { Text = "Groups" });
+            rows[5].Cells.Add(cells[11]);
+            rows[5].Cells[1].Controls.Add(new Label() { Text = "(x)" });
+
+            rows[6].Cells.Add(cells[12]);
+            rows[6].Cells[0].Controls.Add(new Label() { Text = "Badges" });
+            rows[6].Cells.Add(cells[13]);
+            rows[6].Cells[1].Controls.Add(new Label() { Text = "<img/><img/><img/>" });
+
+            for (int a = 0; a < 7; a++)
+                tblInfo.Rows.Add(rows[a]);
+
+            Literal centerOpen = new Literal() { Text = "<center>" };
+            Literal centerClose = new Literal() { Text = "</center>" };
+
+            pnlUserInfo.Controls.Add(centerOpen);
+            // Add user info controls here
+            pnlUserInfo.Controls.Add(lblUserName);
+            pnlUserInfo.Controls.Add(pnlUserPicture);
+            pnlUserInfo.Controls.Add(tblInfo);
+            pnlUserInfo.Controls.Add(centerClose);
+
+            pnlTopic.Controls.Add(pnlUserInfo);
+
+            parent.Controls.Add(pnlTopic);
         }
 
         public void LoadUserInfo(Panel parent, User user, Topic topic, Post post)
@@ -288,12 +386,37 @@ namespace SPortal
 
             var pnlPost = new Panel();
             pnlPost.Attributes.Add("style",
-                "float: left; background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; margin-top: 10px; padding: 10px; width: 90%; margin-bottom: 2em");
+                "float: left; background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 12pt; font-family: Arial; height: auto; margin-top: 10px; padding: 10px; width: 76%; margin-bottom: 2em; margin-left: 1em; margin-right: 1em;");
             var lblPost = new Label {Text = post.Text};
-
             pnlPost.Controls.Add(lblPost);
 
+            Panel pnlButtons = new Panel();
+            pnlButtons.Attributes.Add("style", "float: right; margin-right: 2em;");
+
+            var btnComment = new Image
+            {
+                ImageUrl = "img-demo/NewButtonsComment.png",
+                Width = 103,
+                Height = 33,
+            };
+            btnComment.Attributes.Add("onclick", string.Format("ToggleVisibility(\"cphMain_postComment{0}\")", post.Id));
+            btnComment.Attributes.Add("style", "cursor: pointer;");
+            var btnProfile = new ImageButton { ImageUrl = "img-demo/NewButtonsProfile.png", Width = 103, Height = 33 };
+            var btnShare = new ImageButton { ImageUrl = "img-demo/NewButtonsShare.png", Width = 103, Height = 33 };
+            var btnReport = new ImageButton { ImageUrl = "img-demo/NewButtonsReport.png", Width = 103, Height = 33 };
+
+            pnlButtons.Controls.Add(btnComment);
+            pnlButtons.Controls.Add(btnProfile);
+            pnlButtons.Controls.Add(btnShare);
+            pnlButtons.Controls.Add(btnReport);
+
+            Panel hr = new Panel();
+            hr.Attributes.Add("style", "width: 100%; float: left;");
+            hr.Controls.Add(new Label(){Text= "<hr style=\"border-color: dimgrey;\">"});
+
             parent.Controls.Add(pnlPost);
+            parent.Controls.Add(pnlButtons);
+            parent.Controls.Add(hr);
 
             AddUserRepliesSection(pnlTopic, Post.GetPostsReplies(post.Id));
         }

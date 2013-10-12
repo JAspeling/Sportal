@@ -14,7 +14,7 @@ namespace BLL
         ///<constructor>
         ///Constructor
         ///</constructor>
-        public Topic(int id, string name, string description, string text, DateTime date, int upvotes, int downvotes, string topicType)
+        public Topic(int id, string name, string description, string text, DateTime date, int upvotes, int downvotes, string topicType, string username)
         {
             this.id = id;
             Name = name;
@@ -24,6 +24,7 @@ namespace BLL
             Upvotes = upvotes;
             Downvotes = downvotes;
             TopicType = topicType;
+            Username = username;
         }
 
         #region Fields
@@ -36,6 +37,7 @@ namespace BLL
         private int downvotes;
         private int upvotes;
         private string topicType;
+        private string username;
         #endregion
 
         #region Properties
@@ -85,6 +87,12 @@ namespace BLL
             set { topicType = value; }
         }
 
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
+
         #endregion
 
         #region Methods
@@ -112,7 +120,8 @@ namespace BLL
                     Convert.ToDateTime(dt.Rows[0]["CreationDate"].ToString()),
                     Convert.ToInt16(dt.Rows[0]["Upvotes"].ToString()),
                     Convert.ToInt16(dt.Rows[0]["Downvotes"].ToString()),
-                    dt.Rows[0]["TopicType"].ToString());
+                    dt.Rows[0]["TopicType"].ToString(),
+                    dt.Rows[0]["Username"].ToString());
             return null;
         }
 
@@ -127,7 +136,8 @@ namespace BLL
                     Convert.ToDateTime(dt.Rows[0]["CreationDate"].ToString()),
                     Convert.ToInt16(dt.Rows[0]["Upvotes"].ToString()),
                     Convert.ToInt16(dt.Rows[0]["Downvotes"].ToString()),
-                    dt.Rows[0]["TopicType"].ToString());
+                    dt.Rows[0]["TopicType"].ToString(),
+                    dt.Rows[0]["Username"].ToString());
             return null;
         }
 

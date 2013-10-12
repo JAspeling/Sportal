@@ -57,7 +57,7 @@
     </body>
     <script>
         $('.showComment').click(function() {
-            $(this).next().slideToggle('slow', function() {
+            $(this).next().slideToggle('slow', function () {
             });
             $(this).next().removeClass('hidden');
             //slideToggle('fast', function () {
