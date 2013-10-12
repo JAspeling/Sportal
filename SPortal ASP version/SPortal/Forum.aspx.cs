@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using AjaxControlToolkit;
 using BLL;
+using CKEditor.NET;
 using HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign;
 using Label = System.Web.UI.WebControls.Label;
 using Panel = System.Web.UI.WebControls.Panel;
@@ -136,26 +137,36 @@ namespace SPortal
             //txtPost.Width = 790;
             //txtPost.Font.Name = "Arial";
 
-            TextBox txtPost = new TextBox();
-            txtPost.ID = "txtPost" + type;
-            txtPost.Font.Name = "Arial";
-            txtPost.TextMode = TextBoxMode.MultiLine;
-            txtPost.CssClass = "myTextAreas";
-            txtPost.Height = 91;
-            txtPost.Width = 646;
+            CKEditorControl ckPostControl = new CKEditorControl();
+            ckPostControl.ID = "ckPost" + type;
+            ckPostControl.Toolbar = "Basic";
+            //"Source|-|Save|NewPage|Preview|-|Templates\r\nCut|Copy|Paste|PasteText|PasteFromWord|-|Print|SpellChecker|Scayt\r\nUndo|Redo|-|Find|Replace|-|SelectAll|RemoveFormat\r\nForm|Checkbox|Radio|TextField|Textarea|Select|Button|ImageButton|HiddenField\r\n/\r\nBold|Italic|Underline|Strike|-|Subscript|Superscript\r\nNumberedList|BulletedList|-|Outdent|Indent|Blockquote|CreateDiv\r\nJustifyLeft|JustifyCenter|JustifyRight|JustifyBlock\r\nBidiLtr|BidiRtl\r\nLink|Unlink|Anchor\r\nImage|Flash|Table|HorizontalRule|Smiley|SpecialChar|PageBreak|Iframe\r\n/\r\nStyles|Format|Font|FontSize\r\nTextColor|BGColor\r\nMaximize|ShowBlocks|-|About"
+            ckPostControl.ToolbarBasic = "Source|-|Save|NewPage|Preview|-|Templates\r\nCut|Copy|Paste|PasteText|PasteFromWord|-|Print|SpellChecker|Scayt\r\nUndo|Redo|-|Find|Replace|-|SelectAll|RemoveFormat\r\n/\r\nBold|Italic|Underline|Strike|-|Subscript|Superscript\r\nNumberedList|BulletedList|-|Outdent|Indent|Blockquote\r\nJustifyLeft|JustifyCenter|JustifyRight|JustifyBlock\r\nBidiLtr|BidiRtl\r\nLink|Unlink|Anchor\r\nImage|Table|HorizontalRule|Smiley|SpecialChar|PageBreak\r\n/\r\nStyles|Format|Font|FontSize\r\nTextColor|BGColor\r\nMaximize|";
+            ckPostControl.BasePath = "/CkEditor/CkEditor/ckeditor";
+            ckPostControl.Width = 646;
+            ckPostControl.Height = 91;
+            
+            //TextBox txtPost = new TextBox();
+            //txtPost.ID = "txtPost" + type;
+            //txtPost.Font.Name = "Arial";
+            //txtPost.TextMode = TextBoxMode.MultiLine;
+            //txtPost.CssClass = "myTextAreas";
+            //txtPost.Height = 91;
+            //txtPost.Width = 646;
 
             pnlPostArea.Controls.Add(lblName);
             pnlPostArea.Controls.Add(txtName);
             pnlPostArea.Controls.Add(lblDescription);
             pnlPostArea.Controls.Add(txtDescription);
             pnlPostArea.Controls.Add(lblBody);
-            pnlPostArea.Controls.Add(txtPost);
+            pnlPostArea.Controls.Add(ckPostControl);
 
             Panel pnlButtons = new Panel();
             pnlButtons.Attributes.Add("style", "float: right; margin-top: 1em; margin-right: 0.5em;");
             ImageButton btnPost = new ImageButton() { ID="btnPost" + type, ImageUrl = "~/img-demo/NewButtonsComment.png", Height = 33, Width = 103};
             btnPost.Attributes.Add("style", "margin-left: 1em;");
-            btnPost.Attributes.Add("onclick", "return confirm('Upload the post?');");
+            //btnPost.Attributes.Add("onclick", "return confirm('Upload the post?');");
+            btnPost.Attributes.Add("onclick", string.Format("return validate('cphMain_{0}', 'cphMain_{1}', 'cphMain_{2}');", txtName.ClientID, txtDescription.ClientID, ckPostControl.ID));
             btnPost.Click += btnPost_Click;
 
             pnlButtons.Controls.Add(btnPost);
@@ -192,10 +203,14 @@ namespace SPortal
 
             TextBox name = (TextBox)pnlPostArea.FindControl(string.Format("txtName{0}", type));
             TextBox description = (TextBox)pnlPostArea.FindControl(string.Format("txtDescription{0}", type));
-            TextBox post = (TextBox)pnlPostArea.FindControl(string.Format("txtPost{0}", type));
-
+            CKEditorControl post = (CKEditorControl)pnlPostArea.FindControl(string.Format("ckPost{0}", type));
 
             //Response.Write(txtPost.Text);
+
+            if (name.Text.Trim() == string.Empty)
+            {
+                return;
+            }
 
             if (Topic.CreateTopic(name.Text, description.Text, post.Text, typeID, Session["User"].ToString()))
             {

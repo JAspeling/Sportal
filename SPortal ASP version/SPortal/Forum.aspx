@@ -69,7 +69,6 @@
                     
                 </div>
                 <br/><br/><br/>
-               
             </div>
                                       
         </div>
@@ -79,7 +78,7 @@
     <script> 
         $('.clickme').click(function() {
             $(this).next().slideToggle('medium', function() {
-            //$(this).next().slideup('medium', function () {
+                //$(this).next().slideup('medium', function () {
                 // Animation complete.
             });
         });
@@ -94,6 +93,39 @@
         function AlertPost(element, type) {
             if (confirm('Create post ' + element.value + ' in ' + type.value + '?'))
                 this.form.submit();
+        }
+    </script>
+    
+    <script>
+        function validate(name, description, post) {
+            var errors = new Array();
+            var showError = false;
+
+            //debugger;
+            //alert(document.getElementById(name).value + ', ' + document.getElementById(description).value + ', ' + CKEDITOR.instances[post].getData());
+
+            if (document.getElementById(name).value == '' || document.getElementById(description).value == '' || CKEDITOR.instances[post].getData() == '') {
+                if (document.getElementById(name).value == '')
+                    errors.push('Supply a Topic Name');
+                if (document.getElementById(description).value == '')
+                    errors.push('Supply a Topic Description');
+                if (CKEDITOR.instances[post].getData() == '')
+                    errors.push('Supply a Topic Body');
+                showError = true;
+            }
+            
+            if (showError) {
+                var errorMessage = 'Error submitting the post:\n';
+
+                errors.forEach(function(error) {
+                    errorMessage += error + '\n\n';
+                });
+
+                alert(errorMessage);
+                return false;
+            }
+
+            return confirm('Upload the post?');;
         }
     </script>
     

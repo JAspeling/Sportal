@@ -12,6 +12,8 @@
         <script src="js/modernizer.custom.js"> </script>
         <script src="js/toucheffects.js"> </script>
         
+        <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+
         <link href="css/liteaccordion.css" rel="stylesheet" />
 
         <!-- jQuery -->
