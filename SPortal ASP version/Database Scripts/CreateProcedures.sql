@@ -27,3 +27,4 @@ GO
 :r "C:\Database Scripts\Create Procedures\CreatePostReply.sql"
 :r "C:\Database Scripts\Create Procedures\SelectPostReplies.sql"
 :r "C:\Database Scripts\Create Procedures\SelectUserTopicsAmount.sql"
+:r "C:\Database Scripts\Create Procedures\SelectEmails.sql"

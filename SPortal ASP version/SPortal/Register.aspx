@@ -81,6 +81,7 @@
                                         <asp:TextBox ID="txtEmail" runat="server" autocomplete="on" size="40" style="background-image: url('images/searchTxt.png'); border: double #ccccff; border-radius: 0.5em"></asp:TextBox>
                                         <asp:RegularExpressionValidator ID="EmailValidation" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter a valid email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator>
                                         <asp:RequiredFieldValidator ID="testEmailRequired" runat="server" ErrorMessage="Email Required" ControlToValidate="txtEmail">*</asp:RequiredFieldValidator>
+                                        <asp:CustomValidator ID="customEmail" runat="server" ErrorMessage="Email Not Available" ControlToValidate="txtEmail" OnServerValidate="ServerValidation">*</asp:CustomValidator>
                                         <br/><br/>
                                                                 
                                         <img src="img-demo/email_icon.jpg" alt="image" /><label>Confirm Email__________________</label><br/> 

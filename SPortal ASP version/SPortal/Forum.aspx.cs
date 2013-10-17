@@ -21,18 +21,8 @@ namespace SPortal
     {
         private Panel pnlPostArea;
 
-        private string post, description, name;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            //if (IsPostBack)
-            //{
-            //    post = txtPost.Text;
-            //    description = txtDescription.Text;
-            //    name = txtName.Text;
-            //}
-
             if (Session["User"] == null)
                 Cookie.SetSessionFromCookie(this);
 
@@ -71,18 +61,13 @@ namespace SPortal
                 CreateLoginArea(pnlInstitution);
                 CreateLoginArea(pnlGroup);
             }
-
-            //if (IsPostBack)
-            //{
-            //    post = txtPost.Text;
-            //    description = txtDescription.Text;
-            //    name = txtName.Text;
-            //}
-
-            //LoadNewPost("MultiThreading", "This is a topic description", 10, DateTime.Now, DateTime.Now.AddMinutes(-54), pnlGeneral);
-            //LoadNewPost("Testing", "This is a longer topic description to test the word wrapping of the table. The table width should remain the same but the text should just overflow as it reaches the maximum width", 10, DateTime.Now, DateTime.Now.AddMinutes(-54), pnlGeneral);
         }
 
+        /// <summary>
+        /// If the user is not logged in, he will se a hyperlink telling him to either
+        /// log in or register. He will not be able to post
+        /// </summary>
+        /// <param name="parent">The parent panel on which the controls are added</param>
         public void CreateLoginArea(Panel parent)
         {
             Panel pnlHeader = new Panel();
@@ -97,6 +82,14 @@ namespace SPortal
             parent.Controls.Add(pnlHeader);
         }
 
+        /// <summary>
+        /// If the user is logged in, he will be able to submit posts.
+        /// This function is used to create the posting controls
+        /// 
+        /// Three posting areas are created. One for General, Institution, and Groups.
+        /// </summary>
+        /// <param name="parent">The parent panel on which the controls are to be added</param>
+        /// <param name="type">Type will either be 'General', 'Institution', or 'Group'</param>
         public void CreatePostArea(Panel parent, string type)
         {
             Panel pnlHeader = new Panel();
@@ -131,28 +124,13 @@ namespace SPortal
             lblBody.Font.Name = "Dekar";
             lblBody.Font.Size = FontUnit.Point(12);
 
-            //TextBox txtPost = new TextBox();
-            //txtPost.CssClass = "myTextAreas";
-            //txtPost.TextMode = TextBoxMode.MultiLine;
-            //txtPost.Width = 790;
-            //txtPost.Font.Name = "Arial";
-
             CKEditorControl ckPostControl = new CKEditorControl();
             ckPostControl.ID = "ckPost" + type;
             ckPostControl.Toolbar = "Basic";
-            //"Source|-|Save|NewPage|Preview|-|Templates\r\nCut|Copy|Paste|PasteText|PasteFromWord|-|Print|SpellChecker|Scayt\r\nUndo|Redo|-|Find|Replace|-|SelectAll|RemoveFormat\r\nForm|Checkbox|Radio|TextField|Textarea|Select|Button|ImageButton|HiddenField\r\n/\r\nBold|Italic|Underline|Strike|-|Subscript|Superscript\r\nNumberedList|BulletedList|-|Outdent|Indent|Blockquote|CreateDiv\r\nJustifyLeft|JustifyCenter|JustifyRight|JustifyBlock\r\nBidiLtr|BidiRtl\r\nLink|Unlink|Anchor\r\nImage|Flash|Table|HorizontalRule|Smiley|SpecialChar|PageBreak|Iframe\r\n/\r\nStyles|Format|Font|FontSize\r\nTextColor|BGColor\r\nMaximize|ShowBlocks|-|About"
             ckPostControl.ToolbarBasic = "Source|-|Save|NewPage|Preview|-|Templates\r\nCut|Copy|Paste|PasteText|PasteFromWord|-|Print|SpellChecker|Scayt\r\nUndo|Redo|-|Find|Replace|-|SelectAll|RemoveFormat\r\n/\r\nBold|Italic|Underline|Strike|-|Subscript|Superscript\r\nNumberedList|BulletedList|-|Outdent|Indent|Blockquote\r\nJustifyLeft|JustifyCenter|JustifyRight|JustifyBlock\r\nBidiLtr|BidiRtl\r\nLink|Unlink|Anchor\r\nImage|Table|HorizontalRule|Smiley|SpecialChar|PageBreak\r\n/\r\nStyles|Format|Font|FontSize\r\nTextColor|BGColor\r\nMaximize|";
             ckPostControl.BasePath = "/CkEditor/CkEditor/ckeditor";
             ckPostControl.Width = 646;
             ckPostControl.Height = 91;
-            
-            //TextBox txtPost = new TextBox();
-            //txtPost.ID = "txtPost" + type;
-            //txtPost.Font.Name = "Arial";
-            //txtPost.TextMode = TextBoxMode.MultiLine;
-            //txtPost.CssClass = "myTextAreas";
-            //txtPost.Height = 91;
-            //txtPost.Width = 646;
 
             pnlPostArea.Controls.Add(lblName);
             pnlPostArea.Controls.Add(txtName);
@@ -165,7 +143,6 @@ namespace SPortal
             pnlButtons.Attributes.Add("style", "float: right; margin-top: 1em; margin-right: 0.5em;");
             ImageButton btnPost = new ImageButton() { ID="btnPost" + type, ImageUrl = "~/img-demo/NewButtonsComment.png", Height = 33, Width = 103};
             btnPost.Attributes.Add("style", "margin-left: 1em;");
-            //btnPost.Attributes.Add("onclick", "return confirm('Upload the post?');");
             btnPost.Attributes.Add("onclick", string.Format("return validate('cphMain_{0}', 'cphMain_{1}', 'cphMain_{2}');", txtName.ClientID, txtDescription.ClientID, ckPostControl.ID));
             btnPost.Click += btnPost_Click;
 
@@ -177,9 +154,15 @@ namespace SPortal
             pnlHeader.Controls.Add(pnlPostArea);
 
             parent.Controls.Add(pnlHeader);
-
         }
 
+        /// <summary>
+        /// The Post click event for the 'Post' button. This event is wired up to all three
+        /// posting buttons, so it has to check what is the ID of the calling button before
+        /// executing
+        /// </summary>
+        /// <param name="sender">Current button being clicked on</param>
+        /// <param name="e"></param>
         void btnPost_Click(object sender, ImageClickEventArgs e)
         {
             ImageButton temp = (ImageButton) (sender);
@@ -205,20 +188,17 @@ namespace SPortal
             TextBox description = (TextBox)pnlPostArea.FindControl(string.Format("txtDescription{0}", type));
             CKEditorControl post = (CKEditorControl)pnlPostArea.FindControl(string.Format("ckPost{0}", type));
 
-            //Response.Write(txtPost.Text);
-
-            if (name.Text.Trim() == string.Empty)
-            {
-                return;
-            }
-
             if (Topic.CreateTopic(name.Text, description.Text, post.Text, typeID, Session["User"].ToString()))
             {
-            //    Page.ClientScript.RegisterStartupScript(this.GetType(), "Call my function", string.Format("AlertPost({0}, {1})", pnlPostArea.FindControl(string.Format("txtName{0}", type)), type), true);
                 Response.Redirect("Forum.aspx");
             }
         }
 
+        /// <summary>
+        /// This will create a table that contains the image on the user information panel.
+        /// </summary>
+        /// <param name="imagePath"></param>
+        /// <param name="parent"></param>
         public void CreatePostPicture(string imagePath, Panel parent)
         {
             Table tblImage = new Table();

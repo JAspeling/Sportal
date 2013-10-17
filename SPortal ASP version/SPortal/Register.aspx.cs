@@ -20,11 +20,15 @@ namespace SPortal
             this.Form.Enctype = "multipart/form-data";
         }
 
+        private List<string> takenUsernames;
+        private List<string> takenEmails;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             RangeValidator1.MinimumValue = DateTime.Now.AddYears(-100).ToString("MM/dd/yyyy");
             RangeValidator1.MaximumValue = DateTime.Now.AddYears(-10).ToString("MM/dd/yyyy");
+
+            takenEmails = Information.GetEmails();
 
             if (FileUpload1.PostedFile != null && FileUpload1.PostedFile.ContentLength > 0)
                 UploadAndDisplay();
@@ -211,5 +215,13 @@ namespace SPortal
         }
 
         #endregion
+
+        protected void ServerValidation(object sender, ServerValidateEventArgs e)
+        {
+            if (takenEmails.Contains(txtEmail.Text))
+                e.IsValid = false;
+
+            e.IsValid = true;
+        }
     }
 }
