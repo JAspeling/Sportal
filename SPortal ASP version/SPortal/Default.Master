@@ -76,41 +76,7 @@
                         </li>
                     </ul>
                     
-
-                    <%--<ul id="menu">
-                        <li><a href="Index.aspx">HOME</a></li>
-                                    
-                        <li><a href="About.aspx">ABOUT</a></li>
-                                    
-                        <li><a href="Profile.aspx">PROFILE</a>
-                            <ul class="sub-menu">
-                                <li><a href="ProfileBrief.aspx">View</a></li>
-                                <li><a href="Register.aspx">Register</a></li>
-                                <li><a href="#">Help</a></li>
-                            </ul>
-                        </li>
-                                    
-                        <li><a href="Forum.aspx">FORUM</a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Topics</a></li>
-                                <li><a href="#">Moderations</a></li>
-                                <li><a href="#">Projects</a></li>
-                                <li><a href="#">Uploads</a></li>
-                            </ul>
-                        </li>
-                                    
-                        <li><a href="#">GROUPS</a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Mentors</a></li>
-                                <li><a href="#">Moderations</a></li>
-                                <li><a href="#">Projects</a></li>
-                                <li><a href="#">Mentees</a></li>
-                            </ul>
-                        </li>
-                                    
-                        <li><a href="Wiki.aspx">WIKI</a></li>  
-                    </ul>--%>
-                    <div class="Signblock" style="float: left; margin-left: 60%; width: 500px">
+                    <div class="Signblock">
                             <span style="float: right;"><a href="Register.aspx"><img src="images/register.png" alt="Not found" width="82" height="38"></a></span>
                             <asp:ImageButton style="float: right; margin-right: -6%;" ID="btnLogin" ImageUrl="images/sign.png" width="82" height="38" runat="server" OnClick="btnLogin_Click" />
                             <%--<span style="float: right; margin-right: -6%;"><a href="Login.aspx"><img src="images/sign.png" alt="Not found" width="82" height="38"></a></span>--%>

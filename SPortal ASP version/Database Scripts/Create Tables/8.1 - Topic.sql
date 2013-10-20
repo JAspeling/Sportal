@@ -1,7 +1,7 @@
 USE [SPortalDb]
 GO
 
-/****** Object:  Table [dbo].[Topic]    Script Date: 10/05/2013 12:49:46 ******/
+/****** Object:  Table [dbo].[Topic]    Script Date: 2013-10-20 03:14:32 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -17,14 +17,12 @@ CREATE TABLE [dbo].[Topic](
 	[TopicDescription] [text] NULL,
 	[TopicBody] [text] NOT NULL,
 	[CreationDate] [datetime2](7) NULL,
-	[Upvotes] [int] NOT NULL,
-	[Downvotes] [int] NOT NULL,
 	[TopicTypeID] [int] NOT NULL,
-	[CreatedBy] [int] NOT NULL
+	[CreatedBy] [int] NOT NULL,
  CONSTRAINT [PK__Topic__022E0F7D286302EC] PRIMARY KEY CLUSTERED 
 (
 	[TopicID] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO

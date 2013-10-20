@@ -39,7 +39,6 @@ namespace SPortal
                     AddUserCommentSection(pnlTopic, reply);
                 }
 
-                //Panel pnlTopicPost = (Panel) this.FindControl("pnlTopicPost");
                 LoadPostArea(pnlTopicPost);
 
             }
@@ -128,11 +127,38 @@ namespace SPortal
 
             LoadNewUserInfo(pnlTopicHeader, user, topic);
 
+            // Topic Body
+
             Panel pnlTopicBody = new Panel();
             pnlTopicBody.Attributes.Add("style",
                 "float: left;background-image: url('images/TopicBack4.png');background-repeat: repeat-x;border: solid black;border-radius: 1em;border-width: 2px;font-size: 12pt; font-family: Arial; height: auto;margin-top: 10px;margin-left: 1em;padding: 10px;width: 76%;margin-bottom: 2em;");
             var lblTopicBody = new Label { Text = topic.Text };
             pnlTopicBody.Controls.Add(lblTopicBody);
+
+            Panel pnlTopicVotes = new Panel();
+            pnlTopicVotes.Attributes.Add("style", "margin-top: -1em;width: 74%;float: right;background-color: red;margin-right: 1.3em;margin-left: 1em;font-size: 14pt; padding-right: 1em;");
+
+            Button btnLike = new Button() {Text = "Like"};
+            btnLike.ID = "btnLike" + topic.Id;
+            btnLike.Attributes.Add("style", "float: right; margin-left: 5px; width: 70px; ");
+
+            Label lblLike = new Label() {Text = "(121)"};
+            lblLike.Attributes.Add("style", "float: right;");
+
+            Button btnDislike = new Button() {Text = "Dislike"};
+            btnLike.ID = "btnDislike" + topic.Id;
+            btnDislike.Attributes.Add("style", "float: right; margin-left: 5px; width: 70px;");
+
+            Label lblDislike = new Label() { Text = "(75)" };
+            lblDislike.Attributes.Add("style", "float: right;");
+
+            
+            pnlTopicVotes.Controls.Add(lblLike);
+            pnlTopicVotes.Controls.Add(btnDislike);
+            pnlTopicVotes.Controls.Add(lblDislike);
+            pnlTopicVotes.Controls.Add(btnLike);
+
+            // Replies on the topic follow
 
             Panel pnlReplies = new Panel() { CssClass = "TopicHeader" };
             pnlReplies.Attributes.Add("style", "float: left;width: 100%;");
@@ -140,6 +166,7 @@ namespace SPortal
             pnlReplies.Controls.Add(lblReply);
 
             pnlTopicHeader.Controls.Add(pnlTopicBody);
+            pnlTopicHeader.Controls.Add(pnlTopicVotes);
             pnlTopicHeader.Controls.Add(pnlReplies);
 
             parent.Controls.Add(pnlTopicHeader);
@@ -489,21 +516,21 @@ namespace SPortal
             {
 
                 //pnlComment = new Panel {ID = "postComment" + post.Id, CssClass = "hidden"}; // Add Reply post ID here.
-                var lblComment = new Label {Text = "<br/>Post Comment Here:"};
+                Label lblComment = new Label {Text = "<br/>Post Comment Here:"};
                 pnlComment.Attributes.Add("style", "float: left; width: 100%");
                 pnlComment.Controls.Add(lblComment);
-                var pnlCommentContent = new Panel();
+                Panel pnlCommentContent = new Panel();
                 pnlCommentContent.Attributes.Add("style",
                     "background-image: url('images/TopicBack4.png'); background-repeat: repeat-x; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%; margin-top: 1em; float: left");
 
-                var replyComment = new TextBox();
+                TextBox replyComment = new TextBox();
                 replyComment.ID = "txtPost" + post.Id;
                 replyComment.CssClass = "myTextAreas";
                 replyComment.TextMode = TextBoxMode.MultiLine;
                 replyComment.Width = Unit.Percentage(98);
                 replyComment.Font.Name = "Arial";
 
-                var btnPost = new ImageButton
+                ImageButton btnPost = new ImageButton
                 {
                     ID = "btnPost" + post.Id,
                     ImageUrl = "~/img-demo/NewButtonsComment.png",
@@ -566,6 +593,7 @@ namespace SPortal
         protected void btnPostReply_OnClick(object sender, ImageClickEventArgs e)
         {
             string post = txtPost.Text;
+
             int topicID = Convert.ToInt16(Request.QueryString["TopicID"]);
 
             if (Post.CreatePost(PostType.PARENT, post, Session["User"].ToString(), topicID))

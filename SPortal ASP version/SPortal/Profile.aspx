@@ -99,32 +99,8 @@
                         <span style="color: #ededed">_____________________________________________________</span>
                     </div>
                 </div>
+
                 <div style="background-color: transparent; padding: 5px; width: 95%;">
-                
-                    <%--<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="#"><img src="img-demo/button.png" width="146" height="22" alt="button"/></a>
-                <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="#"><img src="img-demo/button.png" width="146" height="22" alt="button"/></a>
-                <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="#"><img src="img-demo/button.png" width="146" height="22" alt="button"/></a>--%>
-                
-                    <%--<table style="border-color: transparent; border-width: 0; margin-left: 20px;">
-                        <tr>
-                            <td>
-                                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="img-demo/button.png" Width="146" Height="22" AlternateText="Button"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="img-demo/button.png" Width="146" Height="22" AlternateText="Button"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="img-demo/button.png" Width="146" Height="22" AlternateText="Button"/>
-                            </td>
-                        </tr>
-                    </table>--%>
                 </div>
             </div>
                                     
@@ -135,37 +111,6 @@
                     <asp:TextBox style="float: right; margin-right: 20px;border-radius: 0.5em;" type="text" ID="txtSearchTimeline" value=""  runat="server" Width="400px"/>
                     <asp:Label style="color: white; float: right; margin-right: 10px;" ID="Label7" runat="server" >&nbsp;&star;&nbsp;SEARCH TIMELINE</asp:Label>&nbsp;
                     <br/><br/><hr/><br/>
-
-                    <%--<div style="margin-bottom: 15px;">
-                        <div style=" color: white ;margin-left: 14.5% ;background-color: transparent; height: auto; width: 80%">
-                            <table>
-                                <tr>
-                                    <td style="width: 400px; background-color: red;">
-                                        <asp:Label ID="Label13" style="float: left" runat="server">POST #1</asp:Label>
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="Label14" style="float: right" runat="server">2 hours</asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Label ID="Label8" style="float: left" runat="server"><br/>Topic: Test</asp:Label>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div style="border-color: black; border-width: 20px; border: solid; padding: -1px; color: black ;margin-left: 14.5% ;background-color: whitesmoke; height: 100px; width: 80%">
-                            <asp:TextBox ID="TextBox1" runat="server" Height="88px" Width="506px"></asp:TextBox>
-                                                          
-                        </div>   
-
-                        <div style=" padding: 3px; color: black ;margin-left: 14.5% ;background-image: url('images/sign_Back.png'); height: 23px; width: 80%">
-                                <a href="#"><img src="img-demo/button.png" width="168" height="22" alt="button"/></a>
-                                <a href="#"><img src="img-demo/button.png" width="168" height="22" alt="button"/></a>
-                                <a href="#"><img src="img-demo/button.png" width="168" height="22" alt="button"/></a>
-                        </div>
-
-                    </div>--%>
        
                 </asp:Panel>
             </asp:Panel>

@@ -14,7 +14,7 @@ namespace BLL
         ///<constructor>
         ///Constructor
         ///</constructor>
-        public Post(PostType postType, int id, int commentID, string text, string username, int upvotes, int downvotes, DateTime date)
+        public Post(PostType postType, int id, int commentID, string text, string username, DateTime date)
         {
             //postID = thread or main post
             //commentID = main post or comments on that post
@@ -23,8 +23,6 @@ namespace BLL
             this.commentID = commentID;
             Text = text;
             Username = username;
-            Upvotes = upvotes;
-            Downvotes = downvotes;
             this.date = date;
         }
 
@@ -86,27 +84,26 @@ namespace BLL
         #endregion
 
         #region Methods
-        public bool Upvote(int postID)
+        public bool Upvote(string username)
         {
             //this uses a procedure to upvote a post
             DataAccess da = new DataAccess();
-            SqlParameter[] parameters = { new SqlParameter("@PostTypeID",Convert.ToString((int)postType)),
-                                            new SqlParameter("@PostID",postID),
-                                            new SqlParameter("@CommentID",commentID),
-                                            new SqlParameter("@Vote","1")};
-            return da.Update("UpdatePostVotes", parameters);
+            SqlParameter[] parameters = { new SqlParameter("@Type", 2),
+                                            new SqlParameter("@PostID",id),
+                                            new SqlParameter("@Username",username)};
+            return da.Update("Upvote", parameters);
         }
 
-        public bool Downvote(int postID)
+        public bool Downvote(string username)
         {
             //this uses a procedure to downvote a post
             DataAccess da = new DataAccess();
-            SqlParameter[] parameters = { new SqlParameter("@PostTypeID",Convert.ToString((int)postType)),
-                                            new SqlParameter("@PostID",postID),
-                                            new SqlParameter("@CommentID",commentID),
-                                            new SqlParameter("@Vote","-1")};
-            return da.Update("UpdatePostVotes", parameters);
+            SqlParameter[] parameters = { new SqlParameter("@Type", 2),
+                                            new SqlParameter("@PostID",id),
+                                            new SqlParameter("@Username",username)};
+            return da.Update("Downvote", parameters);
         }
+
 
         public static bool CreatePost(PostType postType, string text, string username, int topicID)
         {
@@ -144,8 +141,7 @@ namespace BLL
                     Convert.ToInt16(dt.Rows[0]["PostID"]),
                     commentId,
                     dt.Rows[0]["Text"].ToString(), dt.Rows[0]["Username"].ToString(),
-                    Convert.ToInt16(dt.Rows[0]["UpVotes"]),
-                    Convert.ToInt16(dt.Rows[0]["DownVotes"]), Convert.ToDateTime(dt.Rows[0]["SubmissionDate"]));
+                    Convert.ToDateTime(dt.Rows[0]["SubmissionDate"]));
             }
 
             return null;
@@ -224,8 +220,8 @@ namespace BLL
                 int commentID = row["CommentID"] == DBNull.Value ? 0 : Convert.ToInt16(row["CommentID"].ToString());
                 posts.Add(new Post(postType, Convert.ToInt16(row["PostID"].ToString()),
                     commentID, row["Text"].ToString(),
-                    row["Username"].ToString(), Convert.ToInt16(row["Upvotes"].ToString()),
-                    Convert.ToInt16(row["Downvotes"].ToString()), Convert.ToDateTime(row["SubmissionDate"])));
+                    row["Username"].ToString(), 
+                    Convert.ToDateTime(row["SubmissionDate"])));
             }
 
             return posts;
@@ -242,6 +238,25 @@ namespace BLL
             return posts;
         }
 
+        public int GetUpvotes()
+        {
+            //uses a stored procedure to get all upvotes
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@Type",2),
+                                            new SqlParameter("@ID",id) };
+            DataTable dt = da.Select("SelectUpvotes", parameters);
+            return Convert.ToInt16(dt.Rows[0]["Upvotes"]);
+        }
+
+        public int GetDownvotes()
+        {
+            //uses a stored procedure to get all downvotes
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@Type",2),
+                                            new SqlParameter("@ID",id) };
+            DataTable dt = da.Select("SelectDownvotes", parameters);
+            return Convert.ToInt16(dt.Rows[0]["Downvotes"]);
+        }
         #endregion
     }
 }

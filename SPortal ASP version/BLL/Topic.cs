@@ -14,15 +14,13 @@ namespace BLL
         ///<constructor>
         ///Constructor
         ///</constructor>
-        public Topic(int id, string name, string description, string text, DateTime date, int upvotes, int downvotes, string topicType, string username)
+        public Topic(int id, string name, string description, string text, DateTime date, string topicType, string username)
         {
             this.id = id;
             Name = name;
             Text = text;
             this.date = date;
             Description = description;
-            Upvotes = upvotes;
-            Downvotes = downvotes;
             TopicType = topicType;
             Username = username;
         }
@@ -118,8 +116,6 @@ namespace BLL
                 return new Topic(Convert.ToInt16(dt.Rows[0]["TopicID"].ToString()), dt.Rows[0]["TopicName"].ToString(),
                     dt.Rows[0]["TopicDescription"].ToString(), dt.Rows[0]["TopicBody"].ToString(),
                     Convert.ToDateTime(dt.Rows[0]["CreationDate"].ToString()),
-                    Convert.ToInt16(dt.Rows[0]["Upvotes"].ToString()),
-                    Convert.ToInt16(dt.Rows[0]["Downvotes"].ToString()),
                     dt.Rows[0]["TopicType"].ToString(),
                     dt.Rows[0]["Username"].ToString());
             return null;
@@ -134,8 +130,6 @@ namespace BLL
                 return new Topic(Convert.ToInt16(dt.Rows[0]["TopicID"].ToString()), dt.Rows[0]["TopicName"].ToString(),
                     dt.Rows[0]["TopicDescription"].ToString(), dt.Rows[0]["TopicBody"].ToString(),
                     Convert.ToDateTime(dt.Rows[0]["CreationDate"].ToString()),
-                    Convert.ToInt16(dt.Rows[0]["Upvotes"].ToString()),
-                    Convert.ToInt16(dt.Rows[0]["Downvotes"].ToString()),
                     dt.Rows[0]["TopicType"].ToString(),
                     dt.Rows[0]["Username"].ToString());
             return null;
@@ -179,6 +173,45 @@ namespace BLL
             return Convert.ToInt16(val);
         }
 
+        public bool Upvote(string username)
+        {
+            //this uses a procedure to upvote a topic
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@Type", 1),
+                                            new SqlParameter("@PostID",id),
+                                            new SqlParameter("@Username",username)};
+            return da.Update("Upvote", parameters);
+        }
+
+        public bool Downvote(string username)
+        {
+            //this uses a procedure to downvote a topic
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@Type", 1),
+                                            new SqlParameter("@PostID",id),
+                                            new SqlParameter("@Username",username)};
+            return da.Update("Downvote", parameters);
+        }
+
+        public int GetUpvotes()
+        {
+            //uses a stored procedure to get all upvotes
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@Type",1),
+                                            new SqlParameter("@ID",id) };
+            DataTable dt = da.Select("SelectUpvotes", parameters);
+            return Convert.ToInt16(dt.Rows[0]["Upvotes"]);
+        }
+
+        public int GetDownvotes()
+        {
+            //uses a stored procedure to get all downvotes
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@Type",1),
+                                            new SqlParameter("@ID",id) };
+            DataTable dt = da.Select("SelectDownvotes", parameters);
+            return Convert.ToInt16(dt.Rows[0]["Downvotes"]);
+        }
         #endregion
     }
 }

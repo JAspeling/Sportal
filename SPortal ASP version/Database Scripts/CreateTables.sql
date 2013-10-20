@@ -7,7 +7,9 @@ GO
 :r "C:\Database Scripts\Create Tables\5 - MemberRole.sql"
 :r "C:\Database Scripts\Create Tables\6 - UserGroup.sql"
 :r "C:\Database Scripts\Create Tables\7 - Post.sql"
+:r "C:\Database Scripts\Create Tables\7.1 - PostUsers.sql"
+:r "C:\Database Scripts\Create Tables\7.2 - PostVotes.sql"
 :r "C:\Database Scripts\Create Tables\8 - TopicType.sql"
 :r "C:\Database Scripts\Create Tables\8.1 - Topic.sql"
-:r "C:\Database Scripts\Create Tables\9 - Topic Post.sql"
-:r "C:\Database Scripts\Create Tables\10 - PostViews.sql"
+:r "C:\Database Scripts\Create Tables\8.2 - TopicVotes.sql"
+
