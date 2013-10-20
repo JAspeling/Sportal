@@ -47,10 +47,10 @@
       <HintPath>..\packages\AjaxMin.4.97.4951.28483\lib\net40\AjaxMin.dll</HintPath>
     </Reference>
     <Reference Include="CkEditor">
-      <HintPath>CkEditor\CkEditor\bin\CkEditor.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\dfsd\CkEditor\CkEditor\bin\CkEditor.dll</HintPath>
     </Reference>
     <Reference Include="CKEditor.NET">
-      <HintPath>CkEditor\CkEditor\bin\CKEditor.NET.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\dfsd\CkEditor\CkEditor\bin\CKEditor.NET.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -58,6 +58,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.DomainServices.Hosting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.ServiceModel.DomainServices.Server, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DynamicData" />
@@ -1064,6 +1065,13 @@
     <Content Include="Old HTML Pages\%28old%29ProfileBrief.aspx" />
     <Content Include="Old HTML Pages\%28old%29Register.aspx" />
     <Content Include="Old HTML Pages\%28old%29Login.aspx" />
+    <Content Include="Service References\ServiceReference1\Service1.disco" />
+    <Content Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <Content Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <Content Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Index.aspx" />
     <Content Include="About.aspx" />
@@ -1202,6 +1210,11 @@
     <Compile Include="Forum.aspx.designer.cs">
       <DependentUpon>Forum.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Topic.aspx.cs">
       <DependentUpon>Topic.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1268,6 +1281,16 @@
     <None Include="ckeditor\CkEditor\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Service References\ServiceReference1\Service1.wsdl" />
+    <None Include="Service References\ServiceReference1\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1283,6 +1306,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\ProfilePictures\temp\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

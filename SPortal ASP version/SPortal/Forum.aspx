@@ -8,25 +8,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <body>
         <div class="centerBlock" style="margin-bottom: 2em;">
-            <div class="Navblock">
-                <ul class="Navblock1">
-                    <li><a href="">View</a></li>
-                    <li><a href="">Register</a></li>
-                    <li><a href="">Help</a></li>
-                    <li><a href="">View</a></li>
-                    <li><a href="">Register</a></li>
-                    <li><a href="">Help</a></li>
-                    <li><a href="">View</a></li>
-                    <li><a href="">Register</a></li>
-                    <li><a href="">Help</a></li>
-                </ul>
-                <div class="Navblock2">
-                    <%-- ReSharper disable once Asp.Image --%>
-                    <a href="http://www.belgiumcampus.co.za"><img src="images/bc.jpg" alt="Not found" width="150" height="160"></a>
-                    <a href="#"><img src="images/Ad1.jpg" alt="Not found" width="200" height="160"></a>
-                </div>
-            </div>
-            <div style="background-image: url('images/pro_lineGraphic.png'); height: 6px; margin-left: 0; width: 69%;"></div>
+            
+            <div style="background-image: url('images/pro_lineGraphic.png'); height: 6px; margin-left: 0; width: 95%;"></div>
             <div class="mainBlack" style="">
                 <!-- General Topics -->
                 <div style="padding-left: 28px; padding-top: 20px;">
@@ -36,7 +19,7 @@
                         <asp:Image runat="server" ImageUrl="images/dropDown.png" AlternateText="Show More"/>
                     </div>
                     
-                    <asp:Panel ID="pnlGeneral" runat="server" style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; float: left; font-size: 10pt; height: auto; padding: 10px; width: 90%; margin-bottom: 1em;">
+                    <asp:Panel ID="pnlGeneral" runat="server" style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-x; border: solid black; border-radius: 1em; border-width: 2px; float: left; font-size: 10pt; height: auto; padding: 10px; width: 95%; margin-bottom: 1em;">
 
                     </asp:Panel><br/>
                 </div>
@@ -49,7 +32,7 @@
                         <asp:Image runat="server" ImageUrl="images/dropDown.png" AlternateText="Show More"/>
                     </div>
                     
-                    <asp:Panel ID="pnlInstitution" runat="server" style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%; float: left; margin-bottom: 1em;">
+                    <asp:Panel ID="pnlInstitution" runat="server" style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-x; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 95%; float: left; margin-bottom: 1em;">
                         
                     </asp:Panel><br/>
 
@@ -63,7 +46,7 @@
                         <asp:Image runat="server" ImageUrl="images/dropDown.png" AlternateText="Show More"/>
                     </div>
                     
-                    <asp:Panel ID="pnlGroup" runat="server" style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%; float: left; margin-bottom: 2em;">
+                    <asp:Panel ID="pnlGroup" runat="server" style="background-image: url('images/TopicBack4.png'); background-repeat: repeat-x; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 95%; float: left; margin-bottom: 2em;">
 
                     </asp:Panel><br/>
                     

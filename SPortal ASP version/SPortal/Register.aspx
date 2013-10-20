@@ -9,23 +9,12 @@
 
     <div class="centerBlock" style="height: auto">
                                     
-        <div class="Navblock">
-            <ul class="Navblock1">
-                <li><a href="#">View</a></li>
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Help</a></li>
-            </ul>
-            <div class="Navblock2">
-                <a href="http://www.belgiumcampus.co.za"><img src="images/bc.jpg" alt="Not found" width="150" height="160"/></a>
-                <a href="#"><img src="images/Ad1.jpg" alt="Not found" width="200" height="160"/></a>
-            </div>
-        </div>
         <div class="infoblock1About">
             <div>
-                <div style="background-color: white; width: 855px; border-radius: 1em">
+                <div style="background-color: white; width: 95%; border-radius: 1em">
 
-                    <div style="width: 855px;">
-                        <asp:Image runat="server" ImageUrl="img-demo/RegisterBackHeader.jpg"/>
+                    <div style="width: 100%;">
+                        <asp:Image runat="server" ImageUrl="img-demo/RegisterBackHeader.jpg" style="width: 100%"/>
                     </div>
                             
                     <div style="height: auto; background-color: white;" >

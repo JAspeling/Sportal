@@ -129,7 +129,7 @@ namespace SPortal
             ckPostControl.Toolbar = "Basic";
             ckPostControl.ToolbarBasic = "Source|-|Save|NewPage|Preview|-|Templates\r\nCut|Copy|Paste|PasteText|PasteFromWord|-|Print|SpellChecker|Scayt\r\nUndo|Redo|-|Find|Replace|-|SelectAll|RemoveFormat\r\n/\r\nBold|Italic|Underline|Strike|-|Subscript|Superscript\r\nNumberedList|BulletedList|-|Outdent|Indent|Blockquote\r\nJustifyLeft|JustifyCenter|JustifyRight|JustifyBlock\r\nBidiLtr|BidiRtl\r\nLink|Unlink|Anchor\r\nImage|Table|HorizontalRule|Smiley|SpecialChar|PageBreak\r\n/\r\nStyles|Format|Font|FontSize\r\nTextColor|BGColor\r\nMaximize|";
             ckPostControl.BasePath = "/CkEditor/CkEditor/ckeditor";
-            ckPostControl.Width = 646;
+            ckPostControl.Attributes.Add("style", "width: 98%;");
             ckPostControl.Height = 91;
 
             pnlPostArea.Controls.Add(lblName);

@@ -80,7 +80,7 @@ namespace SPortal
                 btnPost.Click += btnPostReply_OnClick;
 
                 Panel pnlText = new Panel();
-                pnlText.Attributes.Add("style", "background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; float: left; font-size: 10pt; height: auto; padding: 10px; width: 90%;");
+                pnlText.Attributes.Add("style", "background-image: url('images/TopicBack4.png'); background-repeat: repeat-x; border: solid black; border-radius: 1em; border-width: 2px; float: left; font-size: 10pt; height: auto; padding: 10px; width: 90%;");
 
                 //pnlText.Controls.Add(lblPost);
                 pnlText.Controls.Add(txtPost);
@@ -130,7 +130,7 @@ namespace SPortal
 
             Panel pnlTopicBody = new Panel();
             pnlTopicBody.Attributes.Add("style",
-                "float: left;background-image: url('images/TopicBack4.png');background-repeat: repeat-y;border: solid black;border-radius: 1em;border-width: 2px;font-size: 12pt; font-family: Arial; height: auto;margin-top: 10px;margin-left: 1em;padding: 10px;width: 76%;margin-bottom: 2em;");
+                "float: left;background-image: url('images/TopicBack4.png');background-repeat: repeat-x;border: solid black;border-radius: 1em;border-width: 2px;font-size: 12pt; font-family: Arial; height: auto;margin-top: 10px;margin-left: 1em;padding: 10px;width: 76%;margin-bottom: 2em;");
             var lblTopicBody = new Label { Text = topic.Text };
             pnlTopicBody.Controls.Add(lblTopicBody);
 
@@ -386,7 +386,7 @@ namespace SPortal
 
             var pnlPost = new Panel();
             pnlPost.Attributes.Add("style",
-                "float: left; background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 12pt; font-family: Arial; height: auto; margin-top: 10px; padding: 10px; width: 76%; margin-bottom: 2em; margin-left: 1em; margin-right: 1em;");
+                "float: left; background-image: url('images/TopicBack4.png'); background-repeat: repeat-x; border: solid black; border-radius: 1em; border-width: 2px; font-size: 12pt; font-family: Arial; height: auto; margin-top: 10px; padding: 10px; width: 76%; margin-bottom: 2em; margin-left: 1em; margin-right: 1em;");
             var lblPost = new Label {Text = post.Text};
             pnlPost.Controls.Add(lblPost);
 
@@ -494,7 +494,7 @@ namespace SPortal
                 pnlComment.Controls.Add(lblComment);
                 var pnlCommentContent = new Panel();
                 pnlCommentContent.Attributes.Add("style",
-                    "background-image: url('images/TopicBack4.png'); background-repeat: repeat-y; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%; margin-top: 1em; float: left");
+                    "background-image: url('images/TopicBack4.png'); background-repeat: repeat-x; border: solid black; border-radius: 1em; border-width: 2px; font-size: 10pt; height: auto; padding: 10px; width: 90%; margin-top: 1em; float: left");
 
                 var replyComment = new TextBox();
                 replyComment.ID = "txtPost" + post.Id;

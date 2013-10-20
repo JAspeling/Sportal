@@ -48,14 +48,14 @@ img {
 
 .container {
     width: 85%;
-    height: 87%;
+    /*height: 87%;*/
     min-height: 80%;
     /*color: white;*/
 }
 
 .Header {
     height: 150px;
-    width: 1366px;
+    width: 90%;
     background-color: black;
     background-image: url("../images/headerImg2.jpg");
     margin-top: 1.5%;
@@ -139,6 +139,7 @@ a {
     background-color: transparent;
     width: 69%;
     height: 55%;
+    margin-left: 15%;
 }
 
 .infoblock1A {
@@ -177,6 +178,7 @@ a {
     margin-top: 1%;
     margin-bottom: 1%;
     background-image: url("../images/info2_wordGraphic.png");
+    margin-left: 15%;
 }
 
 .infoblock3 {
@@ -185,6 +187,7 @@ a {
     width: 69%;
     height: 8%;
     background-image: url("../images/info3_wordGraphic.png");
+    margin-left: 15%;
 }
 
 .infoQuote {
@@ -201,7 +204,7 @@ a {
 .infoblock1About {
     float: left;
     background-image: url("../images/infoBack.png");
-    width: 69%;
+    width: 70%;
     height: auto;
 }
 
@@ -270,7 +273,7 @@ ul#menu, ul#menu ul.sub-menu {
 {
     float: left;
     background-image: url("../images/infoBackForum2.png");
-    width: 69%;
+    width: 95%;
     height: auto;
     color: white;
     
@@ -280,7 +283,7 @@ ul#menu, ul#menu ul.sub-menu {
 {
     float: left;
     background-color: white;
-    width: 69%;
+    width: 95%;
     height: auto;
 }
 
@@ -399,6 +402,7 @@ display:block;
     border-style: solid;
     background-image: url('../images/Pixel-575757-50.png');
     background-repeat: repeat;
+    width: 95%;
 }
 
 .confirmPost {

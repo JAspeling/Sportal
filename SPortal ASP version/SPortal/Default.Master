@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="SPortal.Default" %>
+﻿i<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="SPortal.Default" %>
 
 <!DOCTYPE html>
 
@@ -41,104 +41,34 @@
                         <li><a href="About.aspx">About</a></li>
                         <li class="separator"></li>
                         <li><a href="Profile.aspx" class="arrow">Profile</a>
-                            <div class="drop decor3_2" style="width: 200px">
+                            <div class="drop decor3_2" style="width: 150px">
                                 <div class='left'>
                                     <b>View</b>
                                     <div>
+                                        <a href="ProfileBrief.aspx">Profile View</a><br/>
                                         <a href="HelpTopics.aspx">Help</a><br />
-                                        <a href="#">Temp Link</a><br />
-                                        <a href="#">Temp Link</a><br />
-                                        <a href="#">Temp Link</a><br />
-                                        <hr/>
-                                    </div>
-                                </div>
-                                <div class='left'>
-                                    <b>Register</b>
-                                    <div>
-                                        <a href="#">Temp Link</a><br />
-                                        <a href="#">Temp Link</a><br />
-                                        <a href="#">Temp Link</a><br />
-                                        <hr/>
-                                    </div>
-                                </div>
-                                <div class='left'>
-                                    <b>Help</b>
-                                    <div>
-                                        <a href="#">Temp Link</a><br />
-                                        <a href="#">Temp Link</a><br />
-                                        <hr/>
                                     </div>
                                 </div>
                                 <div style='clear: both;'></div>
                             </div>
                         </li>
                         <li><a href="Forum.aspx" class="arrow">Forum</a>
-                            <div class="drop decor3_2" style="width: 200px">
+                            <div class="drop decor3_2" style="width: 100px">
                                 <div class='left'>
-                                    <b>Topics</b>
+                                    <b>View</b>
                                     <div>
-                                        <a href="#">Temp Link</a><br />
-                                        <a href="#">Temp Link</a><br />
-                                        <a href="#">Temp Link</a><br />
-                                        <a href="#">Temp Link</a><br />
-                                        <hr/>
-                                    </div>
-                                </div>
-                                <div class='left'>
-                                    <b>Moderations</b>
-                                    <div>
-                                        <a href="#">Temp Link</a><br />
-                                        <a href="#">Temp Link</a><br />
-                                        <hr/>
-                                    </div>
-                                </div>
-                                <div class='left'>
-                                    <b>Projects</b>
-                                    <div>
-                                        <a href="#">Temp Link</a><br />
-                                        <a href="#">Temp Link</a><br />
-                                        <a href="#">Temp Link</a><br />
-                                        <hr/>
-                                    </div>
-                                </div>
-                                <div class='left'>
-                                    <b>Uploads</b>
-                                    <div>
-                                        <a href="#">Temp Link</a><br />
-                                        <hr/>
+                                        <a href="HelpTopics.aspx">Help</a><br />
                                     </div>
                                 </div>
                                 <div style='clear: both;'></div>
                             </div>
                         </li>
                         <li><a href="Forum.aspx" class="arrow">Groups</a>
-                            <div class="drop decor3_2">
+                            <div class="drop decor3_2" style="width: 100px">
                                 <div class='left'>
-                                    <b>Mentors</b>
+                                    <b>View</b>
                                     <div>
-                                        <a href="#">Temp Link</a><br />
-                                        <hr/>
-                                    </div>
-                                </div>
-                                <div class='left'>
-                                    <b>Moderations</b>
-                                    <div>
-                                        <a href="#">Temp Link</a><br />
-                                        <hr/>
-                                    </div>
-                                </div>
-                                <div class='left'>
-                                    <b>Projects</b>
-                                    <div>
-                                        <a href="#">Temp Link</a><br />
-                                        <hr/>
-                                    </div>
-                                </div>
-                                <div class='left'>
-                                    <b>Mentees</b>
-                                    <div>
-                                        <a href="#">Uploads</a><br />
-                                        <hr/>
+                                        <a href="HelpTopics.aspx">Help</a><br />
                                     </div>
                                 </div>
                                 <div style='clear: both;'></div>
