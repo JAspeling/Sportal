@@ -5,7 +5,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <%--<form id="frmRegister" runat="server" enctype="multipart/form-data">--%>
-    <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" > </ajaxToolkit:ToolkitScriptManager>
 
     <div class="centerBlock" style="height: auto">
                                     

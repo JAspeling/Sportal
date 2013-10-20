@@ -28,17 +28,28 @@ namespace SPortal.ServiceReference1 {
         System.Threading.Tasks.Task<string[]> JoinAsync(string userName, string[] friends);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Disconnect", ReplyAction="http://tempuri.org/IService1/DisconnectResponse")]
+<<<<<<< HEAD
+        void Disconnect(string userName, string[] friends);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Disconnect", ReplyAction="http://tempuri.org/IService1/DisconnectResponse")]
+        System.Threading.Tasks.Task DisconnectAsync(string userName, string[] friends);
+=======
         void Disconnect(string userName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Disconnect", ReplyAction="http://tempuri.org/IService1/DisconnectResponse")]
         System.Threading.Tasks.Task DisconnectAsync(string userName);
+>>>>>>> c00cabb22d8c9777df4cd2cebcfe5151ea0e5237
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IService1Callback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService1/OnMessage")]
+<<<<<<< HEAD
+        void OnMessage(string message, string userName);
+=======
         void OnMessage(string message);
+>>>>>>> c00cabb22d8c9777df4cd2cebcfe5151ea0e5237
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService1/userJoined")]
         void userJoined(string userName);
@@ -91,12 +102,21 @@ namespace SPortal.ServiceReference1 {
             return base.Channel.JoinAsync(userName, friends);
         }
         
+<<<<<<< HEAD
+        public void Disconnect(string userName, string[] friends) {
+            base.Channel.Disconnect(userName, friends);
+        }
+        
+        public System.Threading.Tasks.Task DisconnectAsync(string userName, string[] friends) {
+            return base.Channel.DisconnectAsync(userName, friends);
+=======
         public void Disconnect(string userName) {
             base.Channel.Disconnect(userName);
         }
         
         public System.Threading.Tasks.Task DisconnectAsync(string userName) {
             return base.Channel.DisconnectAsync(userName);
+>>>>>>> c00cabb22d8c9777df4cd2cebcfe5151ea0e5237
         }
     }
 }

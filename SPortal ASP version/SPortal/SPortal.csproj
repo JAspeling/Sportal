@@ -1065,6 +1065,13 @@
     <Content Include="Old HTML Pages\%28old%29ProfileBrief.aspx" />
     <Content Include="Old HTML Pages\%28old%29Register.aspx" />
     <Content Include="Old HTML Pages\%28old%29Login.aspx" />
+    <None Include="Service References\ServiceReference1\Service1.disco" />
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Service References\ServiceReference1\Service1.disco" />
     <Content Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <Content Include="Service References\ServiceReference1\configuration.svcinfo" />
@@ -1275,12 +1282,14 @@
     <Content Include="ckeditor\CkEditor\ckeditor\_samples\php\standalone.php" />
     <Content Include="ckeditor\CkEditor\ckeditor\_samples\sample_posteddata.php" />
     <Content Include="ckeditor\CkEditor\Web.config" />
+    <Content Include="App.config" />
     <None Include="ckeditor\CkEditor\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="ckeditor\CkEditor\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference1\Service1.wsdl" />
     <Content Include="Service References\ServiceReference1\Service1.wsdl" />
     <None Include="Service References\ServiceReference1\Service1.xsd">
       <SubType>Designer</SubType>

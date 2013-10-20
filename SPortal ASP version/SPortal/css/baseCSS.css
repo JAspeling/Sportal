@@ -36,14 +36,38 @@ img {
     text-decoration: none;
 }
 
+.imUpdatePanel
+{
+    overflow: auto;
+}
+
 .imBanner {
     /*width: 100%;*/
     /*background-image: url("../images/bottomBanner.png");*/
     height: 12%;
-    margin-right: 20px;
+    position: fixed;
+    bottom: -60px;
+    right: 0px;
+}
+
+.imBar
+{
+    width:100%;
+    height:30px;
+    background-color:green;
     position: fixed;
     bottom: 0px;
-    right: 0px;
+    margin-right:20px;
+    left: 0px;
+}
+.imPopUp
+{
+    width:15%;
+    height:300px;
+    background-color:Red;
+    position: fixed;
+    bottom: 30px;
+    overflow:auto;
 }
 
 .container {
