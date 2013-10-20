@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head id="Head1" runat="server">
+    <head runat="server">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link rel="stylesheet" href="css/baseCSS.css" type="text/css"/>
         <link rel="stylesheet" href="css/MenuCSS.css" type="text/css"/>
@@ -28,20 +28,9 @@
         <asp:ContentPlaceHolder ID="cphHead" runat="server">
 
         </asp:ContentPlaceHolder>
-
-        <script>
-            function reply_click(clicked_id) {
-                $(document.getElementById("p"+clicked_id)).toggle("fast");
-            }
-        </script>
     </head>
     <body>
-
-
         <form id="frmMaster" runat="server">
-
-                    <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" > </ajaxToolkit:ToolkitScriptManager>
-
         <div>
             <div class="Header">
                 <div class="nav">
@@ -97,18 +86,11 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="imBanner" >
-                    <span><a href="#"><img  id="IMToggle" src="images/imBottom.png" alt="Not found"  /></a></span>
+                <div class="imBanner">
+                    <span style="float: right; padding-right: 1%"><a href="#"><img src="images/imBottom.png" alt="Not found" /></a></span>
                 </div>
-                <div class="imBar"></div>
-            
-
-               <div id="imUpdatePanel" runat="server">
-
-               </div>
-                        
             </div>
+
             <asp:ContentPlaceHolder ID="cphMain" runat="server">
         
             </asp:ContentPlaceHolder>

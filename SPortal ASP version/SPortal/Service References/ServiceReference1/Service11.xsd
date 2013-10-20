@@ -33,10 +33,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-<<<<<<< HEAD
-        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="friends" nillable="true" type="q3:ArrayOfstring" />
-=======
->>>>>>> c00cabb22d8c9777df4cd2cebcfe5151ea0e5237
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -49,10 +45,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
-<<<<<<< HEAD
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-=======
->>>>>>> c00cabb22d8c9777df4cd2cebcfe5151ea0e5237
       </xs:sequence>
     </xs:complexType>
   </xs:element>
