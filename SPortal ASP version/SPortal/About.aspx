@@ -17,18 +17,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <div class="centerBlock">
                                     
-        <div class="Navblock">
-            <ul class="Navblock1">
-                <li><a href="#">View</a></li>
-                <li><a href="Register.aspx">Register</a></li>
-                <li><a href="#">Help</a></li>
-            </ul>
-            <div class="Navblock2">
-                <a href="http://www.belgiumcampus.co.za"><img src="images/bc.jpg" alt="Not found" width="150" height="160"/></a>
-                <a href="#"><img src="images/Ad1.jpg" alt="Not found" width="200" height="160"/></a>
-            </div>
-        </div>
-        <div class="infoblock1About">
+       
+        <div class="infoblock1About" style="margin-left: 15%;">
                                           
             <div id="three">
                 <ol>

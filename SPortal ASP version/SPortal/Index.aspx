@@ -6,19 +6,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <div class="centerBlock">
                                     
-        <div class="Navblock">
-            <ul class="Navblock1">
-                <li><a href="#">View</a></li>
-                <li><a href="Register.aspx">Register</a></li>
-                <li><a href="#">Help</a></li>
-            </ul>
-            <div class="Navblock2">
-                <a href="http://www.belgiumcampus.co.za"><img src="images/bc.jpg" alt="Not found" width="150" height="160"/></a>
-                <a href="#"><img src="images/Ad1.jpg" alt="Not found" width="200" height="160"/></a>
-            </div>
-        </div>
-        <div class="infoblock1">
-            <div class="infoblock1A" style="border-radius: 1em">
+        <div class="infoblock1" style="padding-bottom: 2%">
+            <div class="infoblock1A" style="border-radius: 1em;">
                 <ul class="grid cs-style-3">
                     <li>
                         <figure>
@@ -62,7 +51,7 @@
             </div>
         </div>
         <div class="infoblock2" style="border-top-left-radius: 0.5em;border-top-right-radius: 0.5em">
-            <div class="infoQuote">
+            <div class="infoQuote" style="margin-left: 15%">
             </div>
         </div>
         <div class="infoblock3" style=" margin-top: -1.1%;border-bottom-left-radius: 0.5em;border-bottom-right-radius: 0.5em">

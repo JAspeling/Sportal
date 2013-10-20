@@ -18,24 +18,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <div class="centerBlock">
-                                    
-        <div class="Navblock">
-            <ul class="Navblock1">
-                <li><a href="#">View</a></li>
-                <li><a href="Register.aspx">Register</a></li>
-                <li><a href="#">Help</a></li>
-            </ul>
-            <div class="Navblock2">
-                <a href="http://www.belgiumcampus.co.za"><img src="images/bc.jpg" alt="Not found" width="150" height="160"></a>
-                <a href="#"><img src="images/Ad1.jpg" alt="Not found" width="200" height="160"></a>
-            </div>
-        </div>
-                                      
         <div style="background-color: orange; height: 150%; margin-top: -5%; padding: 5px; width: 16%;">
                                          
         </div>
                                     
-        <div style="background-image: url('images/proBack.png'); float: right; height: 150%; margin-right: 47%; margin-top: -54%; padding: 0px; width: 30%;">
+        <div style="background-image: url('images/proBack.png'); float: right; height: 150%; margin-right: 47%; margin-top: -40%; padding: 0px; width: 30%;">
                                           
             <div style="background-color: transparent; height: 55%; margin-bottom: -30px; margin-left: 92px; margin-top: 60px; width: 100%;">
                 <!--  <div style="height: 73%; width: 54%; background-image: url('images/proPic_backGraphic.png')">

@@ -17,20 +17,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
    <%-- <form id="frmProfile" runat="server">--%>
         <div class="centerBlock">
-                                    
-            <div class="Navblock">
-                <ul class="Navblock1">
-                    <li><a href="#">View</a></li>
-                    <li><a href="Register.aspx">Register</a></li>
-                    <li><a href="#">Help</a></li>
-                </ul>
-                <div class="Navblock2">
-                    <a href="http://www.belgiumcampus.co.za"><img src="images/bc.jpg" alt="Not found" width="150" height="160"></a>
-                    <a href="#"><img src="images/Ad1.jpg" alt="Not found" width="200" height="160"></a>
-                </div>
-            </div>
-                                      
-            <div style="background-color: transparent; background-image: url('../images/infoBackForum2.png'); padding: 5px; width: 16%;border-radius: 0.5em; border-style: solid; border-width: 1px; border-color: rgb(46, 46, 46); float: left; margin-top: 0%;">
+            <div style="background-color: transparent; background-image: url('../images/infoBackForum2.png'); padding: 5px; width: 26%;border-radius: 0.5em; border-style: solid; border-width: 1px; border-color: rgb(46, 46, 46); float: left; margin-top: 0%;">
                 <asp:Label ID="lblUsername" runat="server" style="color: #59abb7;float: right;font-size: 12pt;font-weight: bold;margin-bottom: 0.5em;">@This is a very long username intended for testing purposes</asp:Label>
                 <div style="background-color: transparent; height: 105px; padding: 5px; width: 95%;">
                     <div>
@@ -38,7 +25,7 @@
                             <div>
                                 <asp:Image ID="imgProfilePicture" runat="server" ImageUrl="images/proPic.jpg" Width="100" Height="95"/>
                                 <div style="margin-top: -82%">
-                                    <asp:Image ID="imgProfileFrame" ImageUrl="images/ProPic_Container.png" Width="102" Height="97" runat="server" style="border-radius: 0.5em;"/>
+                                    <asp:Image ID="imgProfileFrame" ImageUrl="images/ProPic_Container.png" Width="102" Height="97" runat="server" style="border-radius: 0.5em; margin-top: 30%"/>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +33,7 @@
                                               
                 </div>
                 <div style="background-image: url('images/TopicBack4.png'); color: #59abb7; display: inline-block; font-size: 8pt; list-style: none; list-style-type: none; padding: 5px; text-decoration: none; width: 95%; border-radius: 0.5em; border-color: rgb(95, 95, 95); border-style: solid; border-width: 1px;">
-                    <span style="color: #ededed; font-size: 12pt;"><u>Basic Info_______________</u></span>
+                    <span style="color: #ededed; font-size: 12pt;"><u>Basic Info______________________________</u></span>
                     <div>
                         <br/>
                         <table style="border: none; border-width: 0">
@@ -109,7 +96,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <span style="color: #ededed">_________________________________</span>
+                        <span style="color: #ededed">_____________________________________________________</span>
                     </div>
                 </div>
                 <div style="background-color: transparent; padding: 5px; width: 95%;">
@@ -141,7 +128,7 @@
                 </div>
             </div>
                                     
-            <asp:Panel ID="pnlTimelineBody" style="background-image: url('../images/infoBackForum2.png'); padding: 13px; width: 49%; float: left; margin-left: 1em; border-radius: 0.5em" runat="server">
+            <asp:Panel ID="pnlTimelineBody" style="background-image: url('../images/infoBackForum2.png'); padding: 13px; width: 65%; float: left; margin-left: 1em; border-radius: 0.5em" runat="server">
                 <div style="background-image: url('images/pro_lineGraphic.png'); height: 44px; margin-left: -2%; margin-top: -2%; width: 104%;border-radius: 0.5em"></div>
                 <asp:Panel runat="server" ID="pnlTimelineContainer" style="background-image: url('images/TopicBack4.png'); width: 100%; margin-top: 1em; padding-bottom: 1em;background-image: url('images/TopicBack4.png'); width: 100%; margin-top: 1em; padding-bottom: 1em; border-radius: 0.5em; border-color: rgb(95, 95, 95); border-style: solid; border-width: 1px;float: left">
                     <br/>

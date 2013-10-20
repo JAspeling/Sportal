@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Web;
 using System.Web.SessionState;
 using System.Web.UI;
@@ -25,6 +26,8 @@ namespace SPortal
                     Response.Redirect("Login.aspx");
                     break;
                 case "images/logout.png" : // User is logged in.
+
+                    ServiceReference1.Service1Client client=new ServiceReference1.Service1Client(new InstanceContext(this));
 
                     Session["User"] = null;
 
