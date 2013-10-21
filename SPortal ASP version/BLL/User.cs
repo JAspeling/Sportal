@@ -22,7 +22,7 @@ namespace BLL
             Name = name;
             Surname = surname;
             DOB = dob;
-            Picture = picture;
+            this.picture = "../SPortal/images/ProfilePictures/" +  picture;
             Institution = institution;
             Rating = rating;
             this.joinDate = joinDate;
@@ -30,30 +30,7 @@ namespace BLL
             this.UserType = userType;
         }
 
-        public User(string username, string email, string name, string surname, DateTime dob, string picture, string institution, int rating, DateTime joinDate, UserRoles userRoles, int userType)
-        {
-            Username = username;
-            Email = email;
-            Name = name;
-            Surname = surname;
-            DOB = dob;
-            Picture = picture;
-            Institution = institution;
-            Rating = rating;
-            this.joinDate = joinDate;
-            UserRoles = userRoles;
-            switch (userType)
-            {
-                case 1: this.userType = UserType.ADMIN;
-                    break;
-                case 2: this.userType = UserType.USER;
-                    break;
-                case 3: this.userType = UserType.STAFF;
-                    break;
-                case 4: this.userType = UserType.MODERATOR;
-                    break;
-            }
-        }
+        public User() { }
 
         #region Fields
         private string username;
@@ -111,7 +88,8 @@ namespace BLL
         {
             get
             {
-                if (File.Exists(picture))
+                string rootPath = "../SPortal/images/ProfilePictures/";
+                if (File.Exists(rootPath + picture))
                     return picture;
                 return "~/Images/ProfilePictures/default.png";
             }
@@ -217,9 +195,10 @@ namespace BLL
             //    userRoles += Convert.ToInt16(row["UserRoleID"]);
             DataTable dt = da.Select("SelectUserInfo", parameters);
             if (dt.Rows.Count > 0)
+
                 return new User(dt.Rows[0]["Username"].ToString(),dt.Rows[0]["Email"].ToString(),dt.Rows[0]["Name"].ToString(),dt.Rows[0]["Surname"].ToString(),
                             Convert.ToDateTime(dt.Rows[0]["DOB"]),dt.Rows[0]["Picture"].ToString(),dt.Rows[0]["Institution"].ToString(),
-                            Convert.ToInt16(dt.Rows[0]["Rating"]), Convert.ToDateTime(dt.Rows[0]["JoinDate"]), userRoles, Convert.ToInt16(dt.Rows[0]["UserType"]));
+                            Convert.ToInt16(dt.Rows[0]["Rating"]), Convert.ToDateTime(dt.Rows[0]["JoinDate"]), userRoles, (UserType)Convert.ToInt16(dt.Rows[0]["UserType"]));
             
             return null;
         }
@@ -299,6 +278,16 @@ namespace BLL
             if (dt.Rows.Count > 0)
                 return Convert.ToInt16(dt.Rows[0]["Amount"].ToString());
             return 0;
+        }
+
+        public string GetPicture()
+        {
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = {new SqlParameter("@Username", username)};
+            DataTable dt = da.Select("SelectUserPicture", parameters);
+            if (dt.Rows.Count > 0)
+                return dt.Rows[0]["Picture"].ToString();
+            return Picture;
         }
 
         #endregion

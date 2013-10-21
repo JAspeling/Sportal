@@ -128,7 +128,7 @@
                                         <asp:ImageButton ID="btnOK" runat="server" ImageUrl="img-demo/NewButtonsOK.png" OnClick="btnOK_Click"/>
                                     </td>
                                     <td>
-                                        <asp:ImageButton ID="btnCancel" runat="server" ImageUrl="img-demo/NewButtonsCancel.png" OnClick="btnCancel_Click"/>
+                                        <asp:ImageButton ID="btnCancel" runat="server" ImageUrl="img-demo/NewButtonsCancel.png" OnClick="btnCancel_Click" CausesValidation="False"/>
                                     </td>
                                 </tr>
                             </table>

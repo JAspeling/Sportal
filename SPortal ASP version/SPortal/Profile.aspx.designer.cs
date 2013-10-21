@@ -40,6 +40,15 @@ namespace SPortal {
         protected global::System.Web.UI.WebControls.Image imgProfileFrame;
         
         /// <summary>
+        /// pnlProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlProfile;
+        
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -55,7 +64,7 @@ namespace SPortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProfileName;
+        protected global::System.Web.UI.WebControls.TextBox lblProfileName;
         
         /// <summary>
         /// Label2 control.
@@ -73,7 +82,7 @@ namespace SPortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProfileBirthday;
+        protected global::System.Web.UI.WebControls.TextBox lblProfileBirthday;
         
         /// <summary>
         /// Label3 control.
@@ -91,7 +100,7 @@ namespace SPortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProfileGender;
+        protected global::System.Web.UI.WebControls.TextBox lblProfileGender;
         
         /// <summary>
         /// Label4 control.
@@ -109,7 +118,7 @@ namespace SPortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProfileStatus;
+        protected global::System.Web.UI.WebControls.TextBox lblProfileStatus;
         
         /// <summary>
         /// Label5 control.
@@ -127,7 +136,7 @@ namespace SPortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProfileEmail;
+        protected global::System.Web.UI.WebControls.TextBox lblProfileEmail;
         
         /// <summary>
         /// Label6 control.
@@ -145,16 +154,16 @@ namespace SPortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProfileInstitution;
+        protected global::System.Web.UI.WebControls.TextBox lblProfileInstitution;
         
         /// <summary>
-        /// ImageButton4 control.
+        /// btnProfileUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton4;
+        protected global::System.Web.UI.WebControls.ImageButton btnProfileUpdate;
         
         /// <summary>
         /// pnlTimelineBody control.

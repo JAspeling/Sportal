@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
 
 namespace BLL
 {
@@ -15,6 +17,14 @@ namespace BLL
             : base(username, email, name, surname, dob, picture, institution, rating, joinDate, userRoles, userType) { }
 
         #region Methods
+
+        public static bool CreateInstitution(string name)
+        {
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@Institution", name) };
+            return da.Update("CreateInstitution", parameters);
+        }
+
         #endregion
     }
 }

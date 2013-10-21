@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BLL;
+using CKEditor.NET;
 
 namespace SPortal
 {
@@ -10,7 +11,8 @@ namespace SPortal
     {
         private Panel pnlComment;
         private bool isPostEnabled;
-        private TextBox txtPost;
+        //private TextBox txtPost;
+        private CKEditorControl ckPostControl;// = new CKEditorControl();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -71,8 +73,16 @@ namespace SPortal
 
                 Label lblPost = new Label() {Text = "Post your Reply:<hr>"};
 
-                txtPost = new TextBox() { ID = "txtPost",  CssClass = "myTextAreas", TextMode = TextBoxMode.MultiLine, Width = Unit.Percentage(98), Height = 170};
-                txtPost.Font.Name = "Arial";
+                //txtPost = new TextBox() { ID = "txtPost",  CssClass = "myTextAreas", TextMode = TextBoxMode.MultiLine, Width = Unit.Percentage(98), Height = 170};
+                //txtPost.Font.Name = "Arial";
+
+                ckPostControl = new CKEditorControl();
+                ckPostControl.ID = "ckPost";
+                ckPostControl.Toolbar = "Basic";
+                ckPostControl.ToolbarBasic = "Source|-|Save|NewPage|Preview|-|Templates\r\nCut|Copy|Paste|PasteText|PasteFromWord|-|Print|SpellChecker|Scayt\r\nUndo|Redo|-|Find|Replace|-|SelectAll|RemoveFormat\r\n/\r\nBold|Italic|Underline|Strike|-|Subscript|Superscript\r\nNumberedList|BulletedList|-|Outdent|Indent|Blockquote\r\nJustifyLeft|JustifyCenter|JustifyRight|JustifyBlock\r\nBidiLtr|BidiRtl\r\nLink|Unlink|Anchor\r\nImage|Table|HorizontalRule|Smiley|SpecialChar|PageBreak\r\n/\r\nStyles|Format|Font|FontSize\r\nTextColor|BGColor\r\nMaximize|";
+                ckPostControl.BasePath = "/CkEditor/CkEditor/ckeditor";
+                ckPostControl.Attributes.Add("style", "width: 98%;");
+                ckPostControl.Height = 91;
 
                 ImageButton btnPost = new ImageButton() { ImageUrl = "~/img-demo/NewButtonsComment.png", Height = 33, Width = 103, ID = "btnPostReply", CssClass = "confirmPost" };
                 btnPost.Attributes.Add("style", "float: right; margin-right: 0.5em; margin-top: 0.4em;");
@@ -82,7 +92,7 @@ namespace SPortal
                 pnlText.Attributes.Add("style", "background-image: url('images/TopicBack4.png'); background-repeat: repeat-x; border: solid black; border-radius: 1em; border-width: 2px; float: left; font-size: 10pt; height: auto; padding: 10px; width: 90%;");
 
                 //pnlText.Controls.Add(lblPost);
-                pnlText.Controls.Add(txtPost);
+                pnlText.Controls.Add(ckPostControl);
                 pnlText.Controls.Add(btnPost);
 
                 pnlPostContent.Controls.Add(pnlText);
@@ -136,26 +146,29 @@ namespace SPortal
             pnlTopicBody.Controls.Add(lblTopicBody);
 
             Panel pnlTopicVotes = new Panel();
-            pnlTopicVotes.Attributes.Add("style", "margin-top: -1em;width: 74%;float: right;background-color: red;margin-right: 1.3em;margin-left: 1em;font-size: 14pt; padding-right: 1em;");
+            pnlTopicVotes.Attributes.Add("style", "margin-top: -1em;width: 74%;float: right;margin-right: 1.3em;margin-left: 1em;font-size: 14pt; padding-right: 1em;");
+            pnlTopicVotes.ID = "pnlTopicVotes";
 
             Button btnLike = new Button() {Text = "Like"};
             btnLike.ID = "btnLike" + topic.Id;
+            btnLike.Click += btnLike_Click;
             btnLike.Attributes.Add("style", "float: right; margin-left: 5px; width: 70px; ");
 
-            Label lblLike = new Label() {Text = "(121)"};
+            Label lblLike = new Label() {Text = string.Format("({0})", topic.GetUpvotes())};
             lblLike.Attributes.Add("style", "float: right;");
 
             Button btnDislike = new Button() {Text = "Dislike"};
-            btnLike.ID = "btnDislike" + topic.Id;
+            btnDislike.ID = "btnDislike" + topic.Id;
+            btnDislike.Click += btnDislike_Click;
             btnDislike.Attributes.Add("style", "float: right; margin-left: 5px; width: 70px;");
 
-            Label lblDislike = new Label() { Text = "(75)" };
+            Label lblDislike = new Label() { Text = string.Format("({0})", topic.GetDownvotes()) };
             lblDislike.Attributes.Add("style", "float: right;");
 
-            
-            pnlTopicVotes.Controls.Add(lblLike);
-            pnlTopicVotes.Controls.Add(btnDislike);
+
             pnlTopicVotes.Controls.Add(lblDislike);
+            pnlTopicVotes.Controls.Add(btnDislike);
+            pnlTopicVotes.Controls.Add(lblLike);
             pnlTopicVotes.Controls.Add(btnLike);
 
             // Replies on the topic follow
@@ -170,6 +183,33 @@ namespace SPortal
             pnlTopicHeader.Controls.Add(pnlReplies);
 
             parent.Controls.Add(pnlTopicHeader);
+        }
+
+        void btnDislike_Click(object sender, EventArgs e)
+        {
+            // btnLike123123
+
+            Button temp = (Button) sender;
+
+            string id = temp.ID;
+            id = id.Substring(10, id.Length - 10);
+
+            Topic topic = Topic.GetTopicByID(Convert.ToInt16(id));
+
+            topic.Downvote(Session["User"].ToString());
+
+        }
+
+        void btnLike_Click(object sender, EventArgs e)
+        {
+            Button temp = (Button)sender;
+
+            string id = temp.ID;
+            id = id.Substring(7, id.Length - 7);
+
+            Topic topic = Topic.GetTopicByID(Convert.ToInt16(id));
+
+            topic.Upvote(Session["User"].ToString());
         }
 
         public void LoadNewUserInfo(Panel parent, User user, Topic topic)
@@ -530,6 +570,14 @@ namespace SPortal
                 replyComment.Width = Unit.Percentage(98);
                 replyComment.Font.Name = "Arial";
 
+                //CKEditorControl ckPostControl = new CKEditorControl();
+                //ckPostControl.ID = "ckPost" + post.Id;
+                //ckPostControl.Toolbar = "Basic";
+                //ckPostControl.ToolbarBasic = "Source|-|Save|NewPage|Preview|-|Templates\r\nCut|Copy|Paste|PasteText|PasteFromWord|-|Print|SpellChecker|Scayt\r\nUndo|Redo|-|Find|Replace|-|SelectAll|RemoveFormat\r\n/\r\nBold|Italic|Underline|Strike|-|Subscript|Superscript\r\nNumberedList|BulletedList|-|Outdent|Indent|Blockquote\r\nJustifyLeft|JustifyCenter|JustifyRight|JustifyBlock\r\nBidiLtr|BidiRtl\r\nLink|Unlink|Anchor\r\nImage|Table|HorizontalRule|Smiley|SpecialChar|PageBreak\r\n/\r\nStyles|Format|Font|FontSize\r\nTextColor|BGColor\r\nMaximize|";
+                //ckPostControl.BasePath = "/CkEditor/CkEditor/ckeditor";
+                //ckPostControl.Attributes.Add("style", "width: 98%;");
+                //ckPostControl.Height = 91;
+
                 ImageButton btnPost = new ImageButton
                 {
                     ID = "btnPost" + post.Id,
@@ -542,6 +590,7 @@ namespace SPortal
                 btnPost.Click += btnPostCommentReply_Click;
 
                 pnlCommentContent.Controls.Add(replyComment);
+                //pnlCommentContent.Controls.Add(ckPostControl);
                 pnlCommentContent.Controls.Add(btnPost);
                 pnlComment.Controls.Add(pnlCommentContent);
             }
@@ -579,7 +628,7 @@ namespace SPortal
 
             var post = (TextBox) pnlComment.FindControl("txtPost" + postID);
 
-            if (Post.CreatePostReply(PostType.CHILD, post.Text, Session["User"].ToString(), postID))
+            if (Post.CreatePostReply(post.Text, Session["User"].ToString(), postID))
             {
                 Response.Redirect("Topic.aspx?TopicID=" + topicID);
             }
@@ -592,11 +641,11 @@ namespace SPortal
 
         protected void btnPostReply_OnClick(object sender, ImageClickEventArgs e)
         {
-            string post = txtPost.Text;
+            string post = ckPostControl.Text;
 
             int topicID = Convert.ToInt16(Request.QueryString["TopicID"]);
 
-            if (Post.CreatePost(PostType.PARENT, post, Session["User"].ToString(), topicID))
+            if (Post.CreatePost(post, Session["User"].ToString(), topicID))
             {
                 Response.Redirect("Topic.aspx?TopicID=" + topicID);
             }

@@ -17,9 +17,9 @@ namespace BLL
     [Flags]
     public enum UserRoles
     {
-        GROUPLEADER = 1,
-        GROUPMEMBER = 2,
-        PROJECTLEADER = 4
+        GROUPMEMBER = 1,
+        GROUPLEADER = 2 | GROUPMEMBER,
+        CREATOR = 4
     }
 
     public enum PostType

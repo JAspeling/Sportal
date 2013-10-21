@@ -16,6 +16,21 @@ namespace SPortal
 
         }
 
+        protected void KeyPress(object sender, KeyEventArgs e)
+        {
+            switch ((Keys) e.KeyValue)
+            {
+                case Keys.Return:
+                    btnOK_Click(this, new ImageClickEventArgs(0, 0));
+                    break;
+            }
+        }
+
+        protected void btnCancel_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Index.aspx");
+        }
+
         protected void btnOK_Click(object sender, ImageClickEventArgs e)
         {
            // Connection connection = new Connection();
@@ -34,7 +49,7 @@ namespace SPortal
             }
             else
             {
-                MessageBox.Show("Username/Password Combination does not match");
+                ScriptManager.RegisterClientScriptBlock(this, typeof(System.Web.UI.Page), "Message", "Message();", true);
             }
         }
     }

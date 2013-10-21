@@ -1,0 +1,37 @@
+USE [SPortalDb]
+GO
+
+/****** Object:  Table [dbo].[PostUsers]    Script Date: 2013-10-20 03:02:19 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[PostUsers](
+	[PostUsersID] [int] IDENTITY(1,1) NOT NULL,
+	[PostID] [int] NOT NULL,
+	[UserID] [int] NOT NULL,
+ CONSTRAINT [PK_Post Views] PRIMARY KEY CLUSTERED 
+(
+	[PostUsersID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[PostUsers]  WITH CHECK ADD  CONSTRAINT [FK_PostUsers_Post] FOREIGN KEY([PostID])
+REFERENCES [dbo].[Post] ([PostID])
+GO
+
+ALTER TABLE [dbo].[PostUsers] CHECK CONSTRAINT [FK_PostUsers_Post]
+GO
+
+ALTER TABLE [dbo].[PostUsers]  WITH CHECK ADD CONSTRAINT [FK_PostUsers_Users] FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+
+ALTER TABLE [dbo].[PostUsers] CHECK CONSTRAINT [FK_PostUsers_Users]
+GO
+
+

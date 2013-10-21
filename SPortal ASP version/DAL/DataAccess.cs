@@ -1,6 +1,9 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Text;
 
 namespace DAL
 {
@@ -121,6 +124,44 @@ namespace DAL
                 connection.Close();
             }
             return true;
+        }
+
+        public DataTable KeywordSearch(int type, List<string> keywords )
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                connection.Open();
+
+                StringBuilder searchString = new StringBuilder();
+
+                if (type == 1)
+                    searchString.Append(String.Format("SELECT TopicID FROM Topic WHERE TopicName LIKE '%{0}%'", keywords[0]));
+                else
+                    searchString.Append(String.Format("SELECT TopicName FROM Topic WHERE TopicName LIKE '%{0}%'", keywords[0]));
+
+                for (int counter = 1; counter < keywords.Count; counter++)
+                    searchString.Append(String.Format(" OR TopicName LIKE '%{0}%'", keywords[counter]));
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = connection;
+                cmd.CommandText = searchString.ToString();
+                cmd.ExecuteNonQuery();
+                da.SelectCommand = cmd;
+                da.Fill(ds);
+            }
+            catch (SqlException)
+            {
+                connection.Close();
+            }
+            finally
+            {
+                connection.Close();
+            }
+            if (ds.Tables[0].Rows.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
         }
     }
 }

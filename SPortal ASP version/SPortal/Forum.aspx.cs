@@ -53,7 +53,7 @@ namespace SPortal
             {
                 CreatePostArea(pnlGeneral, "General");
                 CreatePostArea(pnlInstitution, "Institution");
-                CreatePostArea(pnlGroup, "Group");
+                //CreatePostArea(pnlGroup, "Group");
             }
             else
             {
@@ -268,19 +268,51 @@ namespace SPortal
             HiddenField topicId = new HiddenField() {Value = topic.Id.ToString()};
             parent.Controls.Add(topicId);
 
-            CreatePostPicture("~/images/LOGO.png", parent);
-
             Table tblTopic = new Table();
             tblTopic.Width = Unit.Percentage(90);
 
-            CreateTableRow(ref tblTopic, topicId.Value, topic.Name, "Replies", "Created", "Last Reply", true);
-            CreateTableRow(ref tblTopic, topicId.Value, topic.Description, topic.GetTopicReplyAmount().ToString(), topic.Date.ToString(), DateTime.Now.ToString(), false);
+            if (parent == pnlGroup)
+            {
+                if (Session["User"] != null)
+                {
+                    
+                    List<Group> groups = Group.GetGroupsByUsername(Session["User"].ToString());
+                    foreach (var group in groups)
+                        //if (group.Name.Equals(topic.Name))
+                        //{
+                            CreatePostPicture("~/images/LOGO.png", parent);
 
-            tblTopic.Attributes.Add("style", "margin-bottom: 15px;");
+                            CreateTableRow(ref tblTopic, topicId.Value, topic.Name, "Replies", "Created", "Last Reply",
+                                true);
+                            CreateTableRow(ref tblTopic, topicId.Value, topic.Description,
+                                topic.GetTopicReplyAmount().ToString(), topic.Date.ToString(), DateTime.Now.ToString(),
+                                false);
 
-            parent.Controls.Add(tblTopic);
+                            tblTopic.Attributes.Add("style", "margin-bottom: 15px;");
 
-            parent.Controls.Add(new Label() { Text = "<hr style=\"border-color: #40e0d0; background-color: #40e0d0\"/>" });
+                            parent.Controls.Add(tblTopic);
+
+                            parent.Controls.Add(new Label() { Text = "<hr style=\"border-color: #40e0d0; background-color: #40e0d0\"/>" });
+                        //}
+                }
+            }
+            else
+            {
+                CreatePostPicture("~/images/LOGO.png", parent);
+                CreateTableRow(ref tblTopic, topicId.Value, topic.Name, "Replies", "Created", "Last Reply", true);
+                CreateTableRow(ref tblTopic, topicId.Value, topic.Description, topic.GetTopicReplyAmount().ToString(), topic.Date.ToString(), DateTime.Now.ToString(), false);
+                tblTopic.Attributes.Add("style", "margin-bottom: 15px;");
+
+                parent.Controls.Add(tblTopic);
+
+                parent.Controls.Add(new Label() { Text = "<hr style=\"border-color: #40e0d0; background-color: #40e0d0\"/>" });
+            }
+
+            //tblTopic.Attributes.Add("style", "margin-bottom: 15px;");
+
+            //parent.Controls.Add(tblTopic);
+
+            //parent.Controls.Add(new Label() { Text = "<hr style=\"border-color: #40e0d0; background-color: #40e0d0\"/>" });
         }
     }
 }

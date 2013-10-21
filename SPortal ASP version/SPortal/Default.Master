@@ -52,6 +52,7 @@
                                 <div style='clear: both;'></div>
                             </div>
                         </li>
+                        <li class="separator"></li>
                         <li><a href="Forum.aspx" class="arrow">Forum</a>
                             <div class="drop decor3_2" style="width: 100px">
                                 <div class='left'>
@@ -63,12 +64,13 @@
                                 <div style='clear: both;'></div>
                             </div>
                         </li>
-                        <li><a href="Forum.aspx" class="arrow">Groups</a>
-                            <div class="drop decor3_2" style="width: 100px">
+                        <li class="separator"></li>
+                        <li><a href="Group.aspx" class="arrow">Groups</a>
+                            <div class="drop decor3_2" style="width: 200px">
                                 <div class='left'>
-                                    <b>View</b>
+                                    <b>Register</b>
                                     <div>
-                                        <a href="HelpTopics.aspx">Help</a><br />
+                                        <a href="GroupRegister.aspx">Create new Group</a><br />
                                     </div>
                                 </div>
                                 <div style='clear: both;'></div>
@@ -78,7 +80,7 @@
                     
                     <div class="Signblock">
                             <span style="float: right;"><a href="Register.aspx"><img src="images/register.png" alt="Not found" width="82" height="38"></a></span>
-                            <asp:ImageButton style="float: right; margin-right: -6%;" ID="btnLogin" ImageUrl="images/sign.png" width="82" height="38" runat="server" OnClick="btnLogin_Click" />
+                            <asp:ImageButton style="height: 38px;width: 82px;float: right;margin-right: -5%;" ID="btnLogin" ImageUrl="images/sign.png" width="82" height="38" runat="server" OnClick="btnLogin_Click" CausesValidation="False"/>
                             <%--<span style="float: right; margin-right: -6%;"><a href="Login.aspx"><img src="images/sign.png" alt="Not found" width="82" height="38"></a></span>--%>
                     
                         <div style="float: right; margin-right: 15px; margin-top: 10px;">
@@ -90,9 +92,8 @@
                     <span style="float: right; padding-right: 1%"><a href="#"><img src="images/imBottom.png" alt="Not found" /></a></span>
                 </div>
             </div>
-
             <asp:ContentPlaceHolder ID="cphMain" runat="server">
-        
+                
             </asp:ContentPlaceHolder>
         </div>
         </form>

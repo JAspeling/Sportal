@@ -1,0 +1,12 @@
+CREATE PROCEDURE UpdatePost
+@PostTypeID INT,
+@PostID INT,
+@Text VARCHAR
+AS
+DECLARE @UserID INT
+BEGIN
+	UPDATE Post
+	SET [Text] = @Text
+	WHERE PostID = @PostID AND NOT PostTypeID = 1
+END
+GO

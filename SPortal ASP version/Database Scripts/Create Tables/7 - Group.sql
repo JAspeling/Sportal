@@ -1,0 +1,29 @@
+USE [SPortalDb]
+GO
+
+/****** Object:  Table [dbo].[Group]    Script Date: 2013-10-20 11:46:12 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Group](
+	[GroupID] [int] NOT NULL,
+	[Limited] [smallint] NOT NULL,
+ CONSTRAINT [PK__Group__149AF30A73FE07B2] PRIMARY KEY CLUSTERED 
+(
+	[GroupID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Group]  WITH CHECK ADD CONSTRAINT [FK_Group_Topic] FOREIGN KEY([GroupID])
+REFERENCES [dbo].[Topic] ([TopicID])
+GO
+
+ALTER TABLE [dbo].[Group] CHECK CONSTRAINT [FK_Group_Topic]
+GO
+
+

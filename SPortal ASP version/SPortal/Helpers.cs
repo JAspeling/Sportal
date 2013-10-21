@@ -10,7 +10,7 @@ namespace SPortal
         public static string LimitLength(this string description, int amount)
         {
             if (description.Length > amount)
-                return string.Format(description.Substring(0, 190) + "...");
+                return string.Format(description.Substring(0, amount) + "...");
 
             return description;
         }

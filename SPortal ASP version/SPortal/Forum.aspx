@@ -10,7 +10,7 @@
         <div class="centerBlock" style="margin-bottom: 2em;">
             
             <div style="background-image: url('images/pro_lineGraphic.png'); height: 6px; margin-left: 0; width: 95%;"></div>
-            <div class="mainBlack" style="">
+            <div class="mainBlack" style="margin-bottom: 35%">
                 <!-- General Topics -->
                 <div style="padding-left: 28px; padding-top: 20px;">
                     <div style="font-family: 'Dekar'; font-size: 25pt">General Topics</div>

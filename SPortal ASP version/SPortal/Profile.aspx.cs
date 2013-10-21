@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Web;
@@ -12,6 +13,8 @@ namespace SPortal
 {
     public partial class WebForm3 : System.Web.UI.Page
     {
+        private User user;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Cookie.SetSessionFromCookie(this);
@@ -21,8 +24,48 @@ namespace SPortal
             }
             else
             {
-                InitialiseProfile(Session["User"].ToString());
+                if (!IsPostBack)
+                    InitialiseProfile(Session["User"].ToString());
             }
+        }
+
+        protected void btnProfileUpdate_OnClick(object sender, ImageClickEventArgs e)
+        {
+            if (lblProfileName.ReadOnly)
+            {
+                btnProfileUpdate.ImageUrl = "img-demo/NewButtonsOK.png";
+                lblProfileEmail.ReadOnly = false;
+                lblProfileEmail.BackColor = Color.Gray;
+                lblProfileInstitution.ReadOnly = false;
+                lblProfileInstitution.BackColor = Color.Gray;
+                lblProfileName.ReadOnly = false;
+                lblProfileName.BackColor = Color.Gray;
+                //lblProfileStatus.ReadOnly = false;
+                //lblProfileStatus.BackColor = Color.Gray;
+            }
+            else
+            {
+                user = new User();
+                btnProfileUpdate.ImageUrl = "img-demo/NewButtonsEdit.png";
+                user.Name = ((TextBox)pnlProfile.FindControl("lblProfileName")).Text.Split(' ')[0];
+                user.Surname = ((TextBox)pnlProfile.FindControl("lblProfileName")).Text.Substring(user.Name.Length, lblProfileName.Text.Length - user.Name.Length);
+                user.Username = Session["User"].ToString();
+                user.Email = lblProfileEmail.Text;
+                user.Picture = user.GetPicture();
+                user.Gender = lblProfileGender.Text == "Male" ? Gender.MALE : Gender.FEMALE;
+                user.DOB = Convert.ToDateTime(lblProfileBirthday.Text);
+                user.Institution = lblProfileInstitution.Text;
+                user.Update();
+                lblProfileEmail.ReadOnly = true;
+                lblProfileEmail.BackColor = Color.Transparent;
+                lblProfileInstitution.ReadOnly = true;
+                lblProfileInstitution.BackColor = Color.Transparent;
+                lblProfileName.ReadOnly = true;
+                lblProfileName.BackColor = Color.Transparent;
+                //lblProfileStatus.ReadOnly = true;
+                //lblProfileStatus.BackColor = Color.Transparent;
+            }
+            InitialiseProfile(Session["User"].ToString());
         }
 
         /// <summary>
@@ -129,10 +172,10 @@ namespace SPortal
             postContentContainer.Controls.Add(postContent); // Adding the Post Content
             postContainer.Controls.Add(postContentContainer);
 
-            foreach (var button in buttons)
-            {
-                postButtonsContainer.Controls.Add(button);
-            }
+            //foreach (var button in buttons)
+            //{
+            //    postButtonsContainer.Controls.Add(button);
+            //}
             postContainer.Controls.Add(postButtonsContainer);
             postContainer.Controls.Add(postIdField);
 
@@ -143,7 +186,7 @@ namespace SPortal
 
         public void InitialiseProfile(string username)
         {
-            BLL.User user = BLL.User.GetUserByUsername(username);
+            user = BLL.User.GetUserByUsername(username);
 
             if (user != null)
             {
@@ -159,7 +202,7 @@ namespace SPortal
                 lblProfileName.Text = string.Format("{0} {1}", user.Name, user.Surname);
                 lblProfileBirthday.Text = user.DOB.ToLongDateString();
                 lblProfileGender.Text = "Not Specified";
-                lblProfileStatus.Text = "Not Specified";
+                lblProfileStatus.Text = user.UserType.ToString();
                 lblProfileEmail.Text = user.Email;
                 lblProfileInstitution.Text = user.Institution;
 

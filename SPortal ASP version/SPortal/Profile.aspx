@@ -32,57 +32,57 @@
                     </div>
                                               
                 </div>
-                <div style="background-image: url('images/TopicBack4.png'); color: #59abb7; display: inline-block; font-size: 8pt; list-style: none; list-style-type: none; padding: 5px; text-decoration: none; width: 95%; border-radius: 0.5em; border-color: rgb(95, 95, 95); border-style: solid; border-width: 1px;">
+                <asp:Panel ID="pnlProfile" runat="server" style="background-image: url('images/TopicBack4.png'); color: #59abb7; display: inline-block; font-size: 8pt; list-style: none; list-style-type: none; padding: 5px; text-decoration: none; width: 95%; border-radius: 0.5em; border-color: rgb(95, 95, 95); border-style: solid; border-width: 1px;">
                     <span style="color: #ededed; font-size: 12pt;"><u>Basic Info______________________________</u></span>
                     <div>
                         <br/>
                         <table style="border: none; border-width: 0">
                             <tr>
-                                <td style="width: 70px;">
+                                <td style="width: 120px;">
                                     <asp:Label ID="Label1" Text="&bull; Name:" runat="server"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:Label ID="lblProfileName" Text="John Doe" ForeColor="white" runat="server"></asp:Label>
+                                    <asp:TextBox ReadOnly="true" ID="lblProfileName" Text="John Doe" ForeColor="white" BackColor="transparent" BorderStyle="none" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 70px;">
+                                <td style="width: 120px;">
                                     <asp:Label ID="Label2" Text="&bull; Birthday:" runat="server"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:Label ID="lblProfileBirthday" Text="05 December 1990" ForeColor="white" runat="server"></asp:Label>
+                                    <asp:TextBox ReadOnly="true" ID="lblProfileBirthday" Text="05 December 1990" ForeColor="white" BackColor="transparent" BorderStyle="none" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 70px;">
+                                <td style="width: 120px;">
                                     <asp:Label ID="Label3" Text="&bull; Gender:" runat="server"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:Label ID="lblProfileGender" Text="Male" ForeColor="white" runat="server"></asp:Label>
+                                    <asp:TextBox ReadOnly="true" ID="lblProfileGender" Text="Male" ForeColor="white" BackColor="transparent" BorderStyle="none" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 70px;">
+                                <td style="width: 120px;">
                                     <asp:Label ID="Label4" Text="&bull; Status:" runat="server"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:Label ID="lblProfileStatus" Text="Student" ForeColor="white" runat="server"></asp:Label>
+                                    <asp:TextBox ReadOnly="true" ID="lblProfileStatus" Text="Student" ForeColor="white" BackColor="transparent" BorderStyle="none" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 70px;">
+                                <td style="width: 120px;">
                                     <asp:Label ID="Label5" Text="&bull; Email:" runat="server"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:Label ID="lblProfileEmail" Text="JohnD@mweb.com" ForeColor="white" runat="server"></asp:Label>
+                                    <asp:TextBox ReadOnly="true" ID="lblProfileEmail" Text="JohnD@mweb.com" ForeColor="white" BackColor="transparent" BorderStyle="none" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 70px;">
+                                <td style="width: 120px;">
                                     <asp:Label ID="Label6" Text="&bull; Institution:" runat="server"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:Label ID="lblProfileInstitution" Text="Belgium Campus" ForeColor="white" runat="server"></asp:Label>
+                                    <asp:TextBox ReadOnly="true" ID="lblProfileInstitution" Text="Belgium Campus" ForeColor="white" BackColor="transparent" BorderStyle="none" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                         </table> <%--Left Status Pane --%>
@@ -92,13 +92,13 @@
                         <table style="border-color: transparent; border-width: 0; margin-left: 38px;">
                             <tr>
                                 <td>
-                                    <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="img-demo/NewButtonsEdit.png" Width="116" Height="33" AlternateText="Button"/>
+                                    <asp:ImageButton ID="btnProfileUpdate" runat="server" ImageUrl="img-demo/NewButtonsEdit.png" Width="116" Height="33" AlternateText="Button" OnClick="btnProfileUpdate_OnClick"/>
                                 </td>
                             </tr>
                         </table>
                         <span style="color: #ededed">_____________________________________________________</span>
                     </div>
-                </div>
+                </asp:Panel>
 
                 <div style="background-color: transparent; padding: 5px; width: 95%;">
                 </div>

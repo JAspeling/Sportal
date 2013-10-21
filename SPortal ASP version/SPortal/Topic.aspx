@@ -13,7 +13,7 @@
         <div class="centerBlock">
             
 
-            <div style="height: 30px"><img src="images/bottomTopic.png" alt="Not found" width="895" height="35"></div>
+            <div style="height: 30px"><%--<img src="images/bottomTopic.png" alt="Not found" width="895" height="35">--%></div>
             <div class="mainBlack">
                 <asp:Panel runat="server" id="pnlTopic" style="padding-left: 28px; padding-top: 30px;">
                    

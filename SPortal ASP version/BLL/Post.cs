@@ -84,12 +84,23 @@ namespace BLL
         #endregion
 
         #region Methods
+
+        public bool Update()
+        {
+            //updates all the post detail so that posts can be edited
+            DataAccess da = new DataAccess();
+            SqlParameter[] parameters = { new SqlParameter("@PostID", Id),
+                                            new SqlParameter("@Text", text) };
+
+            return da.Update("UpdatePost", parameters);
+        }
+
         public bool Upvote(string username)
         {
             //this uses a procedure to upvote a post
             DataAccess da = new DataAccess();
             SqlParameter[] parameters = { new SqlParameter("@Type", 2),
-                                            new SqlParameter("@PostID",id),
+                                            new SqlParameter("@ID",id),
                                             new SqlParameter("@Username",username)};
             return da.Update("Upvote", parameters);
         }
@@ -99,28 +110,28 @@ namespace BLL
             //this uses a procedure to downvote a post
             DataAccess da = new DataAccess();
             SqlParameter[] parameters = { new SqlParameter("@Type", 2),
-                                            new SqlParameter("@PostID",id),
+                                            new SqlParameter("@ID",id),
                                             new SqlParameter("@Username",username)};
             return da.Update("Downvote", parameters);
         }
 
 
-        public static bool CreatePost(PostType postType, string text, string username, int topicID)
+        public static bool CreatePost(string text, string username, int topicID)
         {
             //create a new post
             DataAccess da = new DataAccess();
-            SqlParameter[] parameters = { new SqlParameter("@PostTypeID",(int)postType),
+            SqlParameter[] parameters = { new SqlParameter("@PostTypeID",1),
                                             new SqlParameter("@Text", text),
                                             new SqlParameter("@Username", username),
                                             new SqlParameter("@TopicID", topicID)};
             return da.Insert("CreatePost", parameters);
         }
 
-        public static bool CreatePostReply(PostType postType, string text, string username, int postID)
+        public static bool CreatePostReply(string text, string username, int postID)
         {
             //create a new post
             DataAccess da = new DataAccess();
-            SqlParameter[] parameters = { new SqlParameter("@PostTypeID",(int)postType),
+            SqlParameter[] parameters = { new SqlParameter("@PostTypeID",2),
                                             new SqlParameter("@Text", text),
                                             new SqlParameter("@Username", username),
                                             new SqlParameter("@PostID", postID)};

@@ -17,6 +17,13 @@
             }
         }
     </script>
+    
+    <script>
+        function Message() {
+            alert("Username/Password does not match");
+            return false;
+        }
+    </script>
 
 </head>
 <body>
@@ -39,7 +46,7 @@
                                 <label style="font-size: 17pt; color: white;">Password</label>
                             </td>
                             <td>
-                                <asp:TextBox TextMode="Password" ID="txtPassword" runat="server" value="" style="background-color: #c0c0c0; border: double #ccccff; margin-top: 10px;border-radius: 0.5em" size="50" autocomplete="on" autofocus=""></asp:TextBox><br/><br/>
+                                <asp:TextBox TextMode="Password" ID="txtPassword" runat="server" value="" style="background-color: #c0c0c0; border: double #ccccff; margin-top: 10px;border-radius: 0.5em" size="50" autocomplete="on" ></asp:TextBox><br/><br/>
                             </td>
                         </tr>
                     </table>
@@ -74,7 +81,7 @@
                                 <asp:ImageButton ID="btnOK" runat="server" ImageUrl="img-demo/NewButtonsOK.png" OnClick="btnOK_Click"/>
                             </td>
                             <td>
-                                <asp:ImageButton ID="btnCancel" runat="server" ImageUrl="img-demo/NewButtonsCancel.png"/>
+                                <asp:ImageButton ID="btnCancel" runat="server" ImageUrl="img-demo/NewButtonsCancel.png" OnClick="btnCancel_Click"/>
                             </td>
                         </tr>
                     </table>

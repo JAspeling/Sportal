@@ -178,9 +178,11 @@ namespace BLL
             //this uses a procedure to upvote a topic
             DataAccess da = new DataAccess();
             SqlParameter[] parameters = { new SqlParameter("@Type", 1),
-                                            new SqlParameter("@PostID",id),
+                                            new SqlParameter("@ID",id),
                                             new SqlParameter("@Username",username)};
-            return da.Update("Upvote", parameters);
+            bool temp = da.Update("Upvote", parameters);
+
+            return temp;
         }
 
         public bool Downvote(string username)
@@ -188,7 +190,7 @@ namespace BLL
             //this uses a procedure to downvote a topic
             DataAccess da = new DataAccess();
             SqlParameter[] parameters = { new SqlParameter("@Type", 1),
-                                            new SqlParameter("@PostID",id),
+                                            new SqlParameter("@ID",id),
                                             new SqlParameter("@Username",username)};
             return da.Update("Downvote", parameters);
         }
@@ -212,6 +214,29 @@ namespace BLL
             DataTable dt = da.Select("SelectDownvotes", parameters);
             return Convert.ToInt16(dt.Rows[0]["Downvotes"]);
         }
+
+        public static List<Topic> GetTopicsByKeywords(string text)
+        {
+            //gets a list of groups based on entered keywords
+            List<string> keywords = text.Split(' ').ToList();
+            List<string> filteredKeywords = new List<string>();
+            foreach (string word in keywords)
+                if (word.Length > 3)
+                    filteredKeywords.Add(word);
+
+            if (keywords.Count > 0)
+            {
+                List<Topic> topics = new List<Topic>();
+                DataAccess da = new DataAccess();
+                DataTable dt = da.KeywordSearch(1, filteredKeywords);
+                if (dt.Rows.Count != 0)
+                    foreach (DataRow row in dt.Rows)
+                        topics.Add(Topic.GetTopicByID(Convert.ToInt16(row["TopicID"])));
+                return topics;
+            }
+            return null;
+        }
+
         #endregion
     }
 }
